@@ -11,7 +11,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prerelease": "npm run build --",
+    "release": "electron-builder"
+  },
+  "build": {
+    "appId": "at.programario.cleanworks",
+    "productName": "CleanWorks",
+    "files": [
+      "main.js",
+      "dist"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -34,6 +44,7 @@
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "electron": "^13.2.1",
+    "electron-builder": "^22.11.7",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
