@@ -9,6 +9,13 @@
   &:not(.nospace) {
     margin: calc(0px - var(--unit) / 2) !important;
   }
+
+  &.start {
+    justify-content: flex-start;
+  }
+  &.end {
+    justify-content: flex-end;
+  }
   &.center {
     justify-content: center;
   }

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title [innerHTML]="data.title"></h1>
+<mat-dialog-content>
+  <ng-template #content></ng-template>
+</mat-dialog-content>
+<mat-dialog-actions
+  class="space-between"
+  *ngIf="data.buttons && data.buttons.length > 0"
+>
+  <button
+    *ngFor="let button of data.buttons"
+    mat-button
+    (click)="handleButtonClick(button)"
+    [innerHTML]="button.text"
+  ></button>
+</mat-dialog-actions>

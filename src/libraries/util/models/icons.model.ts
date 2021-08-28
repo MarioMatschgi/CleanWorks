@@ -7,6 +7,7 @@ export enum Icons {
   reminders = 'f77f fas',
   mindmaps = 'f59f fas',
   calender = 'f783 fas',
+  calender_checked = 'f274 fas',
   forward = 'f0d9 far',
   backward = 'f0da far',
   add = 'f067 far',

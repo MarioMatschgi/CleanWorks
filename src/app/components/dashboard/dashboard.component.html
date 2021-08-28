@@ -1,0 +1,55 @@
+<div class="container small">
+  <!-- PROFILE -->
+  <db-element
+    [icon]="gv.Icons.profile"
+    title="Hello [NAME]!"
+    subtitle="Your account"
+  >
+    <p>STATS, SETTINGS AND LOGOUT</p>
+  </db-element>
+
+  <!-- QUICK-ACTIONS -->
+  <db-element
+    [icon]="gv.Icons.cogs"
+    title="Quick-Actions"
+    subtitle="Some quick things"
+  >
+    <db-quick-actions></db-quick-actions>
+  </db-element>
+
+  <!-- DUE-TOMORROW -->
+  <db-element
+    [icon]="gv.Icons.alarm"
+    title="Due tomorrow"
+    subtitle="Let's do this!"
+  >
+    <p>LIST OF HOMEWORK DUE TOMORROW</p>
+  </db-element>
+
+  <!-- THIS-WEEK -->
+  <db-element
+    [icon]="gv.Icons.calender"
+    title="For this week"
+    subtitle="The sooner, the better..."
+  >
+    <p>LIST OF HOMEWORK FOR THIS WEEK, SORTED BY DUE-DATE</p>
+  </db-element>
+
+  <!-- APPOINTMENTS -->
+  <db-element
+    [icon]="gv.Icons.calender_checked"
+    title="Appointments"
+    subtitle="All your appointments"
+  >
+    <p>LIST OF APPOINTMENTS, SORTED BY DATE</p>
+  </db-element>
+
+  <!-- HOMEWORK -->
+  <db-element
+    [icon]="gv.Icons.books"
+    title="Homework"
+    subtitle="More motivation?"
+  >
+    <p>LIST OF HOMEWORK, SORTED BY DUE-DATE</p>
+  </db-element>
+</div>

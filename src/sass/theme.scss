@@ -19,6 +19,12 @@
   }
 }
 
+@mixin disabled {
+  &:disabled {
+    background-color: darken($color: $col-green, $amount: 15%) !important;
+  }
+}
+
 /* COLORS */
 *[color="primary"] {
   color: $col-blue !important;
@@ -38,23 +44,38 @@
 /* BACKGROUND */
 *[background="primary"] {
   background-color: $col-blue !important;
-  color: $col-white !important;
+  * {
+    color: $col-white !important;
+  }
+  @include disabled();
 }
 *[background="accent"] {
   background-color: $col-amber !important;
-  color: $col-white !important;
+  * {
+    color: $col-white !important;
+  }
+  @include disabled();
 }
 *[background="warn"] {
   background-color: $col-red !important;
-  color: $col-white !important;
+  * {
+    color: $col-white !important;
+  }
+  @include disabled();
 }
 *[background="info"] {
   background-color: $col-light-blue !important;
-  color: $col-white !important;
+  * {
+    color: $col-white !important;
+  }
+  @include disabled();
 }
 *[background="success"] {
   background-color: $col-green !important;
-  color: $col-white !important;
+  * {
+    color: $col-white !important;
+  }
+  @include disabled();
 }
 
 /* */
@@ -69,17 +90,46 @@
 /* CARD */
 .mat-card {
   background-color: var(--col-background) !important;
+
+  .mat-card-content > :first-child {
+    margin-top: var(--unit-small) !important;
+  }
 }
 
 fa.mat-card-avatar {
   font-size: 40px;
 }
 
-// @import "~@angular/material/theming";
-// @include mat-core();
+form.grow {
+  .mat-form-field {
+    width: 100%;
+  }
+}
 
-// $my-app-primary: mat-palette($mat-blue-grey);
-// $my-app-accent: mat-palette($mat-pink, 500, 900, A100);
-// $my-app-warn: mat-palette($mat-deep-orange);
-// $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
-// @include angular-material-theme($my-app-theme);
+textarea {
+  &.large {
+    box-sizing: border-box;
+    height: calc(10em * 1.125);
+  }
+}
+
+.mat-dialog-actions {
+  &.space-between {
+    justify-content: space-between !important;
+  }
+}
+
+// This fixes https://github.com/angular/components/issues/4609
+.mat-dialog-override {
+  mat-dialog-container {
+    > :first-child {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    mat-dialog-content,
+    div[mat-dialog-content] {
+      flex-grow: 1;
+    }
+  }
+}

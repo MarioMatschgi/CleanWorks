@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>New Homework</h1>
+<div mat-dialog-content>
+  <hw-new #hwNew></hw-new>
+</div>
+<div mat-dialog-actions class="space-between">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button background="success" [disabled]="!hwNew.valid">
+    Add new Homework
+  </button>
+</div>
