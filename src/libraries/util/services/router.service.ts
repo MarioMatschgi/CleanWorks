@@ -92,7 +92,7 @@ export class RouterService {
    * Navigates to the login page
    */
   nav_login(url: string = this.router.url) {
-    localStorage.setItem(this.k_login_loc, url);
+    this.save_login_loc(url);
 
     this.router.navigate(['auth/login']);
   }
@@ -102,16 +102,15 @@ export class RouterService {
    */
   nav_login_back() {
     let route = localStorage.getItem(this.k_login_loc);
-    if (route == null || route == '/') route = '';
 
-    this.router.navigate(route.split('/'));
+    this.router.navigate(route?.split('/').filter((el) => el !== '') || []);
   }
 
   /**
    * Navigates to the register page
    */
   nav_register(url: string = this.router.url) {
-    localStorage.setItem(this.k_login_loc, url);
+    this.save_login_loc(url);
 
     this.router.navigate(['auth/register']);
   }
@@ -120,7 +119,7 @@ export class RouterService {
    * Navigates to the reset password page
    */
   nav_reset(url: string = this.router.url) {
-    localStorage.setItem(this.k_login_loc, url);
+    this.save_login_loc(url);
 
     this.router.navigate(['auth/reset-password']);
   }
@@ -129,8 +128,13 @@ export class RouterService {
    * Navigates to the verify email page
    */
   nav_verify_email(url: string = this.router.url) {
-    localStorage.setItem(this.k_login_loc, url);
+    this.save_login_loc(url);
 
     this.router.navigate(['auth/verify-email']);
+  }
+
+  save_login_loc(url: string) {
+    if (url.split('/')[1] === 'auth') localStorage.removeItem(this.k_login_loc);
+    else localStorage.setItem(this.k_login_loc, url);
   }
 }

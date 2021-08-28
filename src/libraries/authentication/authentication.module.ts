@@ -10,6 +10,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { PopoverModule } from '../popover/popover.module';
 import { AuthResetComponent } from './components/auth-reset/auth-reset.component';
+import { MaterialModule } from 'src/material/material.module';
+import { UtilModule } from '../util/util.module';
 
 const components = [
   AuthComponent,
@@ -26,7 +28,14 @@ const components = [
  */
 @NgModule({
   declarations: components,
-  imports: [CommonModule, AppRoutingModule, PopoverModule, FormsModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    PopoverModule,
+    FormsModule,
+    MaterialModule,
+    UtilModule,
+  ],
   exports: components,
 })
 export class AuthenticationModule {}

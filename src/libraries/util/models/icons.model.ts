@@ -20,4 +20,5 @@ export enum Icons {
   books = 'f5db fas',
   profile = 'f007 fas',
   profile_student = 'f501 fas',
+  google = 'f1a0 fab',
 }

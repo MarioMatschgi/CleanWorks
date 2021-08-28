@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cleanworks-906ba": {
+      "hosting": {
+        "clean-works": [
+          "cleanworks-906ba"
+        ]
+      }
+    }
+  }
+}

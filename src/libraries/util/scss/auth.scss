@@ -1,8 +1,14 @@
 /* SIGNIN BUTTONS */
 button.signin {
+  border: none;
+  padding: var(--unit-small);
+  border-radius: var(--unit-small);
+  box-sizing: content-box;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1em;
 
   flex-grow: unset;
   flex-basis: unset;

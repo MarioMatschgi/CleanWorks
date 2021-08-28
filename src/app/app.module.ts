@@ -17,6 +17,9 @@ import { HwNewDialogComponent } from './components/objectives/homework/hw-new-di
 import { FormsModule } from '@angular/forms';
 import { SjNewComponent } from './components/objectives/subject/sj-new/sj-new.component';
 import { SjNewDialogComponent } from './components/objectives/subject/sj-new-dialog/sj-new-dialog.component';
+import { AuthenticationModule } from 'src/libraries/authentication/authentication.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,11 @@ import { SjNewDialogComponent } from './components/objectives/subject/sj-new-dia
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
 
     /* LIBRARIES */
     UtilModule,
+    AuthenticationModule,
 
     /* MATERIAL */
     MaterialModule,

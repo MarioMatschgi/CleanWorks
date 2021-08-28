@@ -1,6 +1,5 @@
 import { take } from 'rxjs/operators';
 import {
-  AuthData,
   Role,
   emptyUserPublicData,
   UserPrivateData,
@@ -10,11 +9,11 @@ import {
 import {
   AngularFirestore,
   AngularFirestoreDocument,
-} from '@angular/fire/firestore';
+} from '@angular/fire/compat/firestore';
 import { EventEmitter, Injectable } from '@angular/core';
 
-import firebase from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase/compat/app';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Subscription } from 'rxjs';
 import { RouterService } from '../../util/services/router.service';
 import { GlobalVariablesService } from '../../util/services/global-variables.service';
@@ -505,7 +504,7 @@ export class AuthService {
     return await this.afAuth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result) => {
-        // this.successfullySignedIn('google');
+        this.successfullySignedIn(true);
       })
       .catch((error) => {
         this.error = this.get_error(error);
@@ -521,7 +520,7 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        // this.successfullySignedIn('email');
+        this.successfullySignedIn(true);
       })
       .catch((error) => {
         this.error = this.get_error(error);

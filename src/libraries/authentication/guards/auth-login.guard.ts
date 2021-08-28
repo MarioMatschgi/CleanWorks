@@ -37,6 +37,8 @@ export class AuthLoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log(this.auth.loggedIn, route.data.inverted);
+
     if (route.data.inverted) {
       if (!this.auth.loggedIn) {
         return true;

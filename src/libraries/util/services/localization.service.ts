@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as data_en from '../../../lang/english.json';
-import * as data_de from '../../../lang/german.json';
+import * as data_en from '../../../app/lang/english.json';
+import * as data_de from '../../../app/lang/german.json';
 import { AuthService } from '../../authentication/services/auth.service';
 
 /**

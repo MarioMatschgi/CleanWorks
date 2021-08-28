@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/libraries/authentication/services/auth.service';
-import { GlobalVariablesService } from 'src/app/libraries/util/services/global-variables.service';
-import { LocalizationService } from 'src/app/libraries/util/services/localization.service';
-import { RouterService } from 'src/app/libraries/util/services/router.service';
+import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
+import { RouterService } from 'src/libraries/util/services/router.service';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * Component for profile

@@ -1,0 +1,112 @@
+{
+  "general": {
+    "lang": {
+      "en": "English",
+      "de": "German"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "ok": "Ok"
+    }
+  },
+
+  "profile": {
+    "settings": {
+      "title": "Settings",
+      "desc": "Below are the settings to customize your experience.",
+      "sections": {
+        "themes": {
+          "title": "Themes",
+          "desc": "Choose your favourite theme."
+        },
+        "lang": {
+          "title": "Language",
+          "desc": "Choose your prefered language."
+        }
+      },
+      "buttons": {
+        "settings": "Settings"
+      }
+    }
+  },
+
+  "lib": {
+    "auth": {
+      "buttons": {
+        "login": {
+          "login": "Login",
+          "google": "Login with Google",
+          "email": "Login"
+        },
+        "register": {
+          "register": "Register",
+          "email": "Register"
+        },
+        "logout": {
+          "logout": "Logout"
+        },
+        "verify_email": {
+          "resend": "Resend verification"
+        },
+        "reset_password": {
+          "reset": "Reset password"
+        }
+      },
+      "fields": {
+        "email": {
+          "label": "Email",
+          "error": "Email is required!",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "error": "Password is required!",
+          "placeholder": "Enter your password"
+        },
+        "confirm_password": {
+          "label": "Confirm password",
+          "error": "Confirming is required!",
+          "placeholder": "Enter your password"
+        }
+      },
+      "errors": {
+        "auth/user-not-found": "Invalid email or password!",
+        "auth/wrong-password": "Invalid email or password!",
+        "auth/too-many-requests": "The login failed too many times!<br/>Please try again later.",
+        "auth/password-no-match": "The confirmation password must match the password!",
+        "auth/email-already-in-use": "An account with this email already exists!",
+        "auth/not-verified": "Please verify your email adress before logging in!",
+        "auth/too-many-verify-email": "Too many verification emails were sent!<br/>Please try again later."
+      },
+      "login": {
+        "title": "Login",
+        "desc": "To create/edit/delete your own favourite recipes or to bookmark/star recipes you have to log in."
+      },
+      "register": {
+        "title": "Register",
+        "desc": "To create/edit/delete your own favourite recipes or to bookmark/star recipes you have to register."
+      },
+      "verify_email": {
+        "title": "Verify your email",
+        "desc": "Please verify your email to continue",
+        "successfully_sent": "Successfully resent the verification link!"
+      },
+      "reset_password": {
+        "title": "Reset your password",
+        "desc": "Please enter your email",
+        "successfully_sent": "Successfully resent the reset mail!"
+      }
+    },
+    "share": {
+      "desc": "Share this recipe: %nam%",
+      "txt": "Check this recipe out: %url%",
+      "ttl": "Recipe4you | %nam%"
+    }
+  },
+
+  "not_found": {
+    "desc": "Whoooops!<br/>It seems that %what% does not exist!",
+    "general": "the page you are looking for",
+    "recipe": "the recipe you are looking for"
+  }
+}
