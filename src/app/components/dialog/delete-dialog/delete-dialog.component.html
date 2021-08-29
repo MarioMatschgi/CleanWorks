@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Delete item</h1>
+<mat-dialog-content>
+  <p>Are you sure you want to delete the following items?</p>
+  <ul>
+    <li *ngFor="let item of data.items">{{ item }}</li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions class="space-between">
+  <button mat-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" background="warn">Delete</button>
+</mat-dialog-actions>

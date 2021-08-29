@@ -1,9 +1,4 @@
-import {
-  AfterViewInit,
-  ComponentRef,
-  Injectable,
-  ViewContainerRef,
-} from '@angular/core';
+import { AfterViewInit, Injectable, ViewContainerRef } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ComponentAddService } from 'src/app/services/component-add.service';
 import { DialogButtonData, DialogData } from 'src/app/services/dialog.service';

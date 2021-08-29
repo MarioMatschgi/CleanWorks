@@ -17,17 +17,11 @@ export class DbQuickActionsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openHomework() {
-    this.dialogService.dialog.open(HwNewDialogComponent, {
-      width: '50em',
-      height: '50em',
-    });
+  newHomework() {
+    this.dialogService.dialog.open(HwNewDialogComponent);
   }
 
-  openSubject() {
-    this.dialogService.dialog.open(SjNewDialogComponent, {
-      width: '50em',
-      height: '50em',
-    });
+  newSubject() {
+    this.dialogService.dialog.open(SjNewDialogComponent);
   }
 }

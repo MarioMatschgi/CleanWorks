@@ -6,6 +6,10 @@ import { AuthResetComponent } from 'src/libraries/authentication/components/auth
 import { AuthVerifyEmailComponent } from 'src/libraries/authentication/components/auth-verify-email/auth-verify-email.component';
 import { AuthLoginGuard } from 'src/libraries/authentication/guards/auth-login.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AppointmentsComponent } from './components/objectives/appointments/appointments.component';
+import { GroupsComponent } from './components/objectives/groups/groups.component';
+import { HomeworkComponent } from './components/objectives/homework/homework.component';
+import { SubjectsComponent } from './components/objectives/subject/subjects.component';
 
 const routes: Routes = [
   {
@@ -13,8 +17,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
         canActivate: [AuthLoginGuard],
+        children: [
+          { path: '', component: DashboardComponent },
+          { path: 'homework', component: HomeworkComponent },
+          { path: 'appointments', component: AppointmentsComponent },
+          { path: 'groups', component: GroupsComponent },
+          { path: 'subjects', component: SubjectsComponent },
+        ],
       },
       {
         path: 'auth',

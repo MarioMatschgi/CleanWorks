@@ -1,0 +1,45 @@
+<div class="container small">
+  <!-- OVER-DUE -->
+  <card
+    [icon]="gv.Icons.alarm"
+    title="Over due"
+    subtitle="It'll be fine, just do it now"
+    [link]="dashboard ? ['homework'] : null"
+    *ngIf="userData.hwPast?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwPast"></hw-list>
+  </card>
+
+  <!-- DUE-TODAY -->
+  <card
+    [icon]="gv.Icons.alarm"
+    title="Due today"
+    subtitle="Come on!"
+    [link]="dashboard ? ['homework'] : null"
+    *ngIf="userData.hwToday?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwToday"></hw-list>
+  </card>
+
+  <!-- DUE-TOMORROW -->
+  <card
+    [icon]="gv.Icons.alarm"
+    title="Due tomorrow"
+    subtitle="Let's do this!"
+    [link]="dashboard ? ['homework'] : null"
+    *ngIf="userData.hwTomorrow?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwTomorrow"></hw-list>
+  </card>
+
+  <!-- THIS-WEEK -->
+  <card
+    [icon]="gv.Icons.calender"
+    title="For this week"
+    subtitle="The sooner, the better..."
+    [link]="dashboard ? ['homework'] : null"
+    *ngIf="userData.hwWeek?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwWeek"></hw-list>
+  </card>
+</div>

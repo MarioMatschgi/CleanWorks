@@ -1,0 +1,24 @@
+<div class="container">
+  <!-- OPTIONS -->
+  <card
+    [icon]="gv.Icons.edit"
+    title="Homework"
+    subtitle="All your homework in one place"
+  >
+    <button mat-raised-button background="success" (click)="newHomework()">
+      Add new homework
+    </button>
+  </card>
+
+  <hw-dashboard></hw-dashboard>
+
+  <!-- ALL-TIME -->
+  <card
+    [icon]="gv.Icons.books"
+    title="Homework"
+    subtitle="More motivation?"
+    *ngIf="userData.hwFuture?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwFuture"></hw-list>
+  </card>
+</div>

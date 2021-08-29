@@ -10,7 +10,7 @@ import { UtilModule } from 'src/libraries/util/util.module';
 import { HwNewComponent } from './components/objectives/homework/hw-new/hw-new.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DbQuickActionsComponent } from './components/dashboard/db-quick-actions/db-quick-actions.component';
-import { DbElementComponent } from './components/dashboard/db-element/db-element.component';
+import { DbElementComponent } from './components/card/card.component';
 import { DialogStandardComponent } from './components/dialog/dialog-standard/dialog-standard.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { HwNewDialogComponent } from './components/objectives/homework/hw-new-dialog/hw-new-dialog.component';
@@ -20,6 +20,16 @@ import { SjNewDialogComponent } from './components/objectives/subject/sj-new-dia
 import { AuthenticationModule } from 'src/libraries/authentication/authentication.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { HomeworkComponent } from './components/objectives/homework/homework.component';
+import { AppointmentsComponent } from './components/objectives/appointments/appointments.component';
+import { GroupsComponent } from './components/objectives/groups/groups.component';
+import { SubjectsComponent } from './components/objectives/subject/subjects.component';
+import { HwDashboardComponent } from './components/objectives/homework/hw-dashboard/hw-dashboard.component';
+import { SjListComponent } from './components/objectives/subject/sj-list/sj-list.component';
+import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
+import { HwListComponent } from './components/objectives/homework/hw-list/hw-list.component';
+import { HwDetailComponent } from './components/objectives/homework/hw-detail/hw-detail.component';
+import { HwDetailDialogComponent } from './components/objectives/homework/hw-detail-dialog/hw-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +42,16 @@ import { environment } from 'src/environments/environment';
     HwNewDialogComponent,
     SjNewComponent,
     SjNewDialogComponent,
+    HomeworkComponent,
+    AppointmentsComponent,
+    GroupsComponent,
+    SubjectsComponent,
+    HwDashboardComponent,
+    SjListComponent,
+    DeleteDialogComponent,
+    HwListComponent,
+    HwDetailComponent,
+    HwDetailDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+input,
+button,
+textarea,
+select {
+  &.blank {
+    font-size: 1em;
+    padding: var(--unit-tiny);
+    margin: calc(0px - var(--unit-tiny));
+    border-radius: var(--unit-tiny);
+    background: none !important;
+    border: none;
+    backdrop-filter: none !important;
+
+    transition: box-shadow 0.4s;
+
+    &:focus,
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 0 2px var(--colors-red);
+      outline: none;
+    }
+  }
+}

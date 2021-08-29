@@ -21,4 +21,5 @@ export enum Icons {
   profile = 'f007 fas',
   profile_student = 'f501 fas',
   google = 'f1a0 fab',
+  subject = 'f51c fas',
 }

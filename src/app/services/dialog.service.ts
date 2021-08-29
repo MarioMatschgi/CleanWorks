@@ -1,6 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../components/dialog/delete-dialog/delete-dialog.component';
 import {
   DialogStandardComponent,
   DialogStandardData,
@@ -28,11 +29,18 @@ export class DialogService {
     const cfg = data.config || ({} as MatDialogConfig<any>);
     cfg.data = data;
 
+    cfg.hasBackdrop = true;
+
     cfg.data.component = toOpen;
     return this.dialog.open(DialogStandardComponent, cfg);
   }
 
   openStandardDialog(toOpen: ComponentType<unknown>, data: DialogStandardData) {
-    this.openDialog(toOpen, data);
+    return this.openDialog(toOpen, data);
+  }
+
+  openConfirmationDialog(title: string, description: string) {}
+  openDeleteDialog(items: string[]) {
+    return this.dialog.open(DeleteDialogComponent, { data: { items: items } });
   }
 }

@@ -1,5 +1,7 @@
 import { Identifiable } from './identifiable.model';
 import * as CryptoJS from 'crypto-js';
+import { isMoment } from 'moment';
+import * as moment from 'moment';
 
 export class Encryptable extends Identifiable {}
 
@@ -23,6 +25,8 @@ export class Endecryptor {
       if (key != 'id') {
         if (Array.isArray(d[key])) {
           d[key] = this.encryptAll(d[key]);
+        } else if (isMoment(d[key])) {
+          d[key] = this.encryptSingle((d[key] as moment.Moment).toISOString());
         } else if (d[key] instanceof Object) {
           d[key] = this.encrypt(d[key]);
         } else {
@@ -44,6 +48,10 @@ export class Endecryptor {
           d[key] = this.decrypt(d[key]);
         } else {
           d[key] = this.decryptSingle(d[key]);
+          const tryMoment = moment(d[key], true);
+          if (tryMoment.isValid()) {
+            d[key] = tryMoment;
+          }
         }
       }
     }

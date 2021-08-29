@@ -4,11 +4,7 @@
 </div>
 <div mat-dialog-actions class="space-between">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button
-    mat-raised-button
-    background="success"
-    [disabled]="!sjNew.form?.valid"
-  >
+  <button mat-raised-button background="success" (click)="submit()">
     Add new Subject
   </button>
 </div>

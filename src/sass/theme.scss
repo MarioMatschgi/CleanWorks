@@ -1,10 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* GENERAL */
-* {
-  color: var(--col-font);
-}
-
 :root {
   --col-background: #{$col-white};
   --col-font: #{$col-black};
@@ -107,8 +103,14 @@ form.grow {
 }
 
 textarea {
+  box-sizing: content-box;
+  &.small {
+    height: calc(3em * 1.125);
+  }
+  &.normal {
+    height: calc(5em * 1.125);
+  }
   &.large {
-    box-sizing: border-box;
     height: calc(10em * 1.125);
   }
 }

@@ -1,0 +1,57 @@
+<form class="grow" #form="ngForm">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      name="title"
+      required
+      [(ngModel)]="hw.title"
+      (submit)="save()"
+      #title
+    />
+    <mat-error [hidden]="!title.valid">Title is required!</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      name="Description"
+      class="large"
+      (submit)="save()"
+      [(ngModel)]="hw.description"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Due date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="dueDatePicker"
+      name="due-date"
+      required
+      (submit)="save()"
+      [(ngModel)]="hw.dueDate"
+      #dueDate
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dueDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #dueDatePicker></mat-datepicker>
+    <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Subject</mat-label>
+    <mat-select
+      name="subject"
+      required
+      [(ngModel)]="hw.subjectId"
+      (submit)="save()"
+      #subject
+    >
+      <mat-option *ngFor="let sub of userData.subjects" [value]="sub.id">{{
+        sub.title
+      }}</mat-option>
+    </mat-select>
+    <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
+  </mat-form-field>
+</form>

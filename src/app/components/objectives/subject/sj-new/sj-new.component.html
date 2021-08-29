@@ -1,16 +1,7 @@
 <form class="grow" #form="ngForm">
   <mat-form-field>
-    <mat-label>Title</mat-label>
-    <input matInput name="title" required [(ngModel)]="data.title" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      name="Description"
-      required
-      class="large"
-      [(ngModel)]="data.description"
-    ></textarea>
+    <mat-label>Name</mat-label>
+    <input matInput name="title" required [(ngModel)]="data.title" #title />
+    <mat-error [hidden]="!title.valid">Name is required!</mat-error>
   </mat-form-field>
 </form>

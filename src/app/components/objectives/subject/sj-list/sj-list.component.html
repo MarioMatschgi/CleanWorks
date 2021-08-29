@@ -1,0 +1,21 @@
+<div class="container tiny">
+  <mat-card *ngFor="let subject of subjects">
+    <div class="flexbox">
+      <h2>
+        <input
+          type="text"
+          class="blank"
+          [(ngModel)]="subject.title"
+          (submit)="saveSubject(subject)"
+        />
+      </h2>
+      <button
+        mat-raised-button
+        background="warn"
+        (click)="deleteSubject(subject)"
+      >
+        Remove
+      </button>
+    </div>
+  </mat-card>
+</div>

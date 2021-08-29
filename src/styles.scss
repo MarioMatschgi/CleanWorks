@@ -2,4 +2,12 @@
 
 @import "sass/theme.scss";
 
+@import "sass/general.scss";
+
 @import "./libraries/util/scss/libraries.scss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-} from '@angular/fire/firestore';
+} from '@angular/fire/compat/firestore';
 
 /**
  * Service for Database

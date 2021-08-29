@@ -1,0 +1,20 @@
+<div class="container tiny">
+  <mat-card
+    *ngFor="let homework of homeworks"
+    class="clickable"
+    (click)="viewHomwork(homework)"
+  >
+    <div class="flexbox">
+      <h2>
+        {{ homework.title }}
+      </h2>
+      <button
+        mat-raised-button
+        background="warn"
+        (click)="deleteHomework(homework)"
+      >
+        Remove
+      </button>
+    </div>
+  </mat-card>
+</div>

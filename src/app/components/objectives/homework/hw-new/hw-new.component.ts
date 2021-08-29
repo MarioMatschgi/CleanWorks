@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
+import {
+  DataLoadService,
+  LoaderServices,
+} from 'src/app/services/data-load.service';
+import { UserDataService } from 'src/app/services/user-data.service';
+import { HwDetailComponent } from '../hw-detail/hw-detail.component';
 
 @Component({
   selector: 'hw-new',
@@ -8,15 +13,28 @@ import { HomeworkModel } from 'src/app/models/objectives/homework.model';
   styleUrls: ['./hw-new.component.scss'],
 })
 export class HwNewComponent implements OnInit {
-  @ViewChild('form') form: NgForm;
-
-  data = {} as HomeworkModel;
+  @ViewChild('hwDetail') hwDetail: HwDetailComponent;
 
   get valid(): boolean {
-    return this.form?.valid;
+    return this.hwDetail.form?.valid;
   }
 
-  constructor() {}
+  constructor(
+    public userData: UserDataService,
+    private dataLoader: DataLoadService<HomeworkModel>
+  ) {
+    this.dataLoader.loaderType = LoaderServices.homework;
+  }
 
   ngOnInit(): void {}
+
+  async addNew() {
+    this.hwDetail.form.form.markAllAsTouched();
+
+    if (!this.hwDetail.form.valid) return false;
+
+    await this.dataLoader.addData(this.hwDetail.hw);
+
+    return true;
+  }
 }
