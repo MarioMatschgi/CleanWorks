@@ -30,6 +30,11 @@ import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-
 import { HwListComponent } from './components/objectives/homework/hw-list/hw-list.component';
 import { HwDetailComponent } from './components/objectives/homework/hw-detail/hw-detail.component';
 import { HwDetailDialogComponent } from './components/objectives/homework/hw-detail-dialog/hw-detail-dialog.component';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
+import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 
 @NgModule({
   declarations: [
@@ -66,6 +71,9 @@ import { HwDetailDialogComponent } from './components/objectives/homework/hw-det
 
     /* MATERIAL */
     MaterialModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatMomentModule,
 
     /* */
   ],

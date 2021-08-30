@@ -42,4 +42,15 @@
   >
     <hw-list [homeworks]="userData.hwWeek"></hw-list>
   </card>
+
+  <!-- COMPLETED -->
+  <card
+    [icon]="gv.Icons.checkmark"
+    title="Completed"
+    subtitle="Finally..."
+    [link]="dashboard ? ['homework'] : null"
+    *ngIf="userData.hwCompleted?.length > 0"
+  >
+    <hw-list [homeworks]="userData.hwCompleted"></hw-list>
+  </card>
 </div>

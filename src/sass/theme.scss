@@ -22,51 +22,61 @@
 }
 
 /* COLORS */
-*[color="primary"] {
+*[color="primary"],
+.col-primary {
   color: $col-blue !important;
 }
-*[color="accent"] {
+*[color="accent"],
+.col-accent {
   color: $col-amber !important;
 }
-*[color="warn"] {
+*[color="warn"],
+.col-warn {
   color: $col-red !important;
 }
-*[color="info"] {
+*[color="info"],
+.col-info {
   color: $col-light-blue !important;
 }
-*[color="success"] {
+*[color="success"],
+.col-success {
   color: $col-green !important;
 }
 /* BACKGROUND */
-*[background="primary"] {
+*[background="primary"],
+.bg-primary {
   background-color: $col-blue !important;
   * {
     color: $col-white !important;
   }
   @include disabled();
 }
-*[background="accent"] {
+*[background="accent"],
+.bg-accent {
   background-color: $col-amber !important;
   * {
     color: $col-white !important;
   }
   @include disabled();
 }
-*[background="warn"] {
+*[background="warn"],
+.bg-warn {
   background-color: $col-red !important;
   * {
     color: $col-white !important;
   }
   @include disabled();
 }
-*[background="info"] {
+*[background="info"],
+.bg-info {
   background-color: $col-light-blue !important;
   * {
     color: $col-white !important;
   }
   @include disabled();
 }
-*[background="success"] {
+*[background="success"],
+.bg-success {
   background-color: $col-green !important;
   * {
     color: $col-white !important;
@@ -85,8 +95,6 @@
 
 /* CARD */
 .mat-card {
-  background-color: var(--col-background) !important;
-
   .mat-card-content > :first-child {
     margin-top: var(--unit-small) !important;
   }
@@ -133,5 +141,13 @@ textarea {
     div[mat-dialog-content] {
       flex-grow: 1;
     }
+  }
+}
+
+.mat-datepicker-content {
+  display: flex !important;
+  align-items: center !important;
+  .time-container::before {
+    display: none !important;
   }
 }

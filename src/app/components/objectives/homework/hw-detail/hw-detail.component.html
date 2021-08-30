@@ -25,7 +25,7 @@
     <mat-label>Due date</mat-label>
     <input
       matInput
-      [matDatepicker]="dueDatePicker"
+      [ngxMatDatetimePicker]="dueDatePicker"
       name="due-date"
       required
       (submit)="save()"
@@ -36,7 +36,8 @@
       matSuffix
       [for]="dueDatePicker"
     ></mat-datepicker-toggle>
-    <mat-datepicker #dueDatePicker></mat-datepicker>
+    <ngx-mat-datetime-picker (closed)="save()" #dueDatePicker>
+    </ngx-mat-datetime-picker>
     <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>
   </mat-form-field>
   <mat-form-field>
@@ -54,4 +55,14 @@
     </mat-select>
     <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
   </mat-form-field>
+
+  <button
+    mat-raised-button
+    *ngIf="hw.completed"
+    background="primary"
+    mat-dialog-close
+    (click)="hw.completed = null; save()"
+  >
+    Uncomplete
+  </button>
 </form>

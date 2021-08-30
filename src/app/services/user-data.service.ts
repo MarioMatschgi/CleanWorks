@@ -15,12 +15,20 @@ export class UserDataService {
   hwTomorrow: HomeworkModel[];
   hwToday: HomeworkModel[];
   hwWeek: HomeworkModel[];
+  hwCompleted: HomeworkModel[];
+
   subjects: SubjectModel[] = [];
 
   homeworksChanged = new EventEmitter<HomeworkModel[]>();
   subjectsChanged = new EventEmitter<SubjectModel[]>();
 
   constructor(private dataLoader: DataLoadService<ObjectiveModel>) {
+    moment.updateLocale('en', {
+      week: {
+        dow: 1, // Monday is the first day of the week.
+      },
+    });
+
     dataLoader.loaderType = LoaderServices.homework;
     dataLoader.getAllData().subscribe((hws) => {
       this.homeworks = hws as HomeworkModel[];
@@ -38,25 +46,23 @@ export class UserDataService {
       this.hwPast = [];
       this.hwTomorrow = [];
       this.hwWeek = [];
+      this.hwCompleted = [];
       for (const hw of hws) {
         const now = moment();
-        const tomorrow = now.add(1, 'days');
+        const tomorrow = moment().add(1, 'days');
 
-        if (now.isAfter(hw.dueDate, 'day')) {
+        if (hw.completed) {
+          this.hwCompleted.push(hw);
+        } else if (hw.dueDate.isBefore(now, 'date')) {
           this.hwPast.push(hw);
-          console.log('past', hw.title, hw.dueDate);
-        } else if (now.isSame(hw.dueDate, 'day')) {
+        } else if (hw.dueDate.isSame(now, 'date')) {
           this.hwToday.push(hw);
-          console.log('today', hw.title);
-        } else if (tomorrow.isSame(hw.dueDate, 'day')) {
+        } else if (hw.dueDate.isSame(tomorrow, 'date')) {
           this.hwTomorrow.push(hw);
-          console.log('tomorrow', hw.title);
-        } else if (now.isSame(hw.dueDate, 'week')) {
+        } else if (hw.dueDate.isSame(now, 'week')) {
           this.hwWeek.push(hw);
-          console.log('week', hw.title);
-        } else if (now.isBefore(hw.dueDate)) {
+        } else {
           this.hwFuture.push(hw);
-          console.log('future', hw.title);
         }
       }
     });
