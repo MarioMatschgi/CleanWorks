@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import {
@@ -28,9 +20,21 @@ import { HwDetailDialogComponent } from '../hw-detail-dialog/hw-detail-dialog.co
 })
 export class HwListComponent
   extends MatTableBaseComponent<HomeworkModel>
-  implements OnInit
+  implements OnInit, AfterViewInit
 {
-  displayedColumns = ['title', 'subject', 'dueDate', 'complete', 'remove'];
+  displayedColumns = [
+    'title',
+    'subject',
+    'dueDate',
+    'complete',
+    'completed',
+    'remove',
+  ];
+  defaultSort = 'dueDate';
+
+  get allCompleted(): boolean {
+    return this.dataSource.data.find((e) => e.completed !== null) === undefined;
+  }
 
   constructor(
     private dialog: DialogService,
@@ -43,6 +47,13 @@ export class HwListComponent
   }
 
   ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    const idx = this.displayedColumns.indexOf(
+      this.allCompleted ? 'completed' : 'complete'
+    );
+    this.displayedColumns.splice(idx, 1);
+  }
 
   async completeHomework(hw: HomeworkModel, evt?: PointerEvent) {
     evt?.stopPropagation();

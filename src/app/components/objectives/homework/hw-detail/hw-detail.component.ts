@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import {
   DataLoadService,
@@ -30,6 +31,10 @@ export class HwDetailComponent implements OnInit {
   @Input() shouldSave: boolean = true;
 
   @Output() hwChange = new EventEmitter<HomeworkModel>();
+
+  now(): moment.Moment {
+    return moment();
+  }
 
   private wasSaveAborted = false;
 

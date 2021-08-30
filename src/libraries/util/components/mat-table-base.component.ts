@@ -1,5 +1,5 @@
 import { Directive, Input, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Directive()
@@ -15,5 +15,17 @@ export class MatTableBaseComponent<T> {
   @ViewChild(MatSort) set matSort(ms: MatSort) {
     this.sort = ms;
     this.dataSource.sort = this.sort;
+    setTimeout(() => {
+      this.sortChanged({ active: '', direction: '' });
+    });
+  }
+
+  defaultSort: string;
+  sortChanged(evt: { active: string; direction: string }) {
+    if (this.defaultSort === null) return;
+
+    if (evt.direction === '') {
+      this.sort.sort({ id: this.defaultSort, start: 'asc' } as MatSortable);
+    }
   }
 }

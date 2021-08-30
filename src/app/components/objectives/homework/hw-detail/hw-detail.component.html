@@ -58,11 +58,21 @@
 
   <button
     mat-raised-button
-    *ngIf="hw.completed"
+    *ngIf="hw.completed; else complete"
     background="primary"
     mat-dialog-close
     (click)="hw.completed = null; save()"
   >
     Uncomplete
   </button>
+  <ng-template #complete>
+    <button
+      mat-raised-button
+      background="success"
+      mat-dialog-close
+      (click)="hw.completed = now(); save()"
+    >
+      Complete
+    </button>
+  </ng-template>
 </form>
