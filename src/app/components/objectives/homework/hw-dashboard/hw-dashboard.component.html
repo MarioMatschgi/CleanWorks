@@ -7,7 +7,7 @@
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.hwPast?.length > 0"
   >
-    <hw-list [homeworks]="userData.hwPast"></hw-list>
+    <hw-list [data]="userData.hwPast"></hw-list>
   </card>
 
   <!-- DUE-TODAY -->
@@ -18,7 +18,7 @@
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.hwToday?.length > 0"
   >
-    <hw-list [homeworks]="userData.hwToday"></hw-list>
+    <hw-list [data]="userData.hwToday"></hw-list>
   </card>
 
   <!-- DUE-TOMORROW -->
@@ -29,7 +29,7 @@
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.hwTomorrow?.length > 0"
   >
-    <hw-list [homeworks]="userData.hwTomorrow"></hw-list>
+    <hw-list [data]="userData.hwTomorrow"></hw-list>
   </card>
 
   <!-- THIS-WEEK -->
@@ -40,7 +40,7 @@
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.hwWeek?.length > 0"
   >
-    <hw-list [homeworks]="userData.hwWeek"></hw-list>
+    <hw-list [data]="userData.hwWeek"></hw-list>
   </card>
 
   <!-- COMPLETED -->
@@ -51,6 +51,6 @@
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.hwCompleted?.length > 0"
   >
-    <hw-list [homeworks]="userData.hwCompleted"></hw-list>
+    <hw-list [data]="userData.hwCompleted"></hw-list>
   </card>
 </div>

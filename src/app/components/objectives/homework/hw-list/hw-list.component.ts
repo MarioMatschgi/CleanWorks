@@ -1,4 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import {
@@ -10,6 +18,7 @@ import {
   MessageType,
   SnackbarService,
 } from 'src/app/services/snackbar.service';
+import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
 import { HwDetailDialogComponent } from '../hw-detail-dialog/hw-detail-dialog.component';
 
 @Component({
@@ -17,8 +26,11 @@ import { HwDetailDialogComponent } from '../hw-detail-dialog/hw-detail-dialog.co
   templateUrl: './hw-list.component.html',
   styleUrls: ['./hw-list.component.scss'],
 })
-export class HwListComponent implements OnInit {
-  @Input() homeworks: HomeworkModel[];
+export class HwListComponent
+  extends MatTableBaseComponent<HomeworkModel>
+  implements OnInit
+{
+  displayedColumns = ['title', 'subject', 'dueDate', 'complete', 'remove'];
 
   constructor(
     private dialog: DialogService,
@@ -26,6 +38,7 @@ export class HwListComponent implements OnInit {
     private dialogService: DialogService,
     private snackbar: SnackbarService
   ) {
+    super();
     dataLoader.loaderType = LoaderServices.homework;
   }
 
