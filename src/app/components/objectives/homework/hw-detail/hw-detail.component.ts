@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -9,14 +10,7 @@ import {
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
-import {
-  DataLoadService,
-  LoaderServices,
-} from 'src/app/services/data-load.service';
-import {
-  MessageType,
-  SnackbarService,
-} from 'src/app/services/snackbar.service';
+import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
 
@@ -40,12 +34,10 @@ export class HwDetailComponent implements OnInit {
 
   constructor(
     public userData: UserDataService,
-    private dataLoader: DataLoadService<HomeworkModel>,
-    private snackbar: SnackbarService,
-    private loader: LoadService
-  ) {
-    dataLoader.loaderType = LoaderServices.homework;
-  }
+    private du: DataUtilService,
+    private loader: LoadService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {}
 
@@ -64,14 +56,14 @@ export class HwDetailComponent implements OnInit {
   private async saveHomework() {
     this.loader.load('save');
     if (this.shouldSave) {
-      await this.dataLoader.updateData(this.hw);
-      this.snackbar.displayTop(
-        `Saved homework "${this.hw.title}"`,
-        MessageType.Info
-      );
+      this.du.hw.save(this.hw);
 
       this.hwChange.emit(this.hw);
     } else {
+      this.hw.dueDate = this.hw.dueDate?.set({ second: 0, millisecond: 0 });
+      console.log(this.hw.dueDate?.seconds(), this.hw.dueDate?.milliseconds());
+
+      this.cd.detectChanges();
       this.hwChange.emit(this.hw);
     }
     this.loader.unload('save');

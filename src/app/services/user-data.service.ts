@@ -1,9 +1,9 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { HomeworkModel } from '../models/objectives/homework.model';
-import { ObjectiveModel } from '../models/objectives/objective.model';
 import { SubjectModel } from '../models/objectives/subject.model';
-import { DataLoadService, LoaderServices } from './data-load.service';
+import { HwDataLoadService } from './data-load/hw-data-load.service';
+import { SjDataLoadService } from './data-load/sj-data-load.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,20 +22,21 @@ export class UserDataService {
   homeworksChanged = new EventEmitter<HomeworkModel[]>();
   subjectsChanged = new EventEmitter<SubjectModel[]>();
 
-  constructor(private dataLoader: DataLoadService<ObjectiveModel>) {
+  constructor(
+    private hwLoader: HwDataLoadService,
+    private sjLoader: SjDataLoadService
+  ) {
     moment.updateLocale('en', {
       week: {
         dow: 1, // Monday is the first day of the week.
       },
     });
 
-    dataLoader.loaderType = LoaderServices.homework;
-    dataLoader.getAllData().subscribe((hws) => {
+    this.hwLoader.getAllData().subscribe((hws) => {
       this.homeworks = hws as HomeworkModel[];
       this.homeworksChanged.emit(this.homeworks);
     });
-    dataLoader.loaderType = LoaderServices.subject;
-    dataLoader.getAllData().subscribe((hws) => {
+    this.sjLoader.getAllData().subscribe((hws) => {
       this.subjects = hws as SubjectModel[];
       this.subjectsChanged.emit(this.subjects);
     });

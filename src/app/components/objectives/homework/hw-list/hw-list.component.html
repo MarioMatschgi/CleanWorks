@@ -12,12 +12,16 @@
 
   <ng-container matColumnDef="subject">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
-    <td mat-cell *matCellDef="let hw">{{ hw.subjectId }}</td>
+    <td mat-cell *matCellDef="let hw">
+      {{ du.sj.getById(hw.subjectId)?.title }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="dueDate">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Due</th>
-    <td mat-cell *matCellDef="let hw">{{ hw.dueDate | date: "medium" }}</td>
+    <td mat-cell *matCellDef="let hw">
+      {{ hw.dueDate | normalDate }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="complete">
@@ -26,7 +30,7 @@
       <button
         mat-raised-button
         background="success"
-        (click)="completeHomework(hw, $event)"
+        (click)="du.hw.complete(hw); $event.stopPropagation()"
       >
         Complete
       </button>
@@ -36,7 +40,7 @@
   <ng-container matColumnDef="completed">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Completed</th>
     <td mat-cell *matCellDef="let hw">
-      <p>{{ hw.completed | date: "medium" }}</p>
+      <p>{{ hw.completed | normalDate }}</p>
     </td>
   </ng-container>
 
@@ -46,7 +50,7 @@
       <button
         mat-raised-button
         background="warn"
-        (click)="deleteHomework(homework, $event)"
+        (click)="du.hw.remove(hw); $event.stopPropagation()"
       >
         Remove
       </button>
@@ -58,41 +62,7 @@
     mat-row
     *matRowDef="let hw; columns: displayedColumns"
     class="clickable"
-    (click)="viewHomwork(hw)"
+    (click)="du.hw.view(hw)"
+    [class.bg-warn]="du.hw.isOverDue(hw)"
   ></tr>
 </table>
-<!-- <div class="container tiny">
-  <mat-card
-    *ngFor="let homework of homeworks"
-    class="clickable"
-    [class.bg-warn]="isOverDue(homework)"
-    (click)="viewHomwork(homework)"
-  >
-    <div class="flexbox">
-      <h2>
-        {{ homework.title }}
-      </h2>
-      <div class="flexbox">
-        <p>Due: {{ homework.dueDate | date: "medium" }}</p>
-        <button
-          mat-raised-button
-          background="success"
-          (click)="completeHomework(homework, $event)"
-          *ngIf="!homework.completed; else completed"
-        >
-          Complete
-        </button>
-        <ng-template #completed>
-          <p>Completed: {{ homework.completed | date: "medium" }}</p>
-        </ng-template>
-        <button
-          mat-raised-button
-          background="warn"
-          (click)="deleteHomework(homework, $event)"
-        >
-          Remove
-        </button>
-      </div>
-    </div>
-  </mat-card>
-</div> -->

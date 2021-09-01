@@ -1,9 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HomeworkModel } from 'src/app/models/objectives/homework.model';
-import {
-  DataLoadService,
-  LoaderServices,
-} from 'src/app/services/data-load.service';
+import { HwDataLoadService } from 'src/app/services/data-load/hw-data-load.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { HwDetailComponent } from '../hw-detail/hw-detail.component';
 
@@ -21,10 +17,8 @@ export class HwNewComponent implements OnInit {
 
   constructor(
     public userData: UserDataService,
-    private dataLoader: DataLoadService<HomeworkModel>
-  ) {
-    this.dataLoader.loaderType = LoaderServices.homework;
-  }
+    private dataLoader: HwDataLoadService
+  ) {}
 
   ngOnInit(): void {}
 

@@ -35,6 +35,7 @@ import {
   NgxMatTimepickerModule,
 } from '@angular-material-components/datetime-picker';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import { NormalDatePipe } from './pipes/normal-date.pipe';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NgxMatMomentModule } from '@angular-material-components/moment-adapter'
     HwListComponent,
     HwDetailComponent,
     HwDetailDialogComponent,
+    NormalDatePipe,
   ],
   imports: [
     BrowserModule,

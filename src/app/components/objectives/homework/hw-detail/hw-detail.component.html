@@ -36,7 +36,11 @@
       matSuffix
       [for]="dueDatePicker"
     ></mat-datepicker-toggle>
-    <ngx-mat-datetime-picker (closed)="save()" #dueDatePicker>
+    <ngx-mat-datetime-picker
+      (closed)="save()"
+      #dueDatePicker
+      [defaultTime]="[23, 59, 0]"
+    >
     </ngx-mat-datetime-picker>
     <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>
   </mat-form-field>

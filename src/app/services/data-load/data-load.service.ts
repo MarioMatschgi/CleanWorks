@@ -1,12 +1,12 @@
-import { Endecryptor } from '../models/encryptable.model';
-import { Injectable, Provider } from '@angular/core';
+import { Endecryptor } from '../../models/encryptable.model';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ObjectiveModel } from '../models/objectives/objective.model';
+import { ObjectiveModel } from '../../models/objectives/objective.model';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
 import { DatabaseService } from 'src/libraries/util/services/database.service';
 
-export enum LoaderServices {
+export enum LoadServices {
   subject = 'subjects',
   homework = 'homeworks',
 }
@@ -15,9 +15,11 @@ export enum LoaderServices {
   providedIn: 'root',
 })
 export class DataLoadService<T extends ObjectiveModel> {
-  public loaderType: LoaderServices;
-
-  constructor(private db: DatabaseService, public auth: AuthService) {}
+  constructor(
+    private db: DatabaseService,
+    private auth: AuthService,
+    private loaderType: LoadServices
+  ) {}
 
   getAllData(): Observable<T[]> {
     return this.db.col_usersData
@@ -74,9 +76,3 @@ export class DataLoadService<T extends ObjectiveModel> {
       .delete();
   }
 }
-
-export const DataLoadServiceProvider: Provider = {
-  provide: DataLoadService,
-  useFactory: (db, auth) => new DataLoadService(db, auth),
-  deps: [DatabaseService, AuthService],
-};

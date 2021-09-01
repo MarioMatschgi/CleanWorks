@@ -6,13 +6,13 @@
           type="text"
           class="blank"
           [(ngModel)]="subject.title"
-          (submit)="saveSubject(subject)"
+          (submit)="du.sj.save(subject)"
         />
       </h2>
       <button
         mat-raised-button
         background="warn"
-        (click)="deleteSubject(subject)"
+        (click)="du.sj.remove(subject)"
       >
         Remove
       </button>
