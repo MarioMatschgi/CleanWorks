@@ -7,6 +7,7 @@ import { AuthVerifyEmailComponent } from 'src/libraries/authentication/component
 import { AuthLoginGuard } from 'src/libraries/authentication/guards/auth-login.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppointmentsComponent } from './components/objectives/appointments/appointments.component';
+import { GradesComponent } from './components/objectives/grades/grades.component';
 import { GroupsComponent } from './components/objectives/groups/groups.component';
 import { HomeworkComponent } from './components/objectives/homework/homework.component';
 import { SubjectsComponent } from './components/objectives/subject/subjects.component';
@@ -14,29 +15,31 @@ import { SubjectsComponent } from './components/objectives/subject/subjects.comp
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'all',
+    pathMatch: 'full',
+  },
+  {
+    path: 'auth',
     children: [
-      {
-        path: '',
-        canActivate: [AuthLoginGuard],
-        children: [
-          { path: '', component: DashboardComponent },
-          { path: 'homework', component: HomeworkComponent },
-          { path: 'appointments', component: AppointmentsComponent },
-          { path: 'groups', component: GroupsComponent },
-          { path: 'subjects', component: SubjectsComponent },
-        ],
-      },
-      {
-        path: 'auth',
-        children: [
-          { path: 'login', component: AuthLoginComponent },
-          { path: 'register', component: AuthRegisterComponent },
-          { path: 'verify-email', component: AuthVerifyEmailComponent },
-          { path: 'reset-password', component: AuthResetComponent },
-        ],
-        canActivate: [AuthLoginGuard],
-        data: { inverted: true },
-      },
+      { path: 'login', component: AuthLoginComponent },
+      { path: 'register', component: AuthRegisterComponent },
+      { path: 'verify-email', component: AuthVerifyEmailComponent },
+      { path: 'reset-password', component: AuthResetComponent },
+    ],
+    canActivate: [AuthLoginGuard],
+    data: { inverted: true },
+  },
+  {
+    path: ':gid',
+    canActivate: [AuthLoginGuard],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'homework', component: HomeworkComponent },
+      { path: 'appointments', component: AppointmentsComponent },
+      { path: 'groups', component: GroupsComponent },
+      { path: 'subjects', component: SubjectsComponent },
+      { path: 'grades', component: GradesComponent },
     ],
   },
 ];

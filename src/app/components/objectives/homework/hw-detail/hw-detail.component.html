@@ -44,6 +44,7 @@
     </ngx-mat-datetime-picker>
     <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>
   </mat-form-field>
+
   <mat-form-field>
     <mat-label>Subject</mat-label>
     <mat-select
@@ -53,30 +54,16 @@
       (submit)="save()"
       #subject
     >
-      <mat-option *ngFor="let sub of userData.subjects" [value]="sub.id">{{
+      <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">{{
         sub.title
       }}</mat-option>
     </mat-select>
     <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
   </mat-form-field>
 
-  <button
-    mat-raised-button
-    *ngIf="hw.completed; else complete"
-    background="primary"
-    mat-dialog-close
-    (click)="hw.completed = null; save()"
-  >
-    Uncomplete
-  </button>
-  <ng-template #complete>
-    <button
-      mat-raised-button
-      background="success"
-      mat-dialog-close
-      (click)="hw.completed = now(); save()"
-    >
-      Complete
-    </button>
-  </ng-template>
+  <div class="mat-form-field-wrapper">
+    <mat-checkbox [checked]="hw.completed" (change)="setCompleted($event)">
+      completed
+    </mat-checkbox>
+  </div>
 </form>

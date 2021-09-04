@@ -42,6 +42,6 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
   }
 
   getById(id: string): SubjectModel {
-    return this.base.userData.subjects.find((e) => e.id === id);
+    return this.base.userData.data.subjects.find((e) => e.id === id);
   }
 }

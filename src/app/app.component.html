@@ -1,8 +1,35 @@
 <mat-toolbar background="primary">
-  <a mat-button routerLink=""><fa [fa]="gv.Icons.home"></fa></a>
-  <a mat-button routerLink="homework">Homework</a>
-  <a mat-button routerLink="appointments">Appointments</a>
-  <a mat-button routerLink="groups">Groups</a>
-  <a mat-button routerLink="subjects">Subjects</a>
+  <a mat-button [routerLink]="router.getUrl('')"
+    ><fa [fa]="gv.Icons.home"></fa
+  ></a>
+  <a mat-button [routerLink]="router.getUrl('homework')">Homework</a>
+  <a mat-button [routerLink]="router.getUrl('appointments')">Appointments</a>
+  <a mat-button [routerLink]="router.getUrl('subjects')">Subjects</a>
+  <a mat-button [routerLink]="router.getUrl('grades')">Grades</a>
+  <div class="flex-spacer"></div>
+  <button mat-button [matMenuTriggerFor]="profileMenu">
+    <fa [fa]="gv.Icons.profile"></fa>
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <p mat-menu-item>{{ auth.userData.displayName || auth.userData.email }}</p>
+    <button mat-menu-item>Menu Item 1</button>
+    <button mat-menu-item>Menu Item 2</button>
+  </mat-menu>
+  <div class="flex-break"></div>
+  <div class="flex-spacer">
+    <a mat-button [routerLink]="router.getGroupUrl('all')">All</a>
+    <button mat-button (click)="newGroup()">
+      <fa [fa]="gv.Icons.add"></fa>
+    </button>
+    <a
+      mat-button
+      [routerLink]="router.getGroupUrl(group.id)"
+      *ngFor="let group of userData.data.groups"
+    >
+      {{ group.title }}
+    </a>
+    <p>{{ router.router.url }}</p>
+  </div>
 </mat-toolbar>
+
 <router-outlet></router-outlet>

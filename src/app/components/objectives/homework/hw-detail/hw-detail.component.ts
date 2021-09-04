@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
@@ -25,10 +26,6 @@ export class HwDetailComponent implements OnInit {
   @Input() shouldSave: boolean = true;
 
   @Output() hwChange = new EventEmitter<HomeworkModel>();
-
-  now(): moment.Moment {
-    return moment();
-  }
 
   private wasSaveAborted = false;
 
@@ -53,6 +50,11 @@ export class HwDetailComponent implements OnInit {
     }
   }
 
+  setCompleted(evt: MatCheckboxChange) {
+    this.hw.completed = evt.checked ? moment() : null;
+    this.save();
+  }
+
   private async saveHomework() {
     this.loader.load('save');
     if (this.shouldSave) {
@@ -61,7 +63,6 @@ export class HwDetailComponent implements OnInit {
       this.hwChange.emit(this.hw);
     } else {
       this.hw.dueDate = this.hw.dueDate?.set({ second: 0, millisecond: 0 });
-      console.log(this.hw.dueDate?.seconds(), this.hw.dueDate?.milliseconds());
 
       this.cd.detectChanges();
       this.hwChange.emit(this.hw);

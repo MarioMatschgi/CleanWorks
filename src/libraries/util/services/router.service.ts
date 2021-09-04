@@ -57,6 +57,26 @@ export class RouterService {
       });
   }
 
+  getCurrentUrlArray(): string[] {
+    return this.router.url.split('/').slice(1);
+  }
+
+  getUrl(url: string) {
+    let curr = this.getCurrentUrlArray();
+
+    curr = [curr[0], url].filter((e) => e.trim() !== '');
+
+    return curr;
+  }
+
+  getGroupUrl(group: string) {
+    let curr = this.getCurrentUrlArray();
+
+    curr[0] = group;
+
+    return curr;
+  }
+
   /**
    * Navigates to the given RouterUrl and the given params
    * @param url

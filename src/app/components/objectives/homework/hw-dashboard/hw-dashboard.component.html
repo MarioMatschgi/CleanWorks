@@ -5,9 +5,9 @@
     title="Over due"
     subtitle="It'll be fine, just do it now"
     [link]="dashboard ? ['homework'] : null"
-    *ngIf="userData.hwPast?.length > 0"
+    *ngIf="userData.data.hwPast?.length > 0"
   >
-    <hw-list [data]="userData.hwPast"></hw-list>
+    <hw-list [data]="userData.data.hwPast"></hw-list>
   </card>
 
   <!-- DUE-TODAY -->
@@ -16,7 +16,7 @@
     title="Due today"
     subtitle="Come on!"
     [link]="dashboard ? ['homework'] : null"
-    *ngIf="userData.hwToday?.length > 0"
+    *ngIf="userData.data.hwToday?.length > 0"
   >
     <hw-list [data]="userData.hwToday"></hw-list>
   </card>
@@ -27,7 +27,7 @@
     title="Due tomorrow"
     subtitle="Let's do this!"
     [link]="dashboard ? ['homework'] : null"
-    *ngIf="userData.hwTomorrow?.length > 0"
+    *ngIf="userData.data.hwTomorrow?.length > 0"
   >
     <hw-list [data]="userData.hwTomorrow"></hw-list>
   </card>
@@ -38,7 +38,7 @@
     title="For this week"
     subtitle="The sooner, the better..."
     [link]="dashboard ? ['homework'] : null"
-    *ngIf="userData.hwWeek?.length > 0"
+    *ngIf="userData.data.hwWeek?.length > 0"
   >
     <hw-list [data]="userData.hwWeek"></hw-list>
   </card>
@@ -49,7 +49,7 @@
     title="Completed"
     subtitle="Finally..."
     [link]="dashboard ? ['homework'] : null"
-    *ngIf="userData.hwCompleted?.length > 0"
+    *ngIf="userData.data.hwCompleted?.length > 0"
   >
     <hw-list [data]="userData.hwCompleted"></hw-list>
   </card>

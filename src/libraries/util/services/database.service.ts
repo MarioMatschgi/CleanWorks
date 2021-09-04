@@ -16,6 +16,8 @@ export class DatabaseService {
    */
   col_usersData: AngularFirestoreCollection<any>;
 
+  col_groupData: AngularFirestoreCollection<any>;
+
   /**
    * Collection of recipes
    */
@@ -33,6 +35,7 @@ export class DatabaseService {
 
   constructor(public db: AngularFirestore) {
     this.col_usersData = this.db.collection('users-data');
+    this.col_groupData = this.db.collection('groups');
     this.col_usersPrivate = this.db.collection('users-private');
     this.col_usersPublic = this.db.collection('users-public');
   }

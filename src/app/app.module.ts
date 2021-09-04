@@ -36,6 +36,9 @@ import {
 } from '@angular-material-components/datetime-picker';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import { NormalDatePipe } from './pipes/normal-date.pipe';
+import { GradesComponent } from './components/objectives/grades/grades.component';
+import { GrNewComponent } from './components/objectives/groups/gr-new/gr-new.component';
+import { GrNewDialogComponent } from './components/objectives/groups/gr-new-dialog/gr-new-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { NormalDatePipe } from './pipes/normal-date.pipe';
     HwDetailComponent,
     HwDetailDialogComponent,
     NormalDatePipe,
+    GradesComponent,
+    GrNewComponent,
+    GrNewDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -144,10 +144,16 @@ textarea {
   }
 }
 
-.mat-datepicker-content {
-  display: flex !important;
-  align-items: center !important;
-  .time-container::before {
-    display: none !important;
-  }
+.mat-toolbar {
+  flex-wrap: wrap !important;
+  height: unset !important;
+  padding: 10px 16px !important;
 }
+
+// .mat-datepicker-content {
+//   display: flex !important;
+//   align-items: center !important;
+//   .time-container::before {
+//     display: none !important;
+//   }
+// }

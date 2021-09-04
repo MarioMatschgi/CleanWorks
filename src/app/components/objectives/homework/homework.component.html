@@ -17,7 +17,7 @@
     [icon]="gv.Icons.books"
     title="Homework"
     subtitle="More motivation?"
-    *ngIf="userData.hwFuture?.length > 0"
+    *ngIf="userData.data.hwFuture?.length > 0"
   >
     <hw-list [data]="userData.hwFuture"></hw-list>
   </card>
