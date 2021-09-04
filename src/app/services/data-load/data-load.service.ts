@@ -36,13 +36,7 @@ export class DataLoadService<T extends ObjectiveModel> {
   protected collection() {
     if (this.loaderType === LoadServices.group) return this.getGroupCol();
 
-    if (this.group !== 'all') {
-      return this.getGroupCol().doc(this.group).collection(this.loaderType);
-    } else {
-      return this.db.col_usersData
-        .doc(this.auth.userData.uid)
-        .collection(this.loaderType);
-    }
+    return this.getGroupCol().doc(this.group).collection(this.loaderType);
   }
 
   private getGroupCol() {
@@ -65,6 +59,8 @@ export class DataLoadService<T extends ObjectiveModel> {
   }
 
   async addData(data: T) {
+    if (this.loaderType !== LoadServices.group) data.groupId = this.group;
+
     const d = Endecryptor.encrypt(data);
 
     const doc = await this.collection().add(d);

@@ -3,8 +3,6 @@ import { HomeworkModel } from './objectives/homework.model';
 import { SubjectModel } from './objectives/subject.model';
 
 export class UserDataModel {
-  hws: { [group: string]: HomeworkModel[] } = {};
-
   hwFuture: HomeworkModel[] = [];
   hwPast: HomeworkModel[] = [];
   hwTomorrow: HomeworkModel[] = [];
