@@ -76,15 +76,16 @@
         "auth/password-no-match": "Das bestätigte Passwort und das Passwort müssen identisch sein!",
         "auth/email-already-in-use": "Ein Nutzer mit dieser E-Mail existiert bereits!",
         "auth/not-verified": "Bitte bestätige deine E-Mail-Adresse vor dem Anmelden!",
-        "auth/too-many-verify-email": "Zu viele bestätigungs E-Mails wurden gesendet!<br/>Bitte versuche es später erneut."
+        "auth/too-many-verify-email": "Zu viele bestätigungs E-Mails wurden gesendet!<br/>Bitte versuche es später erneut.",
+        "auth/invalid-email": "Die E-Mail Adresse ist nicht richtig formattiert."
       },
       "login": {
         "title": "Anmelden",
-        "desc": "Um Rezepte zu erstellen/bearbeiten/löschen und um Lesezeichen/Sterne zu setzen musst du angemeldet sein."
+        "desc": "Bitte melde dich an, um die App zu nutzen."
       },
       "register": {
         "title": "Registrieren",
-        "desc": "Um Rezepte zu erstellen/bearbeiten/löschen und um Lesezeichen/Sterne zu setzen musst du dich registrieren."
+        "desc": "Bitte registriere dich, um die App zu nutzen."
       },
       "verify_email": {
         "title": "Bestätige deine E-Mail",

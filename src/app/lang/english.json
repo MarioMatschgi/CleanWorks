@@ -76,15 +76,16 @@
         "auth/password-no-match": "The confirmation password must match the password!",
         "auth/email-already-in-use": "An account with this email already exists!",
         "auth/not-verified": "Please verify your email adress before logging in!",
-        "auth/too-many-verify-email": "Too many verification emails were sent!<br/>Please try again later."
+        "auth/too-many-verify-email": "Too many verification emails were sent!<br/>Please try again later.",
+        "auth/invalid-email": "The email adress is badly formatted."
       },
       "login": {
         "title": "Login",
-        "desc": "To create/edit/delete your own favourite recipes or to bookmark/star recipes you have to log in."
+        "desc": "Please login to use this app."
       },
       "register": {
         "title": "Register",
-        "desc": "To create/edit/delete your own favourite recipes or to bookmark/star recipes you have to register."
+        "desc": "Please register to use this app."
       },
       "verify_email": {
         "title": "Verify your email",

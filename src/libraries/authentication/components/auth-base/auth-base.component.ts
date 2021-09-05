@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
@@ -31,6 +31,8 @@ export class AuthBaseComponent implements OnInit {
    */
   email_data = { email: '', password: '', confirm_password: '' };
 
+  @ViewChild('form_email') form: NgForm;
+
   /**
    * Constructor
    * @param auth Service for Authentication
@@ -51,15 +53,45 @@ export class AuthBaseComponent implements OnInit {
     }
   }
 
+  btn_login() {
+    if (this.type === 'login') {
+      this.submit_email();
+    } else {
+      this.router.nav_login();
+    }
+  }
+
+  btn_register() {
+    if (this.type === 'register') {
+      this.submit_email();
+    } else {
+      this.router.nav_register();
+    }
+  }
+
+  btn_verify() {
+    if (this.type === 'verify') {
+      this.resend_verification_email();
+    }
+  }
+
+  btn_reset() {
+    if (this.type === 'reset') {
+      this.reset_password();
+    } else {
+      this.router.nav_reset();
+    }
+  }
+
   /**
    * Callback for submitting the email-form
    * @param form form
    */
-  submit_email(form: NgForm): void {
-    form.form.markAllAsTouched();
+  submit_email(): void {
+    this.form.form.markAllAsTouched();
 
     // IF FORM INVALID RETURN
-    if (!form.valid) return;
+    if (!this.form.valid) return;
 
     if (this.type == 'login' || this.type == 'verify') {
       this.auth.signIn_email(this.email_data.email, this.email_data.password);
@@ -85,11 +117,11 @@ export class AuthBaseComponent implements OnInit {
    * Callback for resetting password
    * @param form form
    */
-  reset_password(form: NgForm): void {
-    form.form.markAllAsTouched();
+  reset_password(): void {
+    this.form.form.markAllAsTouched();
 
     // IF FORM INVALID RETURN
-    if (!form.valid) return;
+    if (!this.form.valid) return;
 
     this.auth.send_reset_password_email(this.email_data.email).then(() => {
       confirm(this.local.data.lib.auth.reset_password.successfully_sent);

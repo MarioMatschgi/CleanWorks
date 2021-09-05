@@ -46,6 +46,7 @@
 *[background="primary"],
 .bg-primary {
   background-color: $col-blue !important;
+  &,
   * {
     color: $col-white !important;
   }
@@ -54,6 +55,7 @@
 *[background="accent"],
 .bg-accent {
   background-color: $col-amber !important;
+  &,
   * {
     color: $col-white !important;
   }
@@ -62,6 +64,7 @@
 *[background="warn"],
 .bg-warn {
   background-color: $col-red !important;
+  &,
   * {
     color: $col-white !important;
   }
@@ -70,6 +73,7 @@
 *[background="info"],
 .bg-info {
   background-color: $col-light-blue !important;
+  &,
   * {
     color: $col-white !important;
   }
@@ -78,6 +82,7 @@
 *[background="success"],
 .bg-success {
   background-color: $col-green !important;
+  &,
   * {
     color: $col-white !important;
   }
