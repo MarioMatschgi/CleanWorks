@@ -1,34 +1,83 @@
 <mat-toolbar background="primary">
-  <a mat-button [routerLink]="router.getUrl('')"
-    ><fa [fa]="gv.Icons.home"></fa
-  ></a>
-  <a mat-button [routerLink]="router.getUrl('homework')">Homework</a>
-  <a mat-button [routerLink]="router.getUrl('appointments')">Appointments</a>
-  <a mat-button [routerLink]="router.getUrl('subjects')">Subjects</a>
-  <a mat-button [routerLink]="router.getUrl('grades')">Grades</a>
+  <a
+    mat-button
+    [routerLink]="router.getUrl('dashboard')"
+    routerLinkActive="active"
+  >
+    <fa [fa]="gv.Icons.home"></fa>
+  </a>
+  <a
+    mat-button
+    [routerLink]="router.getUrl('homework')"
+    routerLinkActive="active"
+  >
+    Homework</a
+  >
+  <a
+    mat-button
+    [routerLink]="router.getUrl('appointments')"
+    routerLinkActive="active"
+  >
+    Appointments
+  </a>
+  <a
+    mat-button
+    [routerLink]="router.getUrl('subjects')"
+    routerLinkActive="active"
+  >
+    Subjects
+  </a>
+  <a
+    mat-button
+    [routerLink]="router.getUrl('grades')"
+    routerLinkActive="active"
+  >
+    Grades
+  </a>
   <div class="flex-spacer"></div>
-  <button mat-button [matMenuTriggerFor]="profileMenu">
-    <fa [fa]="gv.Icons.profile"></fa>
-  </button>
-  <mat-menu #profileMenu="matMenu">
-    <p mat-menu-item>{{ auth.userData.displayName || auth.userData.email }}</p>
-    <button mat-menu-item>Menu Item 1</button>
-    <button mat-menu-item>Menu Item 2</button>
-  </mat-menu>
+  <div *ngIf="auth.userData?.uid">
+    <button
+      mat-button
+      [matMenuTriggerFor]="profileMenu"
+      *ngIf="auth.userData?.uid"
+    >
+      <fa [fa]="gv.Icons.profile"></fa>
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <p mat-menu-item>
+        {{ auth.userData.displayName || auth.userData.email }}
+      </p>
+      <button
+        mat-menu-item
+        *ngIf="gv.isDev"
+        [cdkCopyToClipboard]="auth.userData.uid"
+      >
+        {{ auth.userData.uid }}
+      </button>
+      <button mat-menu-item (click)="auth.signOut()">Log out</button>
+    </mat-menu>
+  </div>
   <div class="flex-break"></div>
   <div class="flex-spacer">
-    <a mat-button [routerLink]="router.getGroupUrl('all')">All</a>
+    <a
+      mat-button
+      [routerLink]="router.getGroupUrl('me')"
+      routerLinkActive="active"
+    >
+      Mine
+    </a>
     <button mat-button (click)="newGroup()">
       <fa [fa]="gv.Icons.add"></fa>
     </button>
     <a
       mat-button
       [routerLink]="router.getGroupUrl(group.id)"
+      routerLinkActive="active"
       *ngFor="let group of userData.data.groups"
     >
       {{ group.title }}
     </a>
-    <p>{{ router.router.url }}</p>
+    <p *ngIf="gv.isDev">{{ router.router.url }}</p>
   </div>
 </mat-toolbar>
 

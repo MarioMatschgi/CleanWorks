@@ -39,6 +39,7 @@ import { NormalDatePipe } from './pipes/normal-date.pipe';
 import { GradesComponent } from './components/objectives/grades/grades.component';
 import { GrNewComponent } from './components/objectives/groups/gr-new/gr-new.component';
 import { GrNewDialogComponent } from './components/objectives/groups/gr-new-dialog/gr-new-dialog.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { GrNewDialogComponent } from './components/objectives/groups/gr-new-dial
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     NgxMatMomentModule,
+    ClipboardModule,
 
     /* */
   ],

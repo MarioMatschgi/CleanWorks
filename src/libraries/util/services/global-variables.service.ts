@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Icons } from '../models/icons.model';
 import { RouterUrls } from '../models/router.model';
+import { isDevMode } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,8 @@ export class GlobalVariablesService {
   URLs = RouterUrls;
   Icons = Icons;
 
+  isDev = false;
+
   constructor() {
     const style = (document.querySelector(':root') as HTMLElement).style;
 
@@ -23,5 +26,7 @@ export class GlobalVariablesService {
     style.setProperty('--unit-normal', this.unit_normal);
     style.setProperty('--unit-small', this.unit_small);
     style.setProperty('--unit-tiny', this.unit_tiny);
+
+    this.isDev = isDevMode();
   }
 }

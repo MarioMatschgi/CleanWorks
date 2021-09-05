@@ -4,6 +4,8 @@
 export enum RouterUrls {
   home = '',
 
+  login = 'auth/login',
+
   boards = 'boards',
   boards_board = 'boards/board',
   boards_new = 'boards/new',

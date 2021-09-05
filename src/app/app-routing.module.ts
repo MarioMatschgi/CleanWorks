@@ -15,7 +15,7 @@ import { SubjectsComponent } from './components/objectives/subject/subjects.comp
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'all',
+    redirectTo: 'me',
     pathMatch: 'full',
   },
   {

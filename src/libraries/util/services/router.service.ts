@@ -30,8 +30,9 @@ export class RouterService {
    * @param params The params
    * @returns Returns the url for the given RouterUrl and the params
    */
-  get_url(url: RouterUrls, params: string[] = []): string {
-    return '/' + url + '/' + params.join('/');
+  get_url(url: RouterUrls, params: string[] = null): string {
+    if (params?.length > 0) return '/' + url + '/' + params.join('/');
+    else return '/' + url;
   }
 
   /**
@@ -40,7 +41,7 @@ export class RouterService {
    * @param params The params
    * @returns Returns the url as an array for the given RouterUrl and the given params
    */
-  get_url_arr(url: RouterUrls, params: string[] = []): string[] {
+  get_url_arr(url: RouterUrls, params: string[] = null): string[] {
     return this.get_url(url, params).substr(1).split('/');
   }
 
@@ -83,7 +84,7 @@ export class RouterService {
    * @param params
    */
   nav(url: RouterUrls, params: string[] = []) {
-    this.router.navigate(this.get_url_arr(url, params));
+    this.router.navigateByUrl(this.get_url(url, params));
   }
 
   /**

@@ -591,6 +591,6 @@ export class AuthService {
   async signOut(redir = true) {
     this.error = undefined;
     await this.afAuth.signOut();
-    if (redir) this.router.nav(this.gv.URLs.home);
+    if (redir) this.router.nav_login();
   }
 }
