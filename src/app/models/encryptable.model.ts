@@ -25,7 +25,7 @@ export class Endecryptor {
   static encrypt<T extends Encryptable>(data: T): T {
     let d = { ...data };
     for (const key of Object.keys(d)) {
-      if (key != 'id' && key != 'members') {
+      if (key != 'id' && key != 'memberIds') {
         if (Array.isArray(d[key])) {
           d[key] = this.encryptAll(d[key]);
         } else if (isMoment(d[key])) {
@@ -51,7 +51,7 @@ export class Endecryptor {
   static decrypt<T extends Encryptable>(data: T): T {
     let d = { ...data };
     for (const key of Object.keys(d)) {
-      if (key != 'id') {
+      if (key != 'id' && key != 'memberIds') {
         if (Array.isArray(d[key])) {
           d[key] = this.decryptAll(d[key]);
         } else if (d[key] instanceof Object) {

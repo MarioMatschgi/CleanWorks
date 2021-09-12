@@ -41,7 +41,7 @@ export class DataLoadService<T extends ObjectiveModel> {
 
   private getGroupCol() {
     return this.db.db.collection('groups', (ref) =>
-      ref.where('members', 'array-contains-any', [this.auth.userData.uid])
+      ref.where('memberIds', 'array-contains-any', [this.auth.userData.uid])
     );
   }
 

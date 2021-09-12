@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
-import { GroupModel } from '../models/objectives/group.model';
+import { DatabaseService } from 'src/libraries/util/services/database.service';
+import { GroupMemberRole, GroupModel } from '../models/objectives/group.model';
 import { HomeworkModel } from '../models/objectives/homework.model';
-import { ObjectiveModel } from '../models/objectives/objective.model';
 import { UserDataModel } from '../models/user-data.model';
 import { GrDataLoadService } from './data-load/group-data-load.service';
 import { HwDataLoadService } from './data-load/hw-data-load.service';
@@ -15,12 +15,15 @@ import { SjDataLoadService } from './data-load/sj-data-load.service';
 })
 export class UserDataService {
   data: UserDataModel = new UserDataModel();
-  group: string;
+  groupId: string;
+  group: GroupModel;
+  isGroupAdmin = false;
 
   constructor(
     private grLoader: GrDataLoadService,
     private sjLoader: SjDataLoadService,
     private hwLoader: HwDataLoadService,
+    private db: DatabaseService,
     private router: Router,
     private auth: AuthService
   ) {
@@ -30,24 +33,34 @@ export class UserDataService {
       },
     });
 
-    auth.sub_userData((user) => {
+    this.auth.sub_userData((user) => {
       if (user) {
-        this.router.events.subscribe((e) => {
-          if (e instanceof NavigationStart) {
-            this.group = e.url.split('/')[1];
-            if (e.url.split('/')[1] !== router.url.split('/')[1]) {
-              this.updateData();
-            }
-          }
-        });
+        this.updateData();
       }
     }, true);
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        this.groupId = e.url.split('/')[1];
+        if (e.url.split('/')[1] !== router.url.split('/')[1]) {
+          if (this.groupId === 'me') this.group = null;
+          else
+            this.grLoader.getData(this.groupId).subscribe((g) => {
+              this.group = g;
+              this.isGroupAdmin =
+                g.members.find((m) => m.id === this.auth.userData.uid).role ===
+                GroupMemberRole.admin;
+            });
+
+          this.updateData();
+        }
+      }
+    });
   }
 
   private updateData() {
     this.data = new UserDataModel();
 
-    if (this.group === 'me') {
+    if (this.groupId === 'me') {
       this.grLoader.getAllData().subscribe((grs) => {
         this.data.groups = grs as GroupModel[];
 
@@ -57,7 +70,7 @@ export class UserDataService {
       this.grLoader.getAllData().subscribe((grs) => {
         this.data.groups = grs as GroupModel[];
 
-        this.updateGroups([this.group]);
+        this.updateGroups([this.groupId]);
       });
     }
   }

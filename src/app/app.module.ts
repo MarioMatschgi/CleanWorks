@@ -40,6 +40,8 @@ import { GradesComponent } from './components/objectives/grades/grades.component
 import { GrNewComponent } from './components/objectives/groups/gr-new/gr-new.component';
 import { GrNewDialogComponent } from './components/objectives/groups/gr-new-dialog/gr-new-dialog.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { GrMemberListTableComponent } from './components/objectives/groups/gr-member-list-table/gr-member-list-table.component';
+import { GrAddMemberDialogComponent } from './components/objectives/groups/gr-add-member-dialog/gr-add-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     GradesComponent,
     GrNewComponent,
     GrNewDialogComponent,
+    GrMemberListTableComponent,
+    GrAddMemberDialogComponent,
   ],
   imports: [
     BrowserModule,

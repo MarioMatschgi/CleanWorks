@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Add member</h1>
+<mat-dialog-content>
+  <p>Add members to the group:</p>
+
+  <div class="content">
+    <div>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Search..."
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="search()"
+        />
+      </mat-form-field>
+
+      <ul class="list">
+        <li *ngFor="let user of searchResult">
+          <span>{{ user.email }}</span>
+          <button mat-button (click)="stageMember(user)">
+            <fa [fa]="gv.Icons.add"></fa>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="membersToAdd?.length > 0" class="container small">
+      <mat-divider></mat-divider>
+
+      <ul class="list">
+        <li *ngFor="let user of membersToAdd">
+          <span>{{ user.email }}</span>
+          <button mat-button (click)="unstageMember(user)">
+            <fa [fa]="gv.Icons.remove"></fa>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="space-between">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="membersToAdd" background="success">
+    Add
+  </button>
+</mat-dialog-actions>

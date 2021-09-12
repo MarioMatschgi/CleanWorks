@@ -4,4 +4,18 @@
     <input matInput name="title" required [(ngModel)]="data.title" #title />
     <mat-error [hidden]="!title.valid">Name is required!</mat-error>
   </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      name="Description"
+      class="large"
+      required
+      [(ngModel)]="data.description"
+      #description
+    ></textarea>
+    <mat-error [hidden]="!description.valid">
+      Description is required!
+    </mat-error>
+  </mat-form-field>
 </form>

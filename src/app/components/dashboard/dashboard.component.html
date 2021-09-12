@@ -1,9 +1,30 @@
 <div class="container small">
   <!-- PROFILE -->
-  <card [icon]="gv.Icons.profile" title="Hello [NAME]!" subtitle="Your account">
+  <card
+    [icon]="gv.Icons.profile"
+    title="Hello [NAME]!"
+    subtitle="Your account"
+    *ngIf="userData.group == null; else groupInfo"
+  >
     <p>STATS, SETTINGS AND LOGOUT</p>
     <button mat-raised-button (click)="auth.signOut()">Logout</button>
   </card>
+  <ng-template #groupInfo>
+    <mat-card>
+      <mat-card-header>
+        <fa [fa]="gv.Icons.group" mat-card-avatar></fa>
+        <mat-card-title>{{ userData.group.title }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ userData.group.description }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <gr-member-list-table></gr-member-list-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
 
   <!-- QUICK-ACTIONS -->
   <card

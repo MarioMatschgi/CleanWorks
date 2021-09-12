@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GroupModel } from 'src/app/models/objectives/group.model';
+import {
+  GroupMemberModel,
+  GroupMemberRole,
+  GroupModel,
+} from 'src/app/models/objectives/group.model';
 import { GrDataLoadService } from 'src/app/services/data-load/group-data-load.service';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
 
@@ -26,7 +30,15 @@ export class GrNewComponent implements OnInit {
 
     if (!this.form.valid) return false;
 
-    this.data.members = [this.auth.userData.uid];
+    this.data.memberIds = [this.auth.userData.uid];
+    this.data.members = [
+      {
+        id: this.auth.userData.uid,
+        name: this.auth.userData.displayName,
+        email: this.auth.userData.email,
+        role: GroupMemberRole.admin,
+      },
+    ];
     await this.dataLoader.addData(this.data);
 
     return true;
