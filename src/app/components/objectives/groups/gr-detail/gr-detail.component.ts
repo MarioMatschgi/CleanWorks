@@ -8,26 +8,23 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ScoreModel, ScoreType } from 'src/app/models/objectives/score.model';
+import { GroupModel } from 'src/app/models/objectives/group.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
 
 @Component({
-  selector: 'sc-detail',
-  templateUrl: './sc-detail.component.html',
-  styleUrls: ['./sc-detail.component.scss'],
+  selector: 'gr-detail',
+  templateUrl: './gr-detail.component.html',
+  styleUrls: ['./gr-detail.component.scss'],
 })
-export class ScDetailComponent implements OnInit {
+export class GrDetailComponent implements OnInit {
   @ViewChild('form') form: NgForm;
-  @Input('score') sc = {} as ScoreModel;
+  @Input('group') gr: GroupModel = {} as GroupModel;
   @Input() shouldSave: boolean = true;
 
-  types: string[] = [];
-  marks = [1, 2, 3, 4, 5, 6];
-
-  @Output() scChange = new EventEmitter<ScoreModel>();
+  @Output() grChange = new EventEmitter<GroupModel>();
 
   private wasSaveAborted = false;
 
@@ -39,11 +36,7 @@ export class ScDetailComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {
-    for (const type of Object.keys(ScoreType)) {
-      this.types.push(type);
-    }
-  }
+  ngOnInit(): void {}
 
   async save() {
     if (this.loader.finished('save')) {
@@ -60,14 +53,12 @@ export class ScDetailComponent implements OnInit {
   private async saveGroup() {
     this.loader.load('save');
     if (this.shouldSave) {
-      this.du.sc.save(this.sc);
+      this.du.gr.save(this.gr);
 
-      this.scChange.emit(this.sc);
+      this.grChange.emit(this.gr);
     } else {
-      this.sc.date = this.sc.date?.set({ second: 0, millisecond: 0 });
-
       this.cd.detectChanges();
-      this.scChange.emit(this.sc);
+      this.grChange.emit(this.gr);
     }
     this.loader.unload('save');
   }

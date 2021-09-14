@@ -11,10 +11,6 @@ import { ScDetailComponent } from '../sc-detail/sc-detail.component';
 export class ScNewComponent implements OnInit {
   @ViewChild('scDetail') scDetail: ScDetailComponent;
 
-  get valid(): boolean {
-    return this.scDetail.form?.valid;
-  }
-
   constructor(
     public userData: UserDataService,
     private dataLoader: ScDataLoadService

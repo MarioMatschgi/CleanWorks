@@ -1,0 +1,29 @@
+<form class="grow" #form="ngForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      name="title"
+      required
+      [(ngModel)]="gr.title"
+      (submit)="save()"
+      #title
+    />
+    <mat-error [hidden]="!title.valid">Name is required!</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      name="Description"
+      class="large"
+      required
+      [(ngModel)]="gr.description"
+      (submit)="save()"
+      #description
+    ></textarea>
+    <mat-error [hidden]="!description.valid">
+      Description is required!
+    </mat-error>
+  </mat-form-field>
+</form>

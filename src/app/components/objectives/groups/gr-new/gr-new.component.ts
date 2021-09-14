@@ -7,6 +7,7 @@ import {
 } from 'src/app/models/objectives/group.model';
 import { GrDataLoadService } from 'src/app/services/data-load/group-data-load.service';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
+import { GrDetailComponent } from '../gr-detail/gr-detail.component';
 
 @Component({
   selector: 'gr-new',
@@ -14,9 +15,7 @@ import { AuthService } from 'src/libraries/authentication/services/auth.service'
   styleUrls: ['./gr-new.component.scss'],
 })
 export class GrNewComponent implements OnInit {
-  @ViewChild('form') form: NgForm;
-
-  data = {} as GroupModel;
+  @ViewChild('grDetail') grDetail: GrDetailComponent;
 
   constructor(
     private dataLoader: GrDataLoadService,
@@ -26,12 +25,12 @@ export class GrNewComponent implements OnInit {
   ngOnInit(): void {}
 
   async addNew() {
-    this.form.form.markAllAsTouched();
+    this.grDetail.form.form.markAllAsTouched();
 
-    if (!this.form.valid) return false;
+    if (!this.grDetail.form.valid) return false;
 
-    this.data.memberIds = [this.auth.userData.uid];
-    this.data.members = [
+    this.grDetail.gr.memberIds = [this.auth.userData.uid];
+    this.grDetail.gr.members = [
       {
         id: this.auth.userData.uid,
         name: this.auth.userData.displayName,
@@ -39,7 +38,7 @@ export class GrNewComponent implements OnInit {
         role: GroupMemberRole.admin,
       },
     ];
-    await this.dataLoader.addData(this.data);
+    await this.dataLoader.addData(this.grDetail.gr);
 
     return true;
   }

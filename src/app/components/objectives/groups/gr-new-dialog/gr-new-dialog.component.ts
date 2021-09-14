@@ -25,7 +25,7 @@ export class GrNewDialogComponent implements OnInit {
     if (await this.grNew.addNew()) {
       this.dialogRef.close();
       this.snackbar.displayTop(
-        `Successfully added a new group "${this.grNew.data.title}"`,
+        `Successfully added a new group "${this.grNew.grDetail.gr.title}"`,
         MessageType.Info
       );
     }

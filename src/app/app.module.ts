@@ -50,6 +50,8 @@ import { ScListComponent } from './components/objectives/grades/sc-list/sc-list.
 import { ScDiagramComponent } from './components/objectives/grades/sc-diagram/sc-diagram.component';
 import { ChartModule } from 'primeng/chart';
 import { ScDetailDialogComponent } from './components/objectives/grades/sc-detail-dialog/sc-detail-dialog.component';
+import { GrDetailComponent } from './components/objectives/groups/gr-detail/gr-detail.component';
+import { GrDetailDialogComponent } from './components/objectives/groups/gr-detail-dialog/gr-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { ScDetailDialogComponent } from './components/objectives/grades/sc-detai
     ScListComponent,
     ScDiagramComponent,
     ScDetailDialogComponent,
+    GrDetailComponent,
+    GrDetailDialogComponent,
   ],
   imports: [
     BrowserModule,

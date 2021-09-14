@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ObjectiveModel } from '../../models/objectives/objective.model';
+import { GrDataLoadService } from '../data-load/group-data-load.service';
 import { HwDataLoadService } from '../data-load/hw-data-load.service';
 import { ScDataLoadService } from '../data-load/sc-data-load.service';
 import { SjDataLoadService } from '../data-load/sj-data-load.service';
@@ -24,6 +25,7 @@ export class DataUtilBaseService {
   constructor(
     public hwLoader: HwDataLoadService,
     public sjLoader: SjDataLoadService,
+    public grLoader: GrDataLoadService,
     public scLoader: ScDataLoadService,
     public snackbar: SnackbarService,
     public dialogService: DialogService,

@@ -10,20 +10,14 @@
     <button mat-raised-button (click)="auth.signOut()">Logout</button>
   </card>
   <ng-template #groupInfo>
-    <mat-card>
-      <mat-card-header>
-        <fa [fa]="gv.Icons.group" mat-card-avatar></fa>
-        <mat-card-title>{{ userData.group.title }}</mat-card-title>
-        <mat-card-subtitle>
-          {{ userData.group.description }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <div>
-          <gr-member-list-table></gr-member-list-table>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    <card
+      [icon]="gv.Icons.group"
+      [ctitle]="userData.group.title"
+      [csubtitle]="userData.group.description"
+    >
+      <button mat-button class="header-btn" (click)="editGroup()">Edit</button>
+      <gr-member-list-table></gr-member-list-table>
+    </card>
   </ng-template>
 
   <!-- QUICK-ACTIONS -->

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Group</h1>
+<mat-dialog-content>
+  <gr-detail [group]="data.group"></gr-detail>
+</mat-dialog-content>
+<mat-dialog-actions class="space-between">
+  <button
+    mat-button
+    background="warn"
+    [mat-dialog-close]="false"
+    (click)="du.gr.remove(data.group)"
+  >
+    Delete
+  </button>
+  <button mat-button [mat-dialog-close]="false">Close</button>
+</mat-dialog-actions>
