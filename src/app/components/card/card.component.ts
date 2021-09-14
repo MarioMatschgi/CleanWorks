@@ -8,8 +8,8 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
   styleUrls: ['./card.component.scss'],
 })
 export class DbElementComponent implements OnInit {
-  @Input() title: string;
-  @Input() subtitle: string;
+  @Input() ctitle: string;
+  @Input() csubtitle: string;
   @Input() icon: Icons;
   @Input() link: string[];
 

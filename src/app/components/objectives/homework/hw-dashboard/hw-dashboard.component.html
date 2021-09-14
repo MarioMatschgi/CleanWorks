@@ -2,8 +2,8 @@
   <!-- OVER-DUE -->
   <card
     [icon]="gv.Icons.alarm"
-    title="Over due"
-    subtitle="It'll be fine, just do it now"
+    ctitle="Over due"
+    csubtitle="It'll be fine, just do it now"
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.data.hwPast?.length > 0"
   >
@@ -13,8 +13,8 @@
   <!-- DUE-TODAY -->
   <card
     [icon]="gv.Icons.alarm"
-    title="Due today"
-    subtitle="Come on!"
+    ctitle="Due today"
+    csubtitle="Come on!"
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.data.hwToday?.length > 0"
   >
@@ -24,8 +24,8 @@
   <!-- DUE-TOMORROW -->
   <card
     [icon]="gv.Icons.alarm"
-    title="Due tomorrow"
-    subtitle="Let's do this!"
+    ctitle="Due tomorrow"
+    csubtitle="Let's do this!"
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.data.hwTomorrow?.length > 0"
   >
@@ -35,8 +35,8 @@
   <!-- THIS-WEEK -->
   <card
     [icon]="gv.Icons.calender"
-    title="For this week"
-    subtitle="The sooner, the better..."
+    ctitle="For this week"
+    csubtitle="The sooner, the better..."
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.data.hwWeek?.length > 0"
   >
@@ -46,8 +46,8 @@
   <!-- COMPLETED -->
   <card
     [icon]="gv.Icons.checkmark"
-    title="Completed"
-    subtitle="Finally..."
+    ctitle="Completed"
+    csubtitle="Finally..."
     [link]="dashboard ? ['homework'] : null"
     *ngIf="userData.data.hwCompleted?.length > 0"
   >

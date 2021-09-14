@@ -9,6 +9,7 @@ import { ScoreModel } from '../models/objectives/score.model';
 import { UserDataModel } from '../models/user-data.model';
 import { GrDataLoadService } from './data-load/group-data-load.service';
 import { HwDataLoadService } from './data-load/hw-data-load.service';
+import { ScDataLoadService } from './data-load/sc-data-load.service';
 import { SjDataLoadService } from './data-load/sj-data-load.service';
 
 @Injectable({
@@ -19,12 +20,13 @@ export class UserDataService {
   groupId: string;
   group: GroupModel;
   isGroupAdmin = false;
-  scores: ScoreModel[] = [];
+  grades: ScoreModel[] = [];
 
   constructor(
     private grLoader: GrDataLoadService,
     private sjLoader: SjDataLoadService,
     private hwLoader: HwDataLoadService,
+    private scLoader: ScDataLoadService,
     private db: DatabaseService,
     private router: Router,
     private auth: AuthService
@@ -37,6 +39,9 @@ export class UserDataService {
 
     this.auth.sub_userData((user) => {
       if (user) {
+        this.scLoader.getAllData().subscribe((data) => {
+          this.grades = data;
+        });
         this.updateData();
       }
     }, true);

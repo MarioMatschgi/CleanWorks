@@ -1,12 +1,31 @@
 <div class="container small">
   <card
     [icon]="gv.Icons.grade"
-    title="Grades"
-    subtitle="All your grades in one place"
+    ctitle="Grades"
+    csubtitle="All your grades in one place"
   >
     <button mat-raised-button background="success" (click)="addNew()">
       Add new grade
     </button>
   </card>
-  <!-- <sj-list [subjects]="userData.data.subjects"></sj-list> -->
+  <card
+    [icon]="gv.Icons.chart"
+    ctitle="Diagrams"
+    csubtitle="Your grades, visualized"
+  >
+    <mat-tab-group *ngIf="subjectsWithGrades.length > 0; else noDiagrams">
+      <mat-tab *ngFor="let subject of subjectsWithGrades">
+        <ng-template matTabLabel>{{ subject.title }}</ng-template>
+        <ng-template matTabContent>
+          <sc-diagram [subjectId]="subject.id"></sc-diagram>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+    <ng-template #noDiagrams>
+      <mat-card>No grades to visualize</mat-card>
+    </ng-template>
+  </card>
+  <card [icon]="gv.Icons.table" ctitle="Data" csubtitle="Your grades">
+    <sc-list [data]="userData.grades"></sc-list>
+  </card>
 </div>

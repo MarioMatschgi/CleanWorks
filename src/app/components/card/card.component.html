@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-header>
     <fa [fa]="icon" mat-card-avatar *ngIf="icon"></fa>
-    <mat-card-title [innerHTML]="title"></mat-card-title>
-    <mat-card-subtitle [innerHTML]="subtitle"></mat-card-subtitle>
+    <mat-card-title [innerHTML]="ctitle"></mat-card-title>
+    <mat-card-subtitle [innerHTML]="csubtitle"></mat-card-subtitle>
     <div class="flex-spacer"></div>
     <a mat-button *ngIf="link" [routerLink]="link">View</a>
   </mat-card-header>

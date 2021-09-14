@@ -28,4 +28,6 @@ export enum Icons {
   checkmark = 'f00c fas',
   abacus = 'f640 far',
   letter = 'f893 far',
+  table = 'f0ce fas',
+  chart = 'f200 fas',
 }

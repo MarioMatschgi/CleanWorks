@@ -21,4 +21,10 @@ export class GradesComponent implements OnInit {
   addNew() {
     this.dialogService.dialog.open(ScNewDialogComponent);
   }
+
+  get subjectsWithGrades() {
+    return this.userData.data.subjects.filter((s) =>
+      this.userData.grades.find((g) => g.subjectId === s.id)
+    );
+  }
 }

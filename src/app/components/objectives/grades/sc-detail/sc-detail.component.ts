@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatSelect } from '@angular/material/select';
 import { ScoreModel, ScoreType } from 'src/app/models/objectives/score.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';

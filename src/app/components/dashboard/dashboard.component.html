@@ -2,8 +2,8 @@
   <!-- PROFILE -->
   <card
     [icon]="gv.Icons.profile"
-    title="Profile"
-    subtitle="Your account"
+    ctitle="Profile"
+    csubtitle="Your account"
     *ngIf="userData.group == null; else groupInfo"
   >
     <p>STATS, SETTINGS AND LOGOUT</p>
@@ -29,8 +29,8 @@
   <!-- QUICK-ACTIONS -->
   <card
     [icon]="gv.Icons.cogs"
-    title="Quick-Actions"
-    subtitle="Some quick things"
+    ctitle="Quick-Actions"
+    csubtitle="Some quick things"
   >
     <db-quick-actions></db-quick-actions>
   </card>
@@ -38,8 +38,8 @@
   <!-- APPOINTMENTS -->
   <card
     [icon]="gv.Icons.calender_checked"
-    title="Appointments"
-    subtitle="All your appointments"
+    ctitle="Appointments"
+    csubtitle="All your appointments"
   >
     <p>LIST OF APPOINTMENTS, SORTED BY DATE</p>
   </card>

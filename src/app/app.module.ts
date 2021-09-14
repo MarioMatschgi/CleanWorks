@@ -46,6 +46,10 @@ import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confi
 import { ScNewComponent } from './components/objectives/grades/sc-new/sc-new.component';
 import { ScNewDialogComponent } from './components/objectives/grades/sc-new-dialog/sc-new-dialog.component';
 import { ScDetailComponent } from './components/objectives/grades/sc-detail/sc-detail.component';
+import { ScListComponent } from './components/objectives/grades/sc-list/sc-list.component';
+import { ScDiagramComponent } from './components/objectives/grades/sc-diagram/sc-diagram.component';
+import { ChartModule } from 'primeng/chart';
+import { ScDetailDialogComponent } from './components/objectives/grades/sc-detail-dialog/sc-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +82,9 @@ import { ScDetailComponent } from './components/objectives/grades/sc-detail/sc-d
     ScNewComponent,
     ScNewDialogComponent,
     ScDetailComponent,
+    ScListComponent,
+    ScDiagramComponent,
+    ScDetailDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +103,9 @@ import { ScDetailComponent } from './components/objectives/grades/sc-detail/sc-d
     NgxMatTimepickerModule,
     NgxMatMomentModule,
     ClipboardModule,
+
+    /* PRIMENG */
+    ChartModule,
 
     /* */
   ],

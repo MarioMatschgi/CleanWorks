@@ -16,7 +16,7 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
     await this.base.sjLoader.updateData(sj);
 
     this.base.snackbar.displayTop(
-      `Saved subject "${sj.title}"`,
+      `Successfully saved subject "${sj.title}"`,
       MessageType.Info
     );
   }
@@ -30,7 +30,7 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
           await this.base.sjLoader.removeData(sj);
 
           this.base.snackbar.displayTop(
-            `Deleted subject "${sj.title}"`,
+            `Successfully deleted subject "${sj.title}"`,
             MessageType.Info
           );
         }

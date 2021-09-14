@@ -18,7 +18,7 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
     await this.base.hwLoader.updateData(hw);
 
     this.base.snackbar.displayTop(
-      `Saved homework "${hw.title}"`,
+      `Successfully saved homework "${hw.title}"`,
       MessageType.Info
     );
   }
@@ -32,7 +32,7 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
           await this.base.hwLoader.removeData(hw);
 
           this.base.snackbar.displayTop(
-            `Deleted homework "${hw.title}"`,
+            `Successfully deleted homework "${hw.title}"`,
             MessageType.Info
           );
         }
