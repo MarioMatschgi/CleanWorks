@@ -11,6 +11,7 @@ export enum LoadServices {
   subject = 'subjects',
   homework = 'homeworks',
   group = 'groups',
+  grade = 'grades',
 }
 
 @Injectable({
@@ -36,7 +37,9 @@ export class DataLoadService<T extends ObjectiveModel> {
   protected collection() {
     if (this.loaderType === LoadServices.group) return this.getGroupCol();
 
-    return this.getGroupCol().doc(this.group).collection(this.loaderType);
+    return this.getGroupCol()
+      .doc(this.group === 'me' ? `user_${this.auth.userData.uid}` : this.group)
+      .collection(this.loaderType);
   }
 
   private getGroupCol() {

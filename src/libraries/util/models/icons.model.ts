@@ -20,9 +20,12 @@ export enum Icons {
   books = 'f5db fas',
   profile = 'f007 fas',
   group = 'f0c0 fas',
+  grade = 'f19d fas',
   profile_student = 'f501 fas',
   google = 'f1a0 fab',
   email = 'f01c fas',
   subject = 'f51c fas',
   checkmark = 'f00c fas',
+  abacus = 'f640 far',
+  letter = 'f893 far',
 }

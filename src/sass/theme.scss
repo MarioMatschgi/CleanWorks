@@ -21,6 +21,10 @@
   }
 }
 
+::selection {
+  color: $col-amber;
+}
+
 /* COLORS */
 *[color="primary"],
 .col-primary {

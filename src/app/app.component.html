@@ -15,24 +15,18 @@
   >
   <a
     mat-button
-    [routerLink]="router.getUrl('appointments')"
-    routerLinkActive="active"
-  >
-    Appointments
-  </a>
-  <a
-    mat-button
     [routerLink]="router.getUrl('subjects')"
     routerLinkActive="active"
   >
     Subjects
   </a>
+  <a mat-button routerLink="me/grades" routerLinkActive="active">Grades</a>
   <a
     mat-button
-    [routerLink]="router.getUrl('grades')"
+    [routerLink]="router.getUrl('appointments')"
     routerLinkActive="active"
   >
-    Grades
+    Appointments
   </a>
   <div class="flex-spacer"></div>
   <div *ngIf="auth.userData?.uid">

@@ -11,6 +11,7 @@
     />
     <mat-error [hidden]="!title.valid">Title is required!</mat-error>
   </mat-form-field>
+
   <mat-form-field>
     <mat-label>Description</mat-label>
     <textarea
@@ -21,6 +22,7 @@
       [(ngModel)]="hw.description"
     ></textarea>
   </mat-form-field>
+
   <mat-form-field>
     <mat-label>Due date</mat-label>
     <input
@@ -54,16 +56,19 @@
       (submit)="save()"
       #subject
     >
-      <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">{{
-        sub.title
-      }}</mat-option>
+      <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">
+        {{ sub.title }}
+      </mat-option>
+      <mat-option disabled *ngIf="userData.data.subjects.length === 0">
+        No subjects found
+      </mat-option>
     </mat-select>
     <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
   </mat-form-field>
 
   <div class="mat-form-field-wrapper">
-    <mat-checkbox [checked]="hw.completed" (change)="setCompleted($event)">
+    <mat-slide-toggle [checked]="hw.completed" (change)="setCompleted($event)">
       completed
-    </mat-checkbox>
+    </mat-slide-toggle>
   </div>
 </form>

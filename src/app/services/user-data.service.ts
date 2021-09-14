@@ -5,6 +5,7 @@ import { AuthService } from 'src/libraries/authentication/services/auth.service'
 import { DatabaseService } from 'src/libraries/util/services/database.service';
 import { GroupMemberRole, GroupModel } from '../models/objectives/group.model';
 import { HomeworkModel } from '../models/objectives/homework.model';
+import { ScoreModel } from '../models/objectives/score.model';
 import { UserDataModel } from '../models/user-data.model';
 import { GrDataLoadService } from './data-load/group-data-load.service';
 import { HwDataLoadService } from './data-load/hw-data-load.service';
@@ -18,6 +19,7 @@ export class UserDataService {
   groupId: string;
   group: GroupModel;
   isGroupAdmin = false;
+  scores: ScoreModel[] = [];
 
   constructor(
     private grLoader: GrDataLoadService,
@@ -76,7 +78,7 @@ export class UserDataService {
   }
 
   private updateGroups(gids: string[]) {
-    this.sjLoader.group = 'me';
+    this.sjLoader.group = gids.length === 1 ? gids[0] : 'me';
     this.sjLoader.getAllData().subscribe((sjs) => {
       this.data.subjects = sjs;
     });

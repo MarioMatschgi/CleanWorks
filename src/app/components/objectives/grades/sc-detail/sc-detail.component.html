@@ -1,0 +1,104 @@
+<form class="grow" #form="ngForm">
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select
+      name="type"
+      (submit)="save()"
+      [(ngModel)]="sc.type"
+      required
+      #type
+    >
+      <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
+    </mat-select>
+    <mat-error [hidden]="!type.valid">Type is required!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mark</mat-label>
+    <mat-select required [(ngModel)]="sc.mark" name="mark" #mark>
+      <mat-option *ngFor="let mark of marks; let i = index" [value]="i + 1">
+        {{ mark }}
+      </mat-option>
+    </mat-select>
+    <mat-error [hidden]="!mark.valid">Mark is required!</mat-error>
+  </mat-form-field>
+
+  <div class="form-flex">
+    <mat-form-field>
+      <mat-label>Score</mat-label>
+      <input
+        matInput
+        type="number"
+        name="score"
+        [(ngModel)]="sc.score"
+        [required]="sc.scoreMax"
+      />
+    </mat-form-field>
+    <span>&nbsp;/&nbsp;</span>
+    <mat-form-field>
+      <mat-label>out of</mat-label>
+      <input
+        matInput
+        type="number"
+        name="scoreMax"
+        [(ngModel)]="sc.scoreMax"
+        [required]="sc.score"
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="dueDatePicker"
+      name="due-date"
+      required
+      (submit)="save()"
+      [(ngModel)]="sc.date"
+      #dueDate
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dueDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker (closed)="save()" #dueDatePicker></mat-datepicker>
+    <mat-error [hidden]="!dueDate.valid">Date is required!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Subject</mat-label>
+    <mat-select
+      name="subject"
+      required
+      [(ngModel)]="sc.subjectId"
+      (submit)="save()"
+      #subject
+    >
+      <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">
+        {{ sub.title }}
+      </mat-option>
+      <mat-option disabled *ngIf="userData.data.subjects.length === 0">
+        No subjects found
+      </mat-option>
+    </mat-select>
+    <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Appointment</mat-label>
+    <mat-select
+      name="appointment"
+      [(ngModel)]="sc.appointmentId"
+      (submit)="save()"
+    >
+      <mat-option disabled>WORK IN PROGRESS</mat-option>
+      <!-- <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">
+        {{ sub.title }}
+      </mat-option>
+      <mat-option disabled *ngIf="userData.data.subjects.length === 0">
+        No appointments found
+      </mat-option> -->
+    </mat-select>
+  </mat-form-field>
+</form>

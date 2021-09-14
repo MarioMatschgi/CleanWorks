@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>New Grade</h1>
+<div mat-dialog-content>
+  <sc-new #scNew></sc-new>
+</div>
+<div mat-dialog-actions class="space-between">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button background="success" (click)="submit()">
+    Add new Grade
+  </button>
+</div>

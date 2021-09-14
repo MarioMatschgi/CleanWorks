@@ -1,1 +1,12 @@
-<p>grades works!</p>
+<div class="container small">
+  <card
+    [icon]="gv.Icons.grade"
+    title="Grades"
+    subtitle="All your grades in one place"
+  >
+    <button mat-raised-button background="success" (click)="addNew()">
+      Add new grade
+    </button>
+  </card>
+  <!-- <sj-list [subjects]="userData.data.subjects"></sj-list> -->
+</div>

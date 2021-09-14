@@ -42,6 +42,10 @@ import { GrNewDialogComponent } from './components/objectives/groups/gr-new-dial
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { GrMemberListTableComponent } from './components/objectives/groups/gr-member-list-table/gr-member-list-table.component';
 import { GrAddMemberDialogComponent } from './components/objectives/groups/gr-add-member-dialog/gr-add-member-dialog.component';
+import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
+import { ScNewComponent } from './components/objectives/grades/sc-new/sc-new.component';
+import { ScNewDialogComponent } from './components/objectives/grades/sc-new-dialog/sc-new-dialog.component';
+import { ScDetailComponent } from './components/objectives/grades/sc-detail/sc-detail.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import { GrAddMemberDialogComponent } from './components/objectives/groups/gr-ad
     GrNewDialogComponent,
     GrMemberListTableComponent,
     GrAddMemberDialogComponent,
+    ConfirmDialogComponent,
+    ScNewComponent,
+    ScNewDialogComponent,
+    ScDetailComponent,
   ],
   imports: [
     BrowserModule,

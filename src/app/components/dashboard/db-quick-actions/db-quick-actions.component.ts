@@ -24,4 +24,8 @@ export class DbQuickActionsComponent implements OnInit {
   newSubject() {
     this.dialogService.dialog.open(SjNewDialogComponent);
   }
+
+  newGrade() {
+    // this.dialogService.dialog.open(GrNewDialogComponent);
+  }
 }

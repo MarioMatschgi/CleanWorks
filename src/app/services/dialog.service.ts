@@ -1,6 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../components/dialog/confirm-dialog/confirm-dialog.component';
 import { DeleteDialogComponent } from '../components/dialog/delete-dialog/delete-dialog.component';
 import {
   DialogStandardComponent,
@@ -39,7 +40,11 @@ export class DialogService {
     return this.openDialog(toOpen, data);
   }
 
-  openConfirmationDialog(title: string, description: string) {}
+  openConfirmationDialog(title: string, description: string, color: string) {
+    return this.dialog.open(ConfirmDialogComponent, {
+      data: { title: title, description: description, color: color },
+    });
+  }
   openDeleteDialog(items: string[]) {
     return this.dialog.open(DeleteDialogComponent, { data: { items: items } });
   }
