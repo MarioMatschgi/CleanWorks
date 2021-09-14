@@ -4,22 +4,22 @@ import {
   IDataUtilBaseService,
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
-import { ScoreModel } from 'src/app/models/objectives/score.model';
+import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { ScDetailDialogComponent } from 'src/app/components/objectives/grades/sc-detail-dialog/sc-detail-dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ScUtilService implements IDataUtilBaseService<ScoreModel> {
+export class ScUtilService implements IDataUtilBaseService<GradeModel> {
   constructor(private base: DataUtilBaseService) {}
 
-  async save(sc: ScoreModel): Promise<void> {
+  async save(sc: GradeModel): Promise<void> {
     await this.base.scLoader.updateData(sc);
 
     this.base.snackbar.displayTop(`Successfully saved grade`, MessageType.Info);
   }
 
-  async remove(sc: ScoreModel): Promise<void> {
+  async remove(sc: GradeModel): Promise<void> {
     this.base.dialogService
       .openDeleteDialog(['Grade'])
       .afterClosed()
@@ -35,13 +35,13 @@ export class ScUtilService implements IDataUtilBaseService<ScoreModel> {
       });
   }
 
-  view(sc: ScoreModel): void {
+  view(sc: GradeModel): void {
     this.base.dialogService.dialog.open(ScDetailDialogComponent, {
       data: { grade: sc },
     });
   }
 
-  getById(id: string): ScoreModel {
+  getById(id: string): GradeModel {
     return this.base.userData.grades.find((e) => e.id === id);
   }
 }

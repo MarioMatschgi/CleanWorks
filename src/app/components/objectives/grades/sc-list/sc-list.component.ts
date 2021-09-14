@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScoreModel } from 'src/app/models/objectives/score.model';
+import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
 
@@ -9,7 +9,7 @@ import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-b
   styleUrls: ['./sc-list.component.scss'],
 })
 export class ScListComponent
-  extends MatTableBaseComponent<ScoreModel>
+  extends MatTableBaseComponent<GradeModel>
   implements OnInit
 {
   displayedColumns = ['subject', 'type', 'mark', 'score', 'remove'];

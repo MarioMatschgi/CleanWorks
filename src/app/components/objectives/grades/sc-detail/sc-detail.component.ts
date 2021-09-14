@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ScoreModel, ScoreType } from 'src/app/models/objectives/score.model';
+import { GradeModel, ScoreType } from 'src/app/models/objectives/grade.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
@@ -21,13 +21,13 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
 })
 export class ScDetailComponent implements OnInit {
   @ViewChild('form') form: NgForm;
-  @Input('score') sc = {} as ScoreModel;
+  @Input('score') sc = {} as GradeModel;
   @Input() shouldSave: boolean = true;
 
   types: string[] = [];
   marks = [1, 2, 3, 4, 5, 6];
 
-  @Output() scChange = new EventEmitter<ScoreModel>();
+  @Output() scChange = new EventEmitter<GradeModel>();
 
   private wasSaveAborted = false;
 

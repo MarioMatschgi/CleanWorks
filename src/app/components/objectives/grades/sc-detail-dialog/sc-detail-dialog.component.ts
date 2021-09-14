@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ScoreModel } from 'src/app/models/objectives/score.model';
+import { GradeModel } from 'src/app/models/objectives/grade.model';
 
 @Component({
   selector: 'sc-detail-dialog',
@@ -10,7 +10,7 @@ import { ScoreModel } from 'src/app/models/objectives/score.model';
 export class ScDetailDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ScDetailDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grade: ScoreModel }
+    @Inject(MAT_DIALOG_DATA) public data: { grade: GradeModel }
   ) {}
 
   ngOnInit(): void {}
