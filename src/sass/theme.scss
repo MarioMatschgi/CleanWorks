@@ -218,3 +218,7 @@ textarea {
 .mat-paginator-container {
   justify-content: end !important;
 }
+
+snack-bar-container {
+  margin-top: max(env(safe-area-inset-top), 8px) !important;
+}

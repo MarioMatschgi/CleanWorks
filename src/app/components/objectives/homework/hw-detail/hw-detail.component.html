@@ -42,6 +42,7 @@
       (closed)="save()"
       #dueDatePicker
       [defaultTime]="[23, 59, 0]"
+      [touchUi]="bps.datepickerMobile"
     >
     </ngx-mat-datetime-picker>
     <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>

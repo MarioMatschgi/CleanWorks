@@ -62,7 +62,11 @@
       matSuffix
       [for]="dueDatePicker"
     ></mat-datepicker-toggle>
-    <mat-datepicker (closed)="save()" #dueDatePicker></mat-datepicker>
+    <mat-datepicker
+      (closed)="save()"
+      #dueDatePicker
+      [touchUi]="bps.datepickerMobile"
+    ></mat-datepicker>
     <mat-error [hidden]="!dueDate.valid">Date is required!</mat-error>
   </mat-form-field>
 

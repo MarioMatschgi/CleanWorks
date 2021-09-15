@@ -1,3 +1,4 @@
-mat-toolbar {
+mat-toolbar,
+mat-sidenav {
   padding-top: max(env(safe-area-inset-top), 10px) !important;
 }

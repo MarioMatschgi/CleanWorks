@@ -1,4 +1,4 @@
-<mat-sidenav-container *ngIf="isMobile; else notMobile">
+<mat-sidenav-container *ngIf="bps.navbarMobile; else notMobile">
   <mat-sidenav #sidenav>
     <button mat-button (click)="sidenav.close()">
       <fa [fa]="gv.Icons.close"></fa>

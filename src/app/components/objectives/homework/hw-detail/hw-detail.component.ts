@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
+import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
@@ -31,6 +32,7 @@ export class HwDetailComponent implements OnInit {
 
   constructor(
     public userData: UserDataService,
+    public bps: BreakpointService,
     private du: DataUtilService,
     private loader: LoadService,
     private cd: ChangeDetectorRef

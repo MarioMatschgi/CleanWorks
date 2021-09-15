@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GradeModel, ScoreType } from 'src/app/models/objectives/grade.model';
+import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
@@ -34,6 +35,7 @@ export class ScDetailComponent implements OnInit {
   constructor(
     public gv: GlobalVariablesService,
     public userData: UserDataService,
+    public bps: BreakpointService,
     private du: DataUtilService,
     private loader: LoadService,
     private cd: ChangeDetectorRef
