@@ -15,6 +15,9 @@ export class MatTableBaseComponent<T> {
 
   @ViewChild(MatSort) protected sort: MatSort;
   @ViewChild(MatSort) set matSort(ms: MatSort) {
+    if (ms == null) {
+      return;
+    }
     this.sort = ms;
     this.dataSource.sort = this.sort;
     setTimeout(() => {

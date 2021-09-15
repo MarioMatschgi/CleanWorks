@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="dataSource.data?.length > 0; else noContent">
   <table
     mat-table
     [dataSource]="dataSource"
@@ -63,3 +63,7 @@
   <mat-paginator [pageSize]="startPageSize" [pageSizeOptions]="pageSizes">
   </mat-paginator>
 </mat-card>
+
+<ng-template #noContent>
+  <mat-card>No grades found.</mat-card>
+</ng-template>
