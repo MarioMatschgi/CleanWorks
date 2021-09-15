@@ -1,78 +1,37 @@
-<mat-toolbar background="primary">
-  <a
-    mat-button
-    [routerLink]="router.getUrl('dashboard')"
-    routerLinkActive="active"
-  >
-    <fa [fa]="gv.Icons.home"></fa>
-  </a>
-  <a
-    mat-button
-    [routerLink]="router.getUrl('homework')"
-    routerLinkActive="active"
-  >
-    Homework</a
-  >
-  <a
-    mat-button
-    [routerLink]="router.getUrl('subjects')"
-    routerLinkActive="active"
-  >
-    Subjects
-  </a>
-  <a mat-button routerLink="me/grades" routerLinkActive="active">Grades</a>
-  <a
-    mat-button
-    [routerLink]="router.getUrl('appointments')"
-    routerLinkActive="active"
-  >
-    Appointments
-  </a>
-  <div class="flex-spacer"></div>
-  <div *ngIf="auth.userData?.uid">
-    <button
-      mat-button
-      [matMenuTriggerFor]="profileMenu"
-      *ngIf="auth.userData?.uid"
-    >
-      <fa [fa]="gv.Icons.profile"></fa>
+<mat-sidenav-container *ngIf="isMobile; else notMobile">
+  <mat-sidenav #sidenav>
+    <button mat-button (click)="sidenav.close()">
+      <fa [fa]="gv.Icons.close"></fa>
     </button>
-    <mat-menu #profileMenu="matMenu">
-      <p mat-menu-item>
-        {{ auth.userData.displayName || auth.userData.email }}
-      </p>
-      <button
-        mat-menu-item
-        *ngIf="gv.isDev"
-        [cdkCopyToClipboard]="auth.userData.uid"
-      >
-        {{ auth.userData.uid }}
+    <mat-nav-list>
+      <tb-nav [sidenav]="sidenav"></tb-nav>
+      <mat-divider></mat-divider>
+      <tb-groups [sidenav]="sidenav"></tb-groups>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar background="primary">
+      <button mat-button (click)="sidenav.toggle()">
+        <fa [fa]="gv.Icons.hamburger"></fa>
       </button>
-      <button mat-menu-item (click)="auth.signOut()">Log out</button>
-    </mat-menu>
-  </div>
-  <div class="flex-break"></div>
-  <div class="flex-spacer">
-    <a
-      mat-button
-      [routerLink]="router.getGroupUrl('me')"
-      routerLinkActive="active"
-    >
-      Mine
-    </a>
-    <button mat-button (click)="newGroup()">
-      <fa [fa]="gv.Icons.add"></fa>
-    </button>
-    <a
-      mat-button
-      [routerLink]="router.getGroupUrl(group.id)"
-      routerLinkActive="active"
-      *ngFor="let group of userData.data.groups"
-    >
-      {{ group.title }}
-    </a>
-    <p *ngIf="gv.isDev">{{ router.router.url }}</p>
-  </div>
-</mat-toolbar>
+      <div class="flex-spacer"></div>
+      <tb-profile></tb-profile>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-<router-outlet></router-outlet>
+<ng-template #notMobile>
+  <mat-toolbar background="primary">
+    <tb-nav></tb-nav>
+    <div class="flex-spacer"></div>
+    <div *ngIf="auth.userData?.uid">
+      <tb-profile></tb-profile>
+    </div>
+    <div class="flex-break"></div>
+    <div class="flex-spacer">
+      <tb-groups></tb-groups>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</ng-template>

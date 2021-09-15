@@ -1,0 +1,16 @@
+<button mat-button [matMenuTriggerFor]="profileMenu" *ngIf="auth.userData?.uid">
+  <fa [fa]="gv.Icons.profile"></fa>
+</button>
+<mat-menu #profileMenu="matMenu">
+  <p mat-menu-item>
+    {{ auth.userData.displayName || auth.userData.email }}
+  </p>
+  <button
+    mat-menu-item
+    *ngIf="gv.isDev"
+    [cdkCopyToClipboard]="auth.userData.uid"
+  >
+    {{ auth.userData.uid }}
+  </button>
+  <button mat-menu-item (click)="auth.signOut()">Log out</button>
+</mat-menu>

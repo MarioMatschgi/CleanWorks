@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
@@ -13,16 +14,19 @@ import { UserDataService } from './services/user-data.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isMobile: boolean;
+
   constructor(
     public gv: GlobalVariablesService,
     public auth: AuthService,
     public router: RouterService,
     public dialog: DialogService,
     public userData: UserDataService,
-    private bgScroll: BackgroundScrollService
-  ) {}
-
-  newGroup() {
-    this.dialog.dialog.open(GrNewDialogComponent);
+    private bgScroll: BackgroundScrollService,
+    private bpo: BreakpointObserver
+  ) {
+    bpo.observe('(max-width: 600px)').subscribe((res) => {
+      this.isMobile = res.matches;
+    });
   }
 }

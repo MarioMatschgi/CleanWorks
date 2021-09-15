@@ -53,6 +53,9 @@ import { ScDetailDialogComponent } from './components/objectives/grades/sc-detai
 import { GrDetailComponent } from './components/objectives/groups/gr-detail/gr-detail.component';
 import { GrDetailDialogComponent } from './components/objectives/groups/gr-detail-dialog/gr-detail-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TbNavComponent } from './components/toolbar/tb-nav/tb-nav.component';
+import { TbGroupsComponent } from './components/toolbar/tb-groups/tb-groups.component';
+import { TbProfileComponent } from './components/toolbar/tb-profile/tb-profile.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +93,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ScDetailDialogComponent,
     GrDetailComponent,
     GrDetailDialogComponent,
+    TbNavComponent,
+    TbGroupsComponent,
+    TbProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,7 +127,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
 
     /* */

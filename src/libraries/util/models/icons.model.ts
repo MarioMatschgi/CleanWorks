@@ -30,4 +30,6 @@ export enum Icons {
   letter = 'f893 far',
   table = 'f0ce fas',
   chart = 'f200 fas',
+  hamburger = 'f0c9 fas',
+  close = 'f00d fas',
 }

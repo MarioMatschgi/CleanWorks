@@ -7,12 +7,16 @@
 >
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-    <td mat-cell *matCellDef="let hw">{{ hw.title }}</td>
+    <td mat-cell *matCellDef="let hw">
+      <span class="mobile-label">Name:</span>
+      {{ hw.title }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="subject">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
     <td mat-cell *matCellDef="let hw">
+      <span class="mobile-label">Subject:</span>
       {{ du.sj.getById(hw.subjectId)?.title }}
     </td>
   </ng-container>
@@ -20,6 +24,7 @@
   <ng-container matColumnDef="dueDate">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Due</th>
     <td mat-cell *matCellDef="let hw">
+      <span class="mobile-label">Due:</span>
       {{ hw.dueDate | normalDate }}
     </td>
   </ng-container>
@@ -40,7 +45,8 @@
   <ng-container matColumnDef="completed">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Completed</th>
     <td mat-cell *matCellDef="let hw">
-      <p>{{ hw.completed | normalDate }}</p>
+      <span class="mobile-label">Completed:</span>
+      {{ hw.completed | normalDate }}
     </td>
   </ng-container>
 

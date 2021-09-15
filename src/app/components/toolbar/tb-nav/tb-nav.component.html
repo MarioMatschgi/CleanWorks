@@ -1,0 +1,24 @@
+<div *ngIf="sidenav; else noList">
+  <a
+    mat-list-item
+    [routerLink]="item.urlArr || router.getUrl(item.url)"
+    routerLinkActive="active"
+    *ngFor="let item of items"
+    (click)="sidenav.close()"
+  >
+    <fa [fa]="item.icon" *ngIf="item.icon"></fa>
+    {{ item.content }}
+  </a>
+</div>
+
+<ng-template #noList>
+  <a
+    mat-button
+    [routerLink]="item.urlArr || router.getUrl(item.url)"
+    routerLinkActive="active"
+    *ngFor="let item of items"
+  >
+    <fa [fa]="item.icon" *ngIf="item.icon"></fa>
+    {{ item.content }}
+  </a>
+</ng-template>

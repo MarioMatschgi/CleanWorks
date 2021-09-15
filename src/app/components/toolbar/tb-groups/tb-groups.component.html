@@ -1,0 +1,43 @@
+<div *ngIf="sidenav; else noList">
+  <a
+    mat-list-item
+    [routerLink]="router.getGroupUrl('me')"
+    routerLinkActive="active"
+    (click)="sidenav.close()"
+  >
+    Mine
+  </a>
+  <a mat-list-item (click)="newGroup(); sidenav.close()">
+    <fa [fa]="gv.Icons.add"></fa>
+  </a>
+  <a
+    mat-list-item
+    [routerLink]="router.getGroupUrl(group.id)"
+    routerLinkActive="active"
+    *ngFor="let group of userData.data.groups"
+    (click)="sidenav.close()"
+  >
+    {{ group.title }}
+  </a>
+</div>
+
+<ng-template #noList>
+  <a
+    mat-button
+    [routerLink]="router.getGroupUrl('me')"
+    routerLinkActive="active"
+  >
+    Mine
+  </a>
+  <button mat-button (click)="newGroup()">
+    <fa [fa]="gv.Icons.add"></fa>
+  </button>
+  <a
+    mat-button
+    [routerLink]="router.getGroupUrl(group.id)"
+    routerLinkActive="active"
+    *ngFor="let group of userData.data.groups"
+  >
+    {{ group.title }}
+  </a>
+</ng-template>

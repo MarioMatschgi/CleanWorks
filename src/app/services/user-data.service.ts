@@ -48,10 +48,14 @@ export class UserDataService {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         this.groupId = e.url.split('/')[1];
-        if (e.url.split('/')[1] !== router.url.split('/')[1]) {
+        if (this.groupId !== router.url.split('/')[1]) {
           if (this.groupId === 'me') this.group = null;
           else
             this.grLoader.getData(this.groupId).subscribe((g) => {
+              if (g == null || Object.values(g).length == 0) {
+                this.router.navigateByUrl('/');
+                return;
+              }
               this.group = g;
               this.isGroupAdmin =
                 g.members.find((m) => m.id === this.auth.userData.uid).role ===
