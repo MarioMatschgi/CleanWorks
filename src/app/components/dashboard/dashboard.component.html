@@ -16,7 +16,9 @@
       [csubtitle]="userData.group.description"
     >
       <button mat-button class="header-btn" (click)="editGroup()">Edit</button>
-      <gr-member-list-table></gr-member-list-table>
+      <gr-member-list-table
+        [data]="userData.group.members"
+      ></gr-member-list-table>
     </card>
   </ng-template>
 

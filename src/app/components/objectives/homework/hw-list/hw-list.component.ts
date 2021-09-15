@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -27,6 +28,7 @@ export class HwListComponent
     'remove',
   ];
   defaultSort = 'dueDate';
+  mobileWidth = '40em';
 
   get allCompleted(): boolean {
     return (
@@ -34,12 +36,24 @@ export class HwListComponent
     );
   }
 
-  constructor(public du: DataUtilService, private cd: ChangeDetectorRef) {
-    super();
+  constructor(
+    public du: DataUtilService,
+    private cd: ChangeDetectorRef,
+    bpo: BreakpointObserver
+  ) {
+    super(bpo);
   }
 
   ngOnInit(): void {
     this.updateOnTime();
+    this.dataSource.sortingDataAccessor = (item, prop) => {
+      switch (prop) {
+        case 'subject':
+          return this.du.sj.getById(item.subjectId)?.title;
+        default:
+          return item[prop];
+      }
+    };
   }
 
   updateOnTime() {

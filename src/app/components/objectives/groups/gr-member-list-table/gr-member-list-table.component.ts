@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   Component,
   EventEmitter,
@@ -15,6 +16,7 @@ import { GrDataLoadService } from 'src/app/services/data-load/group-data-load.se
 import { DialogService } from 'src/app/services/dialog.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
+import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
 import { GrAddMemberDialogComponent } from '../gr-add-member-dialog/gr-add-member-dialog.component';
 
 @Component({
@@ -22,30 +24,23 @@ import { GrAddMemberDialogComponent } from '../gr-add-member-dialog/gr-add-membe
   templateUrl: './gr-member-list-table.component.html',
   styleUrls: ['./gr-member-list-table.component.scss'],
 })
-export class GrMemberListTableComponent implements OnInit {
+export class GrMemberListTableComponent
+  extends MatTableBaseComponent<GroupMemberModel>
+  implements OnInit
+{
   roles: string[];
 
-  private _dataSource: MatTableDataSource<GroupMemberModel> =
-    new MatTableDataSource();
-  get dataSource(): MatTableDataSource<GroupMemberModel> {
-    this._dataSource.data = this.userData.group.members;
-
-    return this._dataSource;
-  }
   displayedColumns = ['name', 'email', 'role'];
-
-  @ViewChild(MatSort) protected sort: MatSort;
-  @ViewChild(MatSort) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.dataSource.sort = this.sort;
-  }
+  mobileWidth = '47em';
 
   constructor(
     private auth: AuthService,
     private userData: UserDataService,
     private grLoader: GrDataLoadService,
-    private dialog: DialogService
+    private dialog: DialogService,
+    bpo: BreakpointObserver
   ) {
+    super(bpo);
     this.roles = Object.values(GroupMemberRole);
   }
 
@@ -59,7 +54,7 @@ export class GrMemberListTableComponent implements OnInit {
     if (!this.userData.isGroupAdmin || this.auth.userData.uid === uid) return;
 
     const d = this.userData.group;
-    d.members = this._dataSource.data;
+    d.members = this.dataSource.data;
 
     this.grLoader.updateData(d);
   }

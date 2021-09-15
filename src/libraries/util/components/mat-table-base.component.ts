@@ -1,6 +1,8 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Directive, Input, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortable } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Directive()
 export class MatTableBaseComponent<T> {
@@ -27,5 +29,23 @@ export class MatTableBaseComponent<T> {
     if (evt.direction === '') {
       this.sort.sort({ id: this.defaultSort, start: 'asc' } as MatSortable);
     }
+  }
+
+  @ViewChild(MatPaginator) set paginator(p: MatPaginator) {
+    this.dataSource.paginator = p;
+  }
+  pageSizes = [5, 10, 25, 100];
+  startPageSize = 10;
+
+  mobileWidth = '600px';
+
+  isMobileTable: boolean;
+
+  constructor(private bpo: BreakpointObserver) {
+    setTimeout(() => {
+      bpo.observe(`(max-width: ${this.mobileWidth})`).subscribe((res) => {
+        this.isMobileTable = res.matches;
+      });
+    });
   }
 }

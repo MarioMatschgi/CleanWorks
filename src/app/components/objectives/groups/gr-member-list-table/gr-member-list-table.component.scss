@@ -1,1 +1,6 @@
 @import "/src/libraries/util/scss/component.scss";
+
+.mat-column-remove,
+.mat-column-complete {
+  width: 1%;
+}

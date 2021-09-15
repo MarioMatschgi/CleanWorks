@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
@@ -13,9 +14,10 @@ export class ScListComponent
   implements OnInit
 {
   displayedColumns = ['subject', 'type', 'mark', 'score', 'remove'];
+  mobileWidth = '30em';
 
-  constructor(public du: DataUtilService) {
-    super();
+  constructor(public du: DataUtilService, bpo: BreakpointObserver) {
+    super(bpo);
   }
 
   ngOnInit(): void {
@@ -23,7 +25,8 @@ export class ScListComponent
       switch (prop) {
         case 'score':
           return item.score / item.scoreMax;
-
+        case 'subject':
+          return this.du.sj.getById(item.subjectId)?.title;
         default:
           return item[prop];
       }
