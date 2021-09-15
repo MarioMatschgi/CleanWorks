@@ -2,9 +2,8 @@ mat-toolbar,
 mat-sidenav {
   padding-top: max(env(safe-area-inset-top), 10px) !important;
 }
-mat-sidenav {
+:host ::ng-deep mat-sidenav {
   background-color: var(--col-blue) !important;
-  &,
   * {
     color: white !important;
   }

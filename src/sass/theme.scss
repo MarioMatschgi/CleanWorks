@@ -174,7 +174,14 @@ textarea {
 
 .mat-button.active:not(.mat-button-disabled) .mat-button-focus-overlay,
 .mat-stroked-button.active:not(.mat-button-disabled) .mat-button-focus-overlay {
-  opacity: 0.1;
+  opacity: 0.12;
+}
+.mat-list-item.active .mat-list-item-ripple {
+  background: rgba(5, 5, 5, 0.12) !important;
+}
+
+.mat-divider {
+  margin: 1ch 0 !important;
 }
 
 .mobile-label {

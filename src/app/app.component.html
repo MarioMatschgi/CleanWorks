@@ -1,8 +1,18 @@
 <mat-sidenav-container typ *ngIf="bps.navbarMobile; else notMobile">
   <mat-sidenav mode="push" #sidenav>
-    <button mat-button (click)="sidenav.close()">
-      <fa [fa]="gv.Icons.close"></fa>
-    </button>
+    <div class="flexbox nospace">
+      <button mat-button (click)="sidenav.close()">
+        <fa [fa]="gv.Icons.close"></fa>
+      </button>
+      <a
+        mat-button
+        [routerLink]="router.getUrl('dashboard')"
+        routerLinkActive="active"
+        (click)="sidenav.close()"
+      >
+        <fa [fa]="gv.Icons.home"></fa>
+      </a>
+    </div>
     <mat-nav-list>
       <tb-nav [sidenav]="sidenav"></tb-nav>
       <mat-divider></mat-divider>
