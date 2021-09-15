@@ -52,6 +52,7 @@ import { ChartModule } from 'primeng/chart';
 import { ScDetailDialogComponent } from './components/objectives/grades/sc-detail-dialog/sc-detail-dialog.component';
 import { GrDetailComponent } from './components/objectives/groups/gr-detail/gr-detail.component';
 import { GrDetailDialogComponent } from './components/objectives/groups/gr-detail-dialog/gr-detail-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,18 @@ import { GrDetailDialogComponent } from './components/objectives/groups/gr-detai
 
     /* PRIMENG */
     ChartModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
 
     /* */
   ],
