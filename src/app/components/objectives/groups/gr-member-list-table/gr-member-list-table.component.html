@@ -14,7 +14,7 @@
   [dataSource]="dataSource"
   matSort
   [class.mobile-table]="isMobileTable"
-  *ngIf="dataSource.data?.length > 0; else noContent"
+  *ngIf="dataSource.data?.length > 0"
 >
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
@@ -68,7 +68,3 @@
 
 <mat-paginator [pageSize]="startPageSize" [pageSizeOptions]="pageSizes">
 </mat-paginator>
-
-<ng-template #noContent>
-  <mat-card>No members found.</mat-card>
-</ng-template>
