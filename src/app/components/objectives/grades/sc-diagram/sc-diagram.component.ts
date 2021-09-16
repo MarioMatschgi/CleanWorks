@@ -37,7 +37,10 @@ export class ScDiagramComponent implements OnInit {
   constructor(private userData: UserDataService) {}
 
   ngOnInit(): void {
-    for (const grade of this.userData.grades) {
+    const d = this.userData.grades.sort((a, b) => {
+      return a.date > b.date ? 1 : -1;
+    });
+    for (const grade of d) {
       if (grade.subjectId === this.subjectId) {
         this.data.labels.push(grade.date.format('DD.MM.YYYY'));
         this.data.datasets[0].data.push(grade.mark);

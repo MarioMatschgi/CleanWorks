@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Directive, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, MatSortable } from '@angular/material/sort';
+import { MatSort, MatSortable, SortDirection } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Directive()
@@ -26,11 +26,15 @@ export class MatTableBaseComponent<T> {
   }
 
   defaultSort: string;
+  defaultSortDir: SortDirection = 'asc';
   sortChanged(evt: { active: string; direction: string }) {
     if (this.defaultSort === null) return;
 
     if (evt.direction === '') {
-      this.sort.sort({ id: this.defaultSort, start: 'asc' } as MatSortable);
+      this.sort.sort({
+        id: this.defaultSort,
+        start: this.defaultSortDir,
+      } as MatSortable);
     }
   }
 

@@ -39,15 +39,14 @@ export class UserDataService {
 
     this.auth.sub_userData((user) => {
       if (user) {
-        this.scLoader.getAllData().subscribe((data) => {
-          this.grades = data;
-        });
         this.updateData();
       }
     }, true);
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         this.groupId = e.url.split('/')[1];
+        console.log(this.groupId, router.url.split('/')[1]);
+
         if (this.groupId !== router.url.split('/')[1]) {
           if (this.groupId === 'me') this.group = null;
           else
@@ -87,16 +86,22 @@ export class UserDataService {
   }
 
   private updateGroups(gids: string[]) {
+    // Load subjects
     this.sjLoader.group = gids.length === 1 ? gids[0] : 'me';
     this.sjLoader.getAllData().subscribe((sjs) => {
       this.data.subjects = sjs;
     });
+    // Load homework
     for (const g of gids) {
       this.hwLoader.group = g;
       this.hwLoader.getAllData().subscribe((hws) => {
         this.setHomework(hws, g);
       });
     }
+    // Load grades
+    this.scLoader.getAllData().subscribe((data) => {
+      this.grades = data;
+    });
   }
 
   private setHomework(hws: HomeworkModel[], gid: string) {

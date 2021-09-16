@@ -73,7 +73,9 @@ export class RouterService {
   getGroupUrl(group: string) {
     let curr = this.getCurrentUrlArray();
 
-    curr[0] = group;
+    if (curr[0] === 'me' && curr[1] === 'grades' && group !== 'me')
+      curr = [group, 'dashboard'];
+    else curr[0] = group;
 
     return curr;
   }

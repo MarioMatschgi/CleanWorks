@@ -1,5 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { SortDirection } from '@angular/material/sort';
 import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
@@ -13,7 +14,9 @@ export class ScListComponent
   extends MatTableBaseComponent<GradeModel>
   implements OnInit
 {
-  displayedColumns = ['subject', 'type', 'mark', 'score', 'remove'];
+  displayedColumns = ['subject', 'type', 'mark', 'score', 'date', 'remove'];
+  defaultSort = 'date';
+  defaultSortDir: SortDirection = 'desc';
   mobileWidth = '30em';
 
   constructor(public du: DataUtilService, bpo: BreakpointObserver) {
