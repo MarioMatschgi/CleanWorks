@@ -6,11 +6,9 @@
     margin-left: 1ch;
   }
 }
-
-i {
-  font-style: inherit;
-  vertical-align: baseline;
-  margin-left: 0;
+.icon {
+  display: inline-block;
+  width: 1.5em;
 }
 
 @font-face {

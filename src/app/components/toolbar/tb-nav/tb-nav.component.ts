@@ -25,10 +25,18 @@ export class TbNavComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.items = [
-      { url: 'homework', content: 'Homework' },
-      { url: 'subjects', content: 'Subjects' },
-      { urlArr: ['me', 'grades'], content: 'Grades' },
-      { url: 'appointments', content: 'Appointments' },
+      { url: 'homework', content: 'Homework', icon: this.gv.Icons.book },
+      { url: 'subjects', content: 'Subjects', icon: this.gv.Icons.subject },
+      {
+        urlArr: ['me', 'grades'],
+        content: 'Grades',
+        icon: this.gv.Icons.grade,
+      },
+      {
+        url: 'appointments',
+        content: 'Appointments',
+        icon: this.gv.Icons.calender,
+      },
     ];
     if (this.sidenav == null) {
       this.items = [

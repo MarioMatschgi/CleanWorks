@@ -18,6 +18,7 @@ export enum Icons {
   cogs = 'f085 fas',
   alarm = 'f34e fas',
   books = 'f5db fas',
+  book = 'f02d fas',
   profile = 'f007 fas',
   group = 'f0c0 fas',
   grade = 'f19d fas',

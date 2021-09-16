@@ -22,7 +22,7 @@ export class SnackbarService {
     type: MessageType,
     autoHideTime: number = this.standardAutoHideTime
   ) {
-    this._snackBar.open(msg, autoHideTime ? null : 'close', {
+    this._snackBar.open(msg, 'X', {
       duration: autoHideTime,
       verticalPosition: 'top',
       horizontalPosition: 'center',

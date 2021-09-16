@@ -233,3 +233,9 @@ textarea {
 snack-bar-container {
   margin-top: max(env(safe-area-inset-top), 8px) !important;
 }
+
+.mat-simple-snackbar-action {
+  button {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

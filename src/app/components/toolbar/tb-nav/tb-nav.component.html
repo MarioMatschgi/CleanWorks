@@ -6,8 +6,9 @@
     *ngFor="let item of items"
     (click)="sidenav.close()"
   >
-    <fa [fa]="item.icon" *ngIf="item.icon"></fa>
-    {{ item.content }}
+    <fa [fa]="item.icon" *ngIf="item.icon">
+      <span class="fa-after">{{ item.content }}</span>
+    </fa>
   </a>
 </div>
 

@@ -1,8 +1,8 @@
 <ng-content select=".fa-before"></ng-content>
 <span
   #fa_icon
-  [class]="'fa' + fastyle"
+  [class]="'icon fa' + fastyle"
   [style]="'line-height: ' + height + 'em; font-size: ' + fasize + 'em'"
   [innerHtml]="'\&\#x' + fa + ';'"
 ></span>
-<ng-content select=".fa-after"></ng-content>
+<ng-content></ng-content>
