@@ -1,5 +1,10 @@
 @import "/src/libraries/util/scss/component.scss";
 
 .flexbox > * {
-  max-width: 20ch;
+  max-width: 12em;
+  min-width: 20ch;
+
+  @media screen and (max-width: 41em) {
+    max-width: unset;
+  }
 }

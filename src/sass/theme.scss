@@ -194,6 +194,9 @@ textarea {
 .no-content-padding .mat-table {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
+.content-padding {
+  padding: 16px !important;
+}
 .mat-table {
   &.mobile-table {
     th.mat-header-cell,

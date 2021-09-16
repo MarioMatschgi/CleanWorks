@@ -1,3 +1,14 @@
+<div class="content-padding">
+  <div class="flexbox">
+    <button mat-raised-button background="primary" (click)="addMember()">
+      Add member
+    </button>
+    <button mat-raised-button background="warn" (click)="leaveGroup()">
+      Leave group
+    </button>
+  </div>
+</div>
+
 <table
   mat-table
   [dataSource]="dataSource"
@@ -11,16 +22,6 @@
       <span class="mobile-label">Name:</span>
       <span>{{ m.name || m.email }}</span>
     </td>
-    <td mat-footer-cell *matFooterCellDef>
-      <button
-        mat-raised-button
-        background="primary"
-        (click)="addMember()"
-        *ngIf="m == null"
-      >
-        Add member
-      </button>
-    </td>
   </ng-container>
 
   <ng-container matColumnDef="email">
@@ -29,7 +30,6 @@
       <span class="mobile-label">Email:</span>
       <span>{{ m.email }}</span>
     </td>
-    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <ng-container matColumnDef="role">
@@ -46,7 +46,6 @@
         </mat-select>
       </mat-form-field>
     </td>
-    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <ng-container matColumnDef="remove">
@@ -61,16 +60,10 @@
         Remove
       </button>
     </td>
-    <td mat-footer-cell *matFooterCellDef>
-      <button mat-raised-button background="warn" (click)="leaveGroup()">
-        Leave group
-      </button>
-    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let m; columns: displayedColumns"></tr>
-  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>
 
 <mat-paginator [pageSize]="startPageSize" [pageSizeOptions]="pageSizes">
