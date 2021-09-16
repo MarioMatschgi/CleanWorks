@@ -22,6 +22,7 @@ export class HwListComponent
   displayedColumns = [
     'title',
     'subject',
+    'group',
     'dueDate',
     'complete',
     'completed',

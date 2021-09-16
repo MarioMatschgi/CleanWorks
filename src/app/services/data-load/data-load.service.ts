@@ -34,11 +34,12 @@ export class DataLoadService<T extends ObjectiveModel> {
     });
   }
 
-  protected collection() {
+  protected collection(groupId: string = null) {
     if (this.loaderType === LoadServices.group) return this.getGroupCol();
 
+    const g = groupId || this.group;
     return this.getGroupCol()
-      .doc(this.group === 'me' ? `user_${this.auth.userData.uid}` : this.group)
+      .doc(g === 'me' ? `user_${this.auth.userData.uid}` : g)
       .collection(this.loaderType);
   }
 
@@ -66,10 +67,10 @@ export class DataLoadService<T extends ObjectiveModel> {
 
     const d = Endecryptor.encrypt(data);
 
-    const doc = await this.collection().add(d);
+    const doc = await this.collection(data.groupId).add(d);
 
     d.id = doc.id;
-    await this.collection().doc(d.id).set(d);
+    await this.collection(data.groupId).doc(d.id).set(d);
 
     return d.id;
   }
@@ -77,12 +78,12 @@ export class DataLoadService<T extends ObjectiveModel> {
   async updateData(data: T) {
     const d = Endecryptor.encrypt(data);
 
-    await this.collection().doc(d.id).set(d);
+    await this.collection(data.groupId).doc(d.id).set(d);
 
     return d.id;
   }
 
   async removeData(data: T) {
-    await this.collection().doc(data.id).delete();
+    await this.collection(data.groupId).doc(data.id).delete();
   }
 }
