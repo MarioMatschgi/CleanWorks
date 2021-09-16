@@ -5,6 +5,7 @@
     ctitle="Profile"
     csubtitle="Your account"
     *ngIf="userData.group == null; else groupInfo"
+    class="noTopRad"
   >
     <p>STATS, SETTINGS AND LOGOUT</p>
     <button mat-raised-button (click)="auth.signOut()">Logout</button>
@@ -14,6 +15,8 @@
       [icon]="gv.Icons.group"
       [ctitle]="userData.group.title"
       [csubtitle]="userData.group.description"
+      [noContentPadding]="true"
+      class="noTopRad"
     >
       <button mat-button class="header-btn" (click)="editGroup()">Edit</button>
       <gr-member-list-table

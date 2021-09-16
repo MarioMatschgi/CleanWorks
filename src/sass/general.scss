@@ -33,3 +33,11 @@ mat-sidenav-container,
 mat-sidenav-content {
   min-height: 100vh;
 }
+
+.noTopRad {
+  &.mat-card,
+  .mat-card {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  }
+}

@@ -5,6 +5,7 @@
     ctitle="Over due"
     csubtitle="It'll be fine, just do it now"
     [link]="dashboard ? ['homework'] : null"
+    [noContentPadding]="true"
     *ngIf="userData.data.hwPast?.length > 0"
   >
     <hw-list [data]="userData.data.hwPast"></hw-list>
@@ -16,6 +17,7 @@
     ctitle="Due today"
     csubtitle="Come on!"
     [link]="dashboard ? ['homework'] : null"
+    [noContentPadding]="true"
     *ngIf="userData.data.hwToday?.length > 0"
   >
     <hw-list [data]="userData.data.hwToday"></hw-list>
@@ -27,6 +29,7 @@
     ctitle="Due tomorrow"
     csubtitle="Let's do this!"
     [link]="dashboard ? ['homework'] : null"
+    [noContentPadding]="true"
     *ngIf="userData.data.hwTomorrow?.length > 0"
   >
     <hw-list [data]="userData.data.hwTomorrow"></hw-list>
@@ -38,6 +41,7 @@
     ctitle="For this week"
     csubtitle="The sooner, the better..."
     [link]="dashboard ? ['homework'] : null"
+    [noContentPadding]="true"
     *ngIf="userData.data.hwWeek?.length > 0"
   >
     <hw-list [data]="userData.data.hwWeek"></hw-list>
@@ -49,6 +53,7 @@
     ctitle="Completed"
     csubtitle="Finally..."
     [link]="dashboard ? ['homework'] : null"
+    [noContentPadding]="true"
     *ngIf="userData.data.hwCompleted?.length > 0"
   >
     <hw-list [data]="userData.data.hwCompleted"></hw-list>

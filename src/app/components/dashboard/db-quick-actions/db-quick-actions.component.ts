@@ -2,7 +2,7 @@ import { DialogService } from './../../../services/dialog.service';
 import { Component, OnInit } from '@angular/core';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
 import { HwNewDialogComponent } from '../../objectives/homework/hw-new-dialog/hw-new-dialog.component';
-import { SjNewDialogComponent } from '../../objectives/subject/sj-new-dialog/sj-new-dialog.component';
+import { ScNewDialogComponent } from '../../objectives/grades/sc-new-dialog/sc-new-dialog.component';
 
 @Component({
   selector: 'db-quick-actions',
@@ -21,11 +21,7 @@ export class DbQuickActionsComponent implements OnInit {
     this.dialogService.dialog.open(HwNewDialogComponent);
   }
 
-  newSubject() {
-    this.dialogService.dialog.open(SjNewDialogComponent);
-  }
-
   newGrade() {
-    // this.dialogService.dialog.open(GrNewDialogComponent);
+    this.dialogService.dialog.open(ScNewDialogComponent);
   }
 }

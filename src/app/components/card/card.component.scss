@@ -1,1 +1,9 @@
 @import "/src/libraries/util/scss/component.scss";
+
+.mat-card.no-content-padding {
+  padding: 0 !important;
+
+  .mat-card-header {
+    padding: 16px !important;
+  }
+}

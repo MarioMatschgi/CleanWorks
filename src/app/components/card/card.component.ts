@@ -12,6 +12,7 @@ export class DbElementComponent implements OnInit {
   @Input() csubtitle: string;
   @Input() icon: Icons;
   @Input() link: string[];
+  @Input() noContentPadding = false;
 
   constructor(public gv: GlobalVariablesService) {}
 

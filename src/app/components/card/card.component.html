@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [class.no-content-padding]="noContentPadding">
   <mat-card-header>
     <fa [fa]="icon" mat-card-avatar *ngIf="icon"></fa>
     <mat-card-title [innerHTML]="ctitle"></mat-card-title>

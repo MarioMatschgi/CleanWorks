@@ -13,6 +13,9 @@
     --col-background: #{$col-black};
     --col-font: #{$col-white};
   }
+  --border-radius: 1em;
+  --box-shadow: rgba(0, 0, 0, 0.098) 0px 3px 10px,
+    rgba(0, 0, 0, 0.132) 0px 3px 6px;
 }
 
 @mixin disabled {
@@ -188,37 +191,52 @@ textarea {
   display: none;
 }
 
-.mat-table.mobile-table {
-  th.mat-header-cell,
-  td.mat-cell,
-  td.mat-footer-cell {
-    border: none !important;
-  }
-  td {
-    padding-bottom: 7px !important;
-    width: 100% !important;
-  }
-  td:first-of-type {
-    padding-left: 0 !important;
-  }
-  td:last-of-type {
-    padding-right: 0 !important;
-  }
-  tr.mat-header-row {
-    display: none;
-  }
-  .mat-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 24px;
-    height: unset;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  }
-  .mobile-label {
-    display: inline-block;
-    font-weight: bold;
-    min-width: 10ch !important;
+.no-content-padding .mat-table {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mat-table {
+  &.mobile-table {
+    th.mat-header-cell,
+    td.mat-cell,
+    td.mat-footer-cell {
+      border: none !important;
+    }
+    td {
+      padding-bottom: 7px !important;
+      width: 100% !important;
+    }
+    td:first-of-type {
+      padding-left: 0 !important;
+    }
+    td:last-of-type {
+      padding-right: 0 !important;
+    }
+    tr.mat-header-row {
+      display: none;
+    }
+    tbody {
+      tr:first-of-type {
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+      }
+      tr:last-of-type {
+        border-bottom-left-radius: 1em;
+        border-bottom-right-radius: 1em;
+      }
+    }
+    .mat-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 24px;
+      height: unset;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .mobile-label {
+      display: inline-block;
+      font-weight: bold;
+      min-width: 10ch !important;
+    }
   }
 }
 
@@ -226,8 +244,16 @@ textarea {
   background-color: unset !important;
 }
 
+.mat-paginator {
+  background: none !important;
+}
 .mat-paginator-container {
   justify-content: end !important;
+  padding: 0 24px !important;
+
+  .mat-paginator-page-size-label {
+    margin: 0 !important;
+  }
 }
 
 snack-bar-container {
@@ -238,4 +264,17 @@ snack-bar-container {
   button {
     color: rgba(255, 255, 255, 0.7);
   }
+}
+.mat-button,
+.mat-raised-button,
+.mat-stroked-button {
+  border-radius: calc(var(--border-radius) / 2) !important;
+}
+.mat-menu-panel,
+.mat-dialog-container,
+.mat-card {
+  border-radius: var(--border-radius) !important;
+}
+.mat-card {
+  box-shadow: var(--box-shadow) !important;
 }
