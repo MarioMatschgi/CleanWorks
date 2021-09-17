@@ -9,17 +9,7 @@ import { UserDataService } from 'src/app/services/user-data.service';
 export class ScDiagramComponent implements OnInit {
   @Input() subjectId: string;
 
-  data = {
-    labels: [],
-    datasets: [
-      {
-        label: 'Grade',
-        data: [],
-        borderColor: '#FFA726',
-        tension: 0.4,
-      },
-    ],
-  };
+  data;
 
   options = {
     scales: {
@@ -37,14 +27,29 @@ export class ScDiagramComponent implements OnInit {
   constructor(private userData: UserDataService) {}
 
   ngOnInit(): void {
-    const d = this.userData.grades.sort((a, b) => {
-      return a.date > b.date ? 1 : -1;
-    });
-    for (const grade of d) {
-      if (grade.subjectId === this.subjectId) {
-        this.data.labels.push(grade.date.format('DD.MM.YYYY'));
-        this.data.datasets[0].data.push(grade.mark);
+    this.userData.events.subscribe(this.userData.events.sc, () => {
+      const data = {
+        labels: [],
+        datasets: [
+          {
+            label: 'Grade',
+            data: [],
+            borderColor: '#FFA726',
+            tension: 0.4,
+          },
+        ],
+      };
+
+      const d = this.userData.grades.sort((a, b) => {
+        return a.date > b.date ? 1 : -1;
+      });
+      for (const grade of d) {
+        if (grade.subjectId === this.subjectId) {
+          data.labels.push(grade.date.format('DD.MM.YYYY'));
+          data.datasets[0].data.push(grade.mark);
+        }
       }
-    }
+      this.data = data;
+    });
   }
 }

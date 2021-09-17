@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
@@ -12,6 +12,22 @@ import { HwDataLoadService } from './data-load/hw-data-load.service';
 import { ScDataLoadService } from './data-load/sc-data-load.service';
 import { SjDataLoadService } from './data-load/sj-data-load.service';
 
+export class UserDataEvents {
+  hw = new EventEmitter<void>();
+  sj = new EventEmitter<void>();
+  gr = new EventEmitter<void>();
+  sc = new EventEmitter<void>();
+
+  subscribe(evt: EventEmitter<void>, callback: () => void) {
+    callback();
+    evt.subscribe(() => {
+      // console.log('DDD');
+
+      callback();
+    });
+  }
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,6 +38,9 @@ export class UserDataService {
   isGroupAdmin = false;
   grades: GradeModel[] = [];
 
+  events = new UserDataEvents();
+
+  private inited = false;
   constructor(
     private grLoader: GrDataLoadService,
     private sjLoader: SjDataLoadService,
@@ -45,7 +64,6 @@ export class UserDataService {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
         this.groupId = e.url.split('/')[1];
-        console.log(this.groupId, router.url.split('/')[1]);
 
         if (this.groupId !== router.url.split('/')[1]) {
           if (this.groupId === 'me') this.group = null;
@@ -68,6 +86,9 @@ export class UserDataService {
   }
 
   private updateData() {
+    if (this.inited) return;
+    this.inited = true;
+
     this.data = new UserDataModel();
 
     if (this.groupId === 'me') {
@@ -75,12 +96,14 @@ export class UserDataService {
         this.data.groups = grs as GroupModel[];
 
         this.updateGroups(['me', ...grs.map((g) => g.id)]);
+        this.events.gr.emit();
       });
     } else {
       this.grLoader.getAllData().subscribe((grs) => {
         this.data.groups = grs as GroupModel[];
 
         this.updateGroups([this.groupId]);
+        this.events.gr.emit();
       });
     }
   }
@@ -90,17 +113,20 @@ export class UserDataService {
     this.sjLoader.group = gids.length === 1 ? gids[0] : 'me';
     this.sjLoader.getAllData().subscribe((sjs) => {
       this.data.subjects = sjs;
+      this.events.sj.emit();
     });
     // Load homework
     for (const g of gids) {
       this.hwLoader.group = g;
       this.hwLoader.getAllData().subscribe((hws) => {
         this.setHomework(hws, g);
+        this.events.hw.emit();
       });
     }
     // Load grades
     this.scLoader.getAllData().subscribe((data) => {
       this.grades = data;
+      this.events.sc.emit();
     });
   }
 
