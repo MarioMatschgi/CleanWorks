@@ -14,6 +14,7 @@ import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
+import { AuthService } from 'src/libraries/authentication/services/auth.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
 
 @Component({
@@ -33,9 +34,10 @@ export class HwDetailComponent implements OnInit {
   constructor(
     public userData: UserDataService,
     public bps: BreakpointService,
-    private du: DataUtilService,
+    public du: DataUtilService,
     private loader: LoadService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -53,7 +55,11 @@ export class HwDetailComponent implements OnInit {
   }
 
   setCompleted(evt: MatCheckboxChange) {
-    this.hw.completed = evt.checked ? moment() : null;
+    if (evt.checked) {
+      this.hw.completed[this.auth.userData.uid] = moment();
+    } else {
+      delete this.hw.completed[this.auth.userData.uid];
+    }
     this.save();
   }
 

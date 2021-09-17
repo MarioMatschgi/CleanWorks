@@ -33,7 +33,7 @@ export class HwListComponent
 
   get allCompleted(): boolean {
     return (
-      this.dataSource.data.find((e) => e.completed != undefined) == undefined
+      this.dataSource.data.find((e) => this.du.hw.isCompleted(e)) == undefined
     );
   }
 

@@ -21,8 +21,6 @@ export class UserDataEvents {
   subscribe(evt: EventEmitter<void>, callback: () => void) {
     callback();
     evt.subscribe(() => {
-      // console.log('DDD');
-
       callback();
     });
   }
@@ -141,7 +139,7 @@ export class UserDataService {
       const now = moment();
       const tomorrow = moment().add(1, 'days');
 
-      if (hw.completed) {
+      if (this.isCompleted(hw)) {
         this.data.hwCompleted.push(hw);
       } else if (hw.dueDate.isBefore(now, 'date')) {
         this.data.hwPast.push(hw);
@@ -155,6 +153,11 @@ export class UserDataService {
         this.data.hwFuture.push(hw);
       }
     }
+  }
+
+  private isCompleted(hw: HomeworkModel): boolean {
+    if (hw.completed == null) return false;
+    return Object.keys(hw.completed).includes(this.auth.userData.uid);
   }
 
   private filterByGroup(gid: string, arr: any[]): any[] {

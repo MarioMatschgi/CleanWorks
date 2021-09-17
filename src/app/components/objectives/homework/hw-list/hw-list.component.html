@@ -44,7 +44,7 @@
         <button
           mat-raised-button
           background="success"
-          (click)="du.hw.complete(hw); $event.stopPropagation()"
+          (click)="du.hw.setCompleted(hw, true); $event.stopPropagation()"
         >
           Complete
         </button>
@@ -55,7 +55,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Completed</th>
       <td mat-cell *matCellDef="let hw">
         <span class="mobile-label">Completed:</span>
-        {{ hw.completed | normalDate }}
+        {{ du.hw.getCompleted(hw) | normalDate }}
       </td>
     </ng-container>
 

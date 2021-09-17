@@ -7,12 +7,13 @@ import {
   IDataUtilBaseService,
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
+import { AuthService } from 'src/libraries/authentication/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
-  constructor(private base: DataUtilBaseService) {}
+  constructor(private base: DataUtilBaseService, private auth: AuthService) {}
 
   async save(hw: HomeworkModel): Promise<void> {
     await this.base.hwLoader.updateData(hw);
@@ -45,14 +46,31 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
     });
   }
 
-  async complete(hw: HomeworkModel) {
-    if (hw.completed != null) hw.completed = null;
-    else hw.completed = moment();
+  isOverDue(hw: HomeworkModel) {
+    return !this.isCompleted(hw) && moment().diff(hw.dueDate) > 0;
+  }
 
+  async setCompleted(hw: HomeworkModel, completed: boolean) {
+    if (completed) {
+      if (hw.completed == null) {
+        hw.completed = {};
+      }
+      hw.completed[this.auth.userData.uid] = moment();
+    } else {
+      delete completed[this.auth.userData.uid];
+    }
     await this.save(hw);
   }
 
-  isOverDue(hw: HomeworkModel) {
-    return !hw.completed && moment().diff(hw.dueDate) > 0;
+  isCompleted(hw: HomeworkModel): boolean {
+    if (hw.completed == null) return false;
+    console.log(Object.keys(hw.completed));
+
+    return Object.keys(hw.completed).includes(this.auth.userData.uid);
+  }
+
+  getCompleted(hw: HomeworkModel): moment.Moment {
+    if (hw.completed == null) return null;
+    return hw.completed[this.auth.userData.uid];
   }
 }

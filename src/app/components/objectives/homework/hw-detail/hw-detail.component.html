@@ -68,7 +68,10 @@
   </mat-form-field>
 
   <div class="mat-form-field-wrapper">
-    <mat-slide-toggle [checked]="hw.completed" (change)="setCompleted($event)">
+    <mat-slide-toggle
+      [checked]="du.hw.isCompleted(hw)"
+      (change)="setCompleted($event)"
+    >
       completed
     </mat-slide-toggle>
   </div>
