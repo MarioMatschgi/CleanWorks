@@ -38,7 +38,6 @@ export class UserDataService {
 
   events = new UserDataEvents();
 
-  private inited = false;
   constructor(
     private grLoader: GrDataLoadService,
     private sjLoader: SjDataLoadService,
@@ -84,9 +83,6 @@ export class UserDataService {
   }
 
   private updateData() {
-    if (this.inited) return;
-    this.inited = true;
-
     this.data = new UserDataModel();
 
     if (this.groupId === 'me') {

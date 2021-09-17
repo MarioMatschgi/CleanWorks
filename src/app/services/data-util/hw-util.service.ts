@@ -64,7 +64,6 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
 
   isCompleted(hw: HomeworkModel): boolean {
     if (hw.completed == null) return false;
-    console.log(Object.keys(hw.completed));
 
     return Object.keys(hw.completed).includes(this.auth.userData.uid);
   }
