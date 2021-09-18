@@ -10,6 +10,7 @@
       "edit": "Edit",
       "close": "Close",
       "remove": "Remove",
+      "delete": "Delete",
       "add": "Add"
     },
     "err": {
@@ -117,6 +118,13 @@
         "subtitle": "Your grades"
       }
     },
+    "detail": {
+      "type": "type",
+      "mark": "Mark",
+      "score": "Score",
+      "out_of": "out of",
+      "date": "Date"
+    },
     "no_content": {
       "sc": "No grades found.",
       "diagram": "No grades to visualize."
@@ -141,6 +149,10 @@
     }
   },
 
+  "ap": {
+    "name": "Appointment"
+  },
+
   "profile": {
     "settings": {
       "title": "Settings",
@@ -158,6 +170,22 @@
       "buttons": {
         "settings": "Settings"
       }
+    }
+  },
+
+  "dialog": {
+    "delete": {
+      "title": "Delete item(s)",
+      "subtitle": "Are you sure you want to delete the following items?"
+    }
+  },
+
+  "material": {
+    "paginator": {
+      "items_per_page": "Items per page",
+      "nex_page": "Next page",
+      "previous_page": "Previous page",
+      "of": "of"
     }
   },
 

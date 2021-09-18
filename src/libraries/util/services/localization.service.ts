@@ -1,7 +1,12 @@
-import { Injectable } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import { EventEmitter, Injectable } from '@angular/core';
 import * as data_en from '../../../app/lang/english.json';
 import * as data_de from '../../../app/lang/german.json';
 import { AuthService } from '../../authentication/services/auth.service';
+import localeGerman from '@angular/common/locales/de';
+import localeEnglish from '@angular/common/locales/en';
+import * as moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 
 /**
  * Service for Localization
@@ -30,7 +35,12 @@ export class LocalizationService {
    */
   lang_list: string[];
 
-  constructor(public auth: AuthService) {
+  langChanged = new EventEmitter<string>();
+
+  constructor(
+    private auth: AuthService,
+    private dateAdapter: DateAdapter<any>
+  ) {
     this.langs['en'] = this.getLangData(data_en);
     this.langs['de'] = this.getLangData(data_de);
     this.lang_list = Object.keys(this.langs);
@@ -50,6 +60,21 @@ export class LocalizationService {
     // RecipeHelper.lang = this.get_eval_lang(this.lang);
 
     this.data = this.langs[this.lang] || this.langs['en'];
+    switch (this.lang) {
+      case 'de':
+        registerLocaleData(localeGerman);
+        break;
+
+      default:
+        registerLocaleData(localeEnglish);
+    }
+    this.setLang(this.lang);
+    this.langChanged.emit(this.lang);
+  }
+
+  private setLang(lang: string) {
+    moment.locale(lang);
+    this.dateAdapter.setLocale(lang);
   }
 
   /**

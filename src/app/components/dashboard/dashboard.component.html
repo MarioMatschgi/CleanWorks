@@ -7,7 +7,9 @@
     *ngIf="userData.group == null; else groupInfo"
     class="noTopRad"
   >
-    <button mat-raised-button (click)="auth.signOut()">Logout</button>
+    <button mat-raised-button (click)="auth.signOut()">
+      {{ lang.data.lib.auth.buttons.logout.logout }}
+    </button>
   </card>
   <ng-template #groupInfo>
     <card

@@ -31,10 +31,14 @@ import { HwListComponent } from './components/objectives/homework/hw-list/hw-lis
 import { HwDetailComponent } from './components/objectives/homework/hw-detail/hw-detail.component';
 import { HwDetailDialogComponent } from './components/objectives/homework/hw-detail-dialog/hw-detail-dialog.component';
 import {
+  NgxMatDateAdapter,
   NgxMatDatetimePickerModule,
   NgxMatTimepickerModule,
 } from '@angular-material-components/datetime-picker';
-import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import {
+  NgxMatMomentAdapter,
+  NgxMatMomentModule,
+} from '@angular-material-components/moment-adapter';
 import { NormalDatePipe } from './pipes/normal-date.pipe';
 import { GradesComponent } from './components/objectives/grades/grades.component';
 import { GrNewComponent } from './components/objectives/groups/gr-new/gr-new.component';
@@ -56,6 +60,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TbNavComponent } from './components/toolbar/tb-nav/tb-nav.component';
 import { TbGroupsComponent } from './components/toolbar/tb-groups/tb-groups.component';
 import { TbProfileComponent } from './components/toolbar/tb-profile/tb-profile.component';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntlLocal } from 'src/libraries/util/material-local-overrides/mat-paginator-intl-local';
 
 @NgModule({
   declarations: [
@@ -137,6 +145,7 @@ import { TbProfileComponent } from './components/toolbar/tb-profile/tb-profile.c
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: { panelClass: 'mat-dialog-override' },
     },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlLocal },
   ],
   bootstrap: [AppComponent],
 })

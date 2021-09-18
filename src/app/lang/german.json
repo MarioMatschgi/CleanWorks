@@ -10,6 +10,7 @@
       "edit": "Bearbeiten",
       "close": "Schießen",
       "remove": "Entfernen",
+      "delete": "Löschen",
       "add": "Hinzufügen"
     },
     "err": {
@@ -117,6 +118,13 @@
         "subtitle": "Deine Noten"
       }
     },
+    "detail": {
+      "type": "Typ",
+      "mark": "Note",
+      "score": "Punkte",
+      "out_of": "von",
+      "date": "Datum"
+    },
     "no_content": {
       "sc": "Keine Noten gefunden.",
       "diagram": "Keine Noten zum Visualisieren."
@@ -141,6 +149,10 @@
     }
   },
 
+  "ap": {
+    "name": "Termin"
+  },
+
   "profile": {
     "settings": {
       "title": "Einstellungen",
@@ -158,6 +170,22 @@
       "buttons": {
         "settings": "Einstellungen"
       }
+    }
+  },
+
+  "dialog": {
+    "delete": {
+      "title": "Wirklich löschen?",
+      "subtitle": "Bist du dir sicher, folgende Daten zu löschen?"
+    }
+  },
+
+  "material": {
+    "paginator": {
+      "items_per_page": "Einräge pro Seite",
+      "nex_page": "Nächste Seite",
+      "previous_page": "Vorige Seite",
+      "of": "von"
     }
   },
 

@@ -1,6 +1,6 @@
 <form class="grow" #form="ngForm">
   <mat-form-field>
-    <mat-label>Type</mat-label>
+    <mat-label>{{ lang.data.sc.detail.type }}</mat-label>
     <mat-select
       name="type"
       (submit)="save()"
@@ -10,45 +10,57 @@
     >
       <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
     </mat-select>
-    <mat-error [hidden]="!type.valid">Type is required!</mat-error>
+    <mat-error [hidden]="!type.valid">
+      {{ lang.data.sc.detail.type }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Mark</mat-label>
+    <mat-label>{{ lang.data.sc.detail.mark }}</mat-label>
     <mat-select required [(ngModel)]="sc.mark" name="mark" #mark>
       <mat-option *ngFor="let mark of marks; let i = index" [value]="i + 1">
         {{ mark }}
       </mat-option>
     </mat-select>
-    <mat-error [hidden]="!mark.valid">Mark is required!</mat-error>
+    <mat-error [hidden]="!mark.valid">
+      {{ lang.data.sc.detail.mark }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <div class="form-flex">
     <mat-form-field>
-      <mat-label>Score</mat-label>
+      <mat-label>{{ lang.data.sc.detail.score }}</mat-label>
       <input
         matInput
         type="number"
         name="score"
         [(ngModel)]="sc.score"
         [required]="sc.scoreMax"
+        #score
       />
+      <mat-error [hidden]="!score.valid">
+        {{ lang.data.sc.detail.score }} {{ lang.data.general.err.req }}
+      </mat-error>
     </mat-form-field>
     <span>&nbsp;/&nbsp;</span>
     <mat-form-field>
-      <mat-label>out of</mat-label>
+      <mat-label>{{ lang.data.sc.detail.out_of }}</mat-label>
       <input
         matInput
         type="number"
         name="scoreMax"
         [(ngModel)]="sc.scoreMax"
         [required]="sc.score"
+        #scoreMax
       />
+      <mat-error [hidden]="!scoreMax.valid">
+        {{ lang.data.sc.detail.out_of }} {{ lang.data.general.err.req }}
+      </mat-error>
     </mat-form-field>
   </div>
 
   <mat-form-field>
-    <mat-label>Date</mat-label>
+    <mat-label>{{ lang.data.sc.detail.date }}</mat-label>
     <input
       matInput
       [matDatepicker]="dueDatePicker"
@@ -67,11 +79,13 @@
       #dueDatePicker
       [touchUi]="bps.datepickerMobile"
     ></mat-datepicker>
-    <mat-error [hidden]="!dueDate.valid">Date is required!</mat-error>
+    <mat-error [hidden]="!dueDate.valid">
+      {{ lang.data.sc.detail.date }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Subject</mat-label>
+    <mat-label>{{ lang.data.sj.name }}</mat-label>
     <mat-select
       name="subject"
       required
@@ -86,11 +100,13 @@
         No subjects found
       </mat-option>
     </mat-select>
-    <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
+    <mat-error [hidden]="!subject.valid">
+      {{ lang.data.sj.name }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Appointment</mat-label>
+    <mat-label>{{ lang.data.ap.name }}</mat-label>
     <mat-select
       name="appointment"
       [(ngModel)]="sc.appointmentId"

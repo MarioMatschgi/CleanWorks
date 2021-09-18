@@ -14,6 +14,7 @@ import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
   selector: 'sc-detail',
@@ -34,6 +35,7 @@ export class ScDetailComponent implements OnInit {
 
   constructor(
     public gv: GlobalVariablesService,
+    public lang: LocalizationService,
     public userData: UserDataService,
     public bps: BreakpointService,
     private du: DataUtilService,

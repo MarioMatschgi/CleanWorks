@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Grade</h1>
+<h1 mat-dialog-title>{{ lang.data.sc.name }}</h1>
 <mat-dialog-content>
   <sc-detail [score]="data.grade"></sc-detail>
 </mat-dialog-content>
 <mat-dialog-actions class="space-between">
   <div></div>
-  <button mat-button [mat-dialog-close]="false">Close</button>
+  <button mat-button [mat-dialog-close]="false">
+    {{ lang.data.general.buttons.close }}
+  </button>
 </mat-dialog-actions>
