@@ -12,5 +12,7 @@
   >
     {{ auth.userData.uid }}
   </button>
-  <button mat-menu-item (click)="auth.signOut()">Log out</button>
+  <button mat-menu-item (click)="auth.signOut()">
+    {{ lang.data.lib.auth.buttons.logout.logout }}
+  </button>
 </mat-menu>

@@ -46,6 +46,7 @@ export class LocalizationService {
    */
   update_lang(lang: string) {
     this.lang = lang;
+    this.lang = 'de';
     // RecipeHelper.lang = this.get_eval_lang(this.lang);
 
     this.data = this.langs[this.lang] || this.langs['en'];

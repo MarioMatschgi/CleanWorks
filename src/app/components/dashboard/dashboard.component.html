@@ -2,12 +2,11 @@
   <!-- PROFILE -->
   <card
     [icon]="gv.Icons.profile"
-    ctitle="Profile"
-    csubtitle="Your account"
+    [ctitle]="lang.data.dashboard.profile.title"
+    [csubtitle]="lang.data.dashboard.profile.subtitle"
     *ngIf="userData.group == null; else groupInfo"
     class="noTopRad"
   >
-    <p>STATS, SETTINGS AND LOGOUT</p>
     <button mat-raised-button (click)="auth.signOut()">Logout</button>
   </card>
   <ng-template #groupInfo>
@@ -18,7 +17,9 @@
       [noContentPadding]="true"
       class="noTopRad"
     >
-      <button mat-button class="header-btn" (click)="editGroup()">Edit</button>
+      <button mat-button class="header-btn" (click)="editGroup()">
+        {{ lang.data.general.buttons.edit }}
+      </button>
       <gr-member-list-table
         [data]="userData.group.members"
       ></gr-member-list-table>
@@ -28,20 +29,20 @@
   <!-- QUICK-ACTIONS -->
   <card
     [icon]="gv.Icons.cogs"
-    ctitle="Quick-Actions"
-    csubtitle="Some quick things"
+    [ctitle]="lang.data.dashboard.quick_actions.title"
+    [csubtitle]="lang.data.dashboard.quick_actions.subtitle"
   >
     <db-quick-actions></db-quick-actions>
   </card>
 
   <!-- APPOINTMENTS -->
-  <card
+  <!-- <card
     [icon]="gv.Icons.calender_checked"
-    ctitle="Appointments"
-    csubtitle="All your appointments"
+    [ctitle]="lang.data.dashboard.appointments.subtitle"
+    [csubtitle]="lang.data.dashboard.appointments.subtitle"
   >
     <p>LIST OF APPOINTMENTS, SORTED BY DATE</p>
-  </card>
+  </card> -->
 
   <!-- HOMEWORK -->
   <hw-dashboard [dashboard]="true"></hw-dashboard>

@@ -6,7 +6,138 @@
     },
     "buttons": {
       "cancel": "Abbrechen",
-      "ok": "Ok"
+      "ok": "Ok",
+      "edit": "Bearbeiten",
+      "close": "Schießen",
+      "remove": "Entfernen",
+      "add": "Hinzufügen"
+    },
+    "err": {
+      "req": "ist erforderlich!"
+    }
+  },
+
+  "nav": {
+    "hw": "Hausaufgaben",
+    "sj": "Fächer",
+    "sc": "Noten",
+    "ap": "Termine",
+    "mine": "Meine"
+  },
+
+  "dashboard": {
+    "profile": {
+      "title": "Profil",
+      "subtitle": "Dein Account"
+    },
+    "quick_actions": {
+      "title": "Schnell-Aktionen",
+      "subtitle": "Einige Kurzbefehle"
+    },
+    "appointments": {
+      "title": "Termine",
+      "subtitle": "Alle deine Termine"
+    }
+  },
+
+  "hw": {
+    "name": "Hausaufgabe",
+    "subtitle": "Alle Hausaufgaben auf einen Blick",
+    "dashboard": {
+      "over": {
+        "title": "Überfällig",
+        "subtitle": "Wird schon gut gehen - also los!"
+      },
+      "today": {
+        "title": "Bis heute",
+        "subtitle": "Komm schon!"
+      },
+      "tomorrow": {
+        "title": "Bis morgen",
+        "subtitle": "Los gehts!"
+      },
+      "week": {
+        "title": "Diese Woche",
+        "subtitle": "Je früher, desto besser..."
+      },
+      "completed": {
+        "title": "Fertig",
+        "subtitle": "Endlich..."
+      },
+      "all": {
+        "subtitle": "Mehr Motivation?"
+      }
+    },
+    "detail": {
+      "name": "Name",
+      "description": "Beschreibung",
+      "due_date": "Abgabedatum",
+      "subject": "Fach",
+      "complete": "Fertig",
+      "completed": "Fertiggestellt"
+    },
+    "no_content": "No homework found.",
+    "new": {
+      "title": "Neue Aufgabe",
+      "btn": "Neue Aufgabe hinzufügen"
+    },
+    "snackbar": {
+      "new": "Neue Aufgabe hinzugefügt: %hw%",
+      "save": "Aufgabe gespeichert: %hw%",
+      "delete": "Aufgabe gelöscht: %hw%"
+    }
+  },
+
+  "sj": {
+    "name": "Fächer",
+    "subtitle": "Alle deine Fächer auf einen Blick",
+    "detail": {
+      "name": "Name"
+    },
+    "new": {
+      "title": "Neues Fach",
+      "btn": "Neues Fach hinzufügen"
+    },
+    "snackbar": {
+      "new": "Neues Fach hinzugefügt: %sj%",
+      "save": "Fach gespeichert: %sj%",
+      "delete": "Fach gelöscht: %sj%"
+    }
+  },
+
+  "sc": {
+    "name": "Note",
+    "subtitle": "Alle deine Noten auf einen Blick",
+    "dashboard": {
+      "diagrams": {
+        "title": "Diagramme",
+        "subtitle": "Deine Noten, visualisiert"
+      },
+      "all": {
+        "subtitle": "Deine Noten"
+      }
+    },
+    "no_content": {
+      "sc": "Keine Noten gefunden.",
+      "diagram": "Keine Noten zum Visualisieren."
+    },
+    "new": {
+      "title": "Neue Note",
+      "btn": "Neue Note hinzufügen"
+    },
+    "snackbar": {
+      "new": "Neue Note hinzugefügt",
+      "save": "Note gespeichert",
+      "delete": "Note gelöscht"
+    }
+  },
+
+  "gr": {
+    "name": "Gruppe",
+    "snackbar": {
+      "new": "Neue Gruppe hinzugefügt: %gr%",
+      "save": "Gruppe gespeichert: %gr%",
+      "delete": "Gruppe gelöscht: %gr%"
     }
   },
 

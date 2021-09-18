@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'src/app/services/dialog.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 import { SjNewDialogComponent } from './sj-new-dialog/sj-new-dialog.component';
 
 @Component({
@@ -12,6 +13,7 @@ import { SjNewDialogComponent } from './sj-new-dialog/sj-new-dialog.component';
 export class SubjectsComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
+    public lang: LocalizationService,
     public userData: UserDataService,
     public gv: GlobalVariablesService
   ) {}

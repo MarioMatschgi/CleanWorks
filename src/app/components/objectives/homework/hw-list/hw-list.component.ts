@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import { HomeworkModel } from 'src/app/models/objectives/homework.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
   selector: 'hw-list',
@@ -39,6 +40,7 @@ export class HwListComponent
 
   constructor(
     public du: DataUtilService,
+    public lang: LocalizationService,
     private cd: ChangeDetectorRef,
     bpo: BreakpointObserver
   ) {

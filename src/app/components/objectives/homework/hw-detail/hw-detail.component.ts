@@ -16,6 +16,7 @@ import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
 import { LoadService } from 'src/libraries/loading/services/load.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
   selector: 'hw-detail',
@@ -33,6 +34,7 @@ export class HwDetailComponent implements OnInit {
 
   constructor(
     public userData: UserDataService,
+    public lang: LocalizationService,
     public bps: BreakpointService,
     public du: DataUtilService,
     private loader: LoadService,

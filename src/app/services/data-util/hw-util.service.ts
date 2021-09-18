@@ -8,18 +8,23 @@ import {
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
-  constructor(private base: DataUtilBaseService, private auth: AuthService) {}
+  constructor(
+    public lang: LocalizationService,
+    private base: DataUtilBaseService,
+    private auth: AuthService
+  ) {}
 
   async save(hw: HomeworkModel): Promise<void> {
     await this.base.hwLoader.updateData(hw);
 
     this.base.snackbar.displayTop(
-      `Successfully saved homework "${hw.title}"`,
+      this.lang.data.hw.snackbar.new.replace('%hw%', hw.title),
       MessageType.Info
     );
   }
@@ -33,7 +38,7 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
           await this.base.hwLoader.removeData(hw);
 
           this.base.snackbar.displayTop(
-            `Successfully deleted homework "${hw.title}"`,
+            this.lang.data.hw.snackbar.delete.replace('%hw%', hw.title),
             MessageType.Info
           );
         }

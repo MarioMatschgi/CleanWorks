@@ -4,6 +4,7 @@ import {
   SnackbarService,
   MessageType,
 } from 'src/app/services/snackbar.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 import { HwNewComponent } from '../hw-new/hw-new.component';
 
 @Component({
@@ -15,6 +16,7 @@ export class HwNewDialogComponent implements OnInit {
   @ViewChild('hwNew') hwNew: HwNewComponent;
 
   constructor(
+    public lang: LocalizationService,
     public dialogRef: MatDialogRef<HwNewDialogComponent>,
     private snackbar: SnackbarService
   ) {}
@@ -25,7 +27,10 @@ export class HwNewDialogComponent implements OnInit {
     if (await this.hwNew.addNew()) {
       this.dialogRef.close();
       this.snackbar.displayTop(
-        'Successfully added a new homework',
+        this.lang.data.hw.snackbar.new.replace(
+          '%hw%',
+          this.hwNew.hwDetail.hw.title
+        ),
         MessageType.Info
       );
     }

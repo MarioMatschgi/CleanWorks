@@ -5,18 +5,22 @@ import {
   IDataUtilBaseService,
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GrUtilService implements IDataUtilBaseService<GroupModel> {
-  constructor(private base: DataUtilBaseService) {}
+  constructor(
+    public lang: LocalizationService,
+    private base: DataUtilBaseService
+  ) {}
 
   async save(gr: GroupModel): Promise<void> {
     await this.base.grLoader.updateData(gr);
 
     this.base.snackbar.displayTop(
-      `Successfully saved group "${gr.title}"`,
+      this.lang.data.gr.snackbar.save.replace('%gr%', gr.title),
       MessageType.Info
     );
   }
@@ -30,7 +34,7 @@ export class GrUtilService implements IDataUtilBaseService<GroupModel> {
           await this.base.grLoader.removeData(gr);
 
           this.base.snackbar.displayTop(
-            `Successfully deleted group "${gr.title}"`,
+            this.lang.data.gr.snackbar.delete.replace('%gr%', gr.title),
             MessageType.Info
           );
         }

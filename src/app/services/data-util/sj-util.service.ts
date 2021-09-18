@@ -5,18 +5,22 @@ import {
   IDataUtilBaseService,
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
-  constructor(private base: DataUtilBaseService) {}
+  constructor(
+    public lang: LocalizationService,
+    private base: DataUtilBaseService
+  ) {}
 
   async save(sj: SubjectModel): Promise<void> {
     await this.base.sjLoader.updateData(sj);
 
     this.base.snackbar.displayTop(
-      `Successfully saved subject "${sj.title}"`,
+      this.lang.data.sj.snackbar.save.replace('%sj%', sj.title),
       MessageType.Info
     );
   }
@@ -30,7 +34,7 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
           await this.base.sjLoader.removeData(sj);
 
           this.base.snackbar.displayTop(
-            `Successfully deleted subject "${sj.title}"`,
+            this.lang.data.sj.snackbar.delete.replace('%sj%', sj.title),
             MessageType.Info
           );
         }

@@ -4,6 +4,7 @@ import {
   SnackbarService,
   MessageType,
 } from 'src/app/services/snackbar.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 import { ScNewComponent } from '../sc-new/sc-new.component';
 
 @Component({
@@ -15,6 +16,7 @@ export class ScNewDialogComponent implements OnInit {
   @ViewChild('scNew') scNew: ScNewComponent;
 
   constructor(
+    public lang: LocalizationService,
     public dialogRef: MatDialogRef<ScNewDialogComponent>,
     private snackbar: SnackbarService
   ) {}
@@ -25,7 +27,7 @@ export class ScNewDialogComponent implements OnInit {
     if (await this.scNew.addNew()) {
       this.dialogRef.close();
       this.snackbar.displayTop(
-        `Successfully added a new grade`,
+        this.lang.data.sc.snackbar.new,
         MessageType.Info
       );
     }

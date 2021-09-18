@@ -6,17 +6,24 @@ import {
 import { MessageType } from '../snackbar.service';
 import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { ScDetailDialogComponent } from 'src/app/components/objectives/grades/sc-detail-dialog/sc-detail-dialog.component';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScUtilService implements IDataUtilBaseService<GradeModel> {
-  constructor(private base: DataUtilBaseService) {}
+  constructor(
+    public lang: LocalizationService,
+    private base: DataUtilBaseService
+  ) {}
 
   async save(sc: GradeModel): Promise<void> {
     await this.base.scLoader.updateData(sc);
 
-    this.base.snackbar.displayTop(`Successfully saved grade`, MessageType.Info);
+    this.base.snackbar.displayTop(
+      this.lang.data.sc.snackbar.save,
+      MessageType.Info
+    );
   }
 
   async remove(sc: GradeModel): Promise<void> {
@@ -28,7 +35,7 @@ export class ScUtilService implements IDataUtilBaseService<GradeModel> {
           await this.base.scLoader.removeData(sc);
 
           this.base.snackbar.displayTop(
-            `Successfully deleted grade`,
+            this.lang.data.sc.snackbar.delete,
             MessageType.Info
           );
         }

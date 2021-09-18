@@ -1,6 +1,6 @@
 <form class="grow" #form="ngForm">
   <mat-form-field>
-    <mat-label>Title</mat-label>
+    <mat-label>{{ lang.data.hw.detail.name }}</mat-label>
     <input
       matInput
       name="title"
@@ -9,11 +9,13 @@
       (submit)="save()"
       #title
     />
-    <mat-error [hidden]="!title.valid">Title is required!</mat-error>
+    <mat-error [hidden]="!title.valid">
+      {{ lang.data.hw.detail.name }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Description</mat-label>
+    <mat-label>{{ lang.data.hw.detail.description }}</mat-label>
     <textarea
       matInput
       name="Description"
@@ -24,7 +26,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Due date</mat-label>
+    <mat-label>{{ lang.data.hw.detail.due_date }}</mat-label>
     <input
       matInput
       [ngxMatDatetimePicker]="dueDatePicker"
@@ -45,11 +47,13 @@
       [touchUi]="bps.datepickerMobile"
     >
     </ngx-mat-datetime-picker>
-    <mat-error [hidden]="!dueDate.valid">Due-date is required!</mat-error>
+    <mat-error [hidden]="!dueDate.valid">
+      {{ lang.data.hw.detail.due_date }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Subject</mat-label>
+    <mat-label>{{ lang.data.hw.detail.subject }}</mat-label>
     <mat-select
       name="subject"
       required
@@ -64,7 +68,9 @@
         No subjects found
       </mat-option>
     </mat-select>
-    <mat-error [hidden]="!subject.valid">Subject is required!</mat-error>
+    <mat-error [hidden]="!subject.valid">
+      {{ lang.data.hw.detail.subject }} {{ lang.data.general.err.req }}
+    </mat-error>
   </mat-form-field>
 
   <div class="mat-form-field-wrapper">
@@ -72,7 +78,7 @@
       [checked]="du.hw.isCompleted(hw)"
       (change)="setCompleted($event)"
     >
-      completed
+      {{ lang.data.hw.detail.completed }}
     </mat-slide-toggle>
   </div>
 </form>

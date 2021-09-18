@@ -4,6 +4,7 @@ import { SortDirection } from '@angular/material/sort';
 import { GradeModel } from 'src/app/models/objectives/grade.model';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { MatTableBaseComponent } from 'src/libraries/util/components/mat-table-base.component';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
   selector: 'sc-list',
@@ -19,7 +20,11 @@ export class ScListComponent
   defaultSortDir: SortDirection = 'desc';
   mobileWidth = '30em';
 
-  constructor(public du: DataUtilService, bpo: BreakpointObserver) {
+  constructor(
+    public du: DataUtilService,
+    public lang: LocalizationService,
+    bpo: BreakpointObserver
+  ) {
     super(bpo);
   }
 

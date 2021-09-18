@@ -4,6 +4,7 @@ import {
   MessageType,
   SnackbarService,
 } from 'src/app/services/snackbar.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 import { SjNewComponent } from '../sj-new/sj-new.component';
 
 @Component({
@@ -15,6 +16,7 @@ export class SjNewDialogComponent implements OnInit {
   @ViewChild('sjNew') sjNew: SjNewComponent;
 
   constructor(
+    public lang: LocalizationService,
     public dialogRef: MatDialogRef<SjNewDialogComponent>,
     private snackbar: SnackbarService
   ) {}
@@ -25,7 +27,7 @@ export class SjNewDialogComponent implements OnInit {
     if (await this.sjNew.addNew()) {
       this.dialogRef.close();
       this.snackbar.displayTop(
-        `Successfully added a new subject "${this.sjNew.data.title}"`,
+        this.lang.data.sj.snackbar.new.replace('%sj%', this.sjNew.data.title),
         MessageType.Info
       );
     }

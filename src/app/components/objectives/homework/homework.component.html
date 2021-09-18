@@ -2,12 +2,12 @@
   <!-- OPTIONS -->
   <card
     [icon]="gv.Icons.edit"
-    ctitle="Homework"
-    csubtitle="All your homework in one place"
+    [ctitle]="lang.data.hw.name"
+    [csubtitle]="lang.data.hw.subtitle"
     class="noTopRad"
   >
     <button mat-raised-button background="success" (click)="newHomework()">
-      Add new homework
+      {{ lang.data.hw.new.btn }}
     </button>
   </card>
 
@@ -16,8 +16,8 @@
   <!-- ALL-TIME -->
   <card
     [icon]="gv.Icons.books"
-    ctitle="Homework"
-    csubtitle="More motivation?"
+    [ctitle]="lang.data.hw.name"
+    [csubtitle]="lang.data.hw.all.subtitle"
     *ngIf="userData.data.hwFuture?.length > 0"
   >
     <hw-list [data]="userData.hwFuture"></hw-list>

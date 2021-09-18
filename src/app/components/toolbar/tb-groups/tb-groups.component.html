@@ -5,7 +5,7 @@
     routerLinkActive="active"
     (click)="sidenav.close()"
   >
-    Mine
+    {{ lang.data.nav.mine }}
   </a>
   <a mat-list-item (click)="newGroup(); sidenav.close()">
     <fa [fa]="gv.Icons.add"></fa>
@@ -27,7 +27,7 @@
     [routerLink]="router.getGroupUrl('me')"
     routerLinkActive="active"
   >
-    Mine
+    {{ lang.data.nav.mine }}
   </a>
   <button mat-button (click)="newGroup()">
     <fa [fa]="gv.Icons.add"></fa>

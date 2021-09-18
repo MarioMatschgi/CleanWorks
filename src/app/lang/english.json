@@ -6,7 +6,138 @@
     },
     "buttons": {
       "cancel": "Cancel",
-      "ok": "Ok"
+      "ok": "Ok",
+      "edit": "Edit",
+      "close": "Close",
+      "remove": "Remove",
+      "add": "Add"
+    },
+    "err": {
+      "req": "is required!"
+    }
+  },
+
+  "nav": {
+    "hw": "Homework",
+    "sj": "Subjects",
+    "sc": "Grades",
+    "ap": "Appointments",
+    "mine": "Mine"
+  },
+
+  "dashboard": {
+    "profile": {
+      "title": "Profile",
+      "subtitle": "Your account"
+    },
+    "quick_actions": {
+      "title": "Quick actions",
+      "subtitle": "Some quick things"
+    },
+    "appointments": {
+      "title": "Appointments",
+      "subtitle": "All your appointments"
+    }
+  },
+
+  "hw": {
+    "name": "Homework",
+    "subtitle": "All your homework in one place",
+    "dashboard": {
+      "over": {
+        "title": "Over due",
+        "subtitle": "It'll be fine, just do it now"
+      },
+      "today": {
+        "title": "Due today",
+        "subtitle": "Come on!"
+      },
+      "tomorrow": {
+        "title": "Due tomorrow",
+        "subtitle": "Let's do this"
+      },
+      "week": {
+        "title": "For this week",
+        "subtitle": "The sooner, the better..."
+      },
+      "completed": {
+        "title": "Completed",
+        "subtitle": "Finally..."
+      },
+      "all": {
+        "subtitle": "More motivation?"
+      }
+    },
+    "detail": {
+      "name": "Name",
+      "description": "Description",
+      "due_date": "Due date",
+      "subject": "Subject",
+      "complete": "Complete",
+      "completed": "Completed"
+    },
+    "no_content": "No homework found.",
+    "new": {
+      "title": "New homework",
+      "btn": "Add new homework"
+    },
+    "snackbar": {
+      "new": "Successfully added a new homework %hw%",
+      "save": "Successfully saved homework %hw%",
+      "delete": "Successfully deleted homework %hw%"
+    }
+  },
+
+  "sj": {
+    "name": "Subjects",
+    "subtitle": "All your subjects in one place",
+    "detail": {
+      "name": "Name"
+    },
+    "new": {
+      "title": "New subject",
+      "btn": "Add new subject"
+    },
+    "snackbar": {
+      "new": "Successfully added a new subject %sj%",
+      "save": "Successfully saved subject %sj%",
+      "delete": "Successfully deleted subject %sj%"
+    }
+  },
+
+  "sc": {
+    "name": "Grade",
+    "subtitle": "All your grades in one place",
+    "dashboard": {
+      "diagrams": {
+        "title": "Diagrams",
+        "subtitle": "Your grades, visualized"
+      },
+      "all": {
+        "subtitle": "Your grades"
+      }
+    },
+    "no_content": {
+      "sc": "No grades found.",
+      "diagram": "No grades to visualize."
+    },
+    "new": {
+      "title": "New grade",
+      "btn": "Add new grade"
+    },
+    "snackbar": {
+      "new": "Successfully added a new grade",
+      "save": "Successfully saved grade",
+      "delete": "Successfully deleted grade"
+    }
+  },
+
+  "gr": {
+    "name": "Group",
+    "snackbar": {
+      "new": "Successfully added a new group %gr%",
+      "save": "Successfully saved group %gr%",
+      "delete": "Successfully deleted group %gr%"
     }
   },
 
