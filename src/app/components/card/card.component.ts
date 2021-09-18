@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Icons } from 'src/libraries/util/models/icons.model';
 import { GlobalVariablesService } from 'src/libraries/util/services/global-variables.service';
+import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
   selector: 'card',
@@ -14,7 +15,10 @@ export class DbElementComponent implements OnInit {
   @Input() link: string[];
   @Input() noContentPadding = false;
 
-  constructor(public gv: GlobalVariablesService) {}
+  constructor(
+    public gv: GlobalVariablesService,
+    public lang: LocalizationService
+  ) {}
 
   ngOnInit(): void {}
 }

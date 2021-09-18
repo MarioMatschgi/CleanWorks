@@ -64,6 +64,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapte
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorIntlLocal } from 'src/libraries/util/material-local-overrides/mat-paginator-intl-local';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { MatPaginatorIntlLocal } from 'src/libraries/util/material-local-overrid
     TbNavComponent,
     TbGroupsComponent,
     TbProfileComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { GradesComponent } from './components/objectives/grades/grades.component
 import { GroupsComponent } from './components/objectives/groups/groups.component';
 import { HomeworkComponent } from './components/objectives/homework/homework.component';
 import { SubjectsComponent } from './components/objectives/subject/subjects.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     ],
     canActivate: [AuthLoginGuard],
     data: { inverted: true },
+  },
+  {
+    path: 'me/settings',
+    component: SettingsComponent,
   },
   {
     path: ':gid',

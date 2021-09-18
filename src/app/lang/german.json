@@ -11,7 +11,8 @@
       "close": "Schießen",
       "remove": "Entfernen",
       "delete": "Löschen",
-      "add": "Hinzufügen"
+      "add": "Hinzufügen",
+      "view": "Ansehen"
     },
     "err": {
       "req": "ist erforderlich!"
@@ -156,15 +157,18 @@
   "profile": {
     "settings": {
       "title": "Einstellungen",
-      "desc": "Hier sind einige Einstellungen, um dein Nutzererlebnis anzupassen.",
+      "subtitle": "Hier sind einige Einstellungen, um dein Nutzererlebnis anzupassen.",
       "sections": {
         "themes": {
           "title": "Themes",
-          "desc": "Wähle dein Lieblings-Theme."
+          "subtitle": "Wähle dein Lieblings-Theme."
         },
         "lang": {
           "title": "Sprache",
-          "desc": "Wähle deine bevorzugte Sprache."
+          "subtitle": "Wähle deine bevorzugte Sprache.",
+          "fields": {
+            "lang": "Sprache"
+          }
         }
       },
       "buttons": {

@@ -119,6 +119,7 @@ export class UserDataService {
       });
     }
     // Load grades
+    this.scLoader.group = 'me';
     this.scLoader.getAllData().subscribe((data) => {
       this.grades = data;
       this.events.sc.emit();

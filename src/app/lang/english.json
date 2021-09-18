@@ -11,7 +11,8 @@
       "close": "Close",
       "remove": "Remove",
       "delete": "Delete",
-      "add": "Add"
+      "add": "Add",
+      "view": "View"
     },
     "err": {
       "req": "is required!"
@@ -156,15 +157,18 @@
   "profile": {
     "settings": {
       "title": "Settings",
-      "desc": "Below are the settings to customize your experience.",
+      "subtitle": "Below are the settings to customize your experience.",
       "sections": {
         "themes": {
           "title": "Themes",
-          "desc": "Choose your favourite theme."
+          "subtitle": "Choose your favourite theme."
         },
         "lang": {
           "title": "Language",
-          "desc": "Choose your prefered language."
+          "subtitle": "Choose your prefered language.",
+          "fields": {
+            "lang": "Language"
+          }
         }
       },
       "buttons": {

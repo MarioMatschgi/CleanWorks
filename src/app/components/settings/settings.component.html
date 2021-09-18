@@ -1,0 +1,37 @@
+<div class="container">
+  <card
+    [icon]="gv.Icons.cogs"
+    [ctitle]="lang.data.profile.settings.title"
+    [csubtitle]="lang.data.profile.settings.subtitle"
+    class="noTopRad"
+  >
+  </card>
+
+  <card
+    [icon]="gv.Icons.lang"
+    [ctitle]="lang.data.profile.settings.sections.lang.title"
+    [csubtitle]="lang.data.profile.settings.sections.lang.subtitle"
+  >
+    <mat-form-field>
+      <mat-label>
+        {{ lang.data.profile.settings.sections.lang.fields.lang }}
+      </mat-label>
+      <mat-select
+        [ngModel]="lang.lang"
+        (selectionChange)="lang.update_lang($event.value)"
+      >
+        <mat-option value="auto">Auto</mat-option>
+        <mat-option *ngFor="let l of lang.lang_list" [value]="l">
+          {{ lang.data.general.lang[l] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </card>
+
+  <card
+    [icon]="gv.Icons.theme"
+    [ctitle]="lang.data.profile.settings.sections.themes.title"
+    [csubtitle]="lang.data.profile.settings.sections.themes.subtitle"
+  >
+  </card>
+</div>

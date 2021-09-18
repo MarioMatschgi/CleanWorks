@@ -33,4 +33,6 @@ export enum Icons {
   chart = 'f200 fas',
   hamburger = 'f0c9 fas',
   close = 'f00d fas',
+  lang = 'f0ac far',
+  theme = 'f042 fas',
 }

@@ -44,7 +44,6 @@ export class LocalizationService {
     this.langs['en'] = this.getLangData(data_en);
     this.langs['de'] = this.getLangData(data_de);
     this.lang_list = Object.keys(this.langs);
-
     this.auth.sub_userPrivateData(() => {
       this.update_lang(this.get_lang());
     });
@@ -55,12 +54,14 @@ export class LocalizationService {
    * @param lang New language
    */
   update_lang(lang: string) {
+    if (this.lang == lang) return;
     this.lang = lang;
-    this.lang = 'de';
-    // RecipeHelper.lang = this.get_eval_lang(this.lang);
+
+    this.auth.doc_userPrivate.set({ lang: this.lang }, { merge: true });
 
     this.data = this.langs[this.lang] || this.langs['en'];
-    switch (this.lang) {
+    lang = this.get_eval_lang(this.lang);
+    switch (lang) {
       case 'de':
         registerLocaleData(localeGerman);
         break;
@@ -68,11 +69,12 @@ export class LocalizationService {
       default:
         registerLocaleData(localeEnglish);
     }
-    this.setLang(this.lang);
+    this.setLang(lang);
     this.langChanged.emit(this.lang);
   }
 
   private setLang(lang: string) {
+    lang = this.get_eval_lang(lang);
     moment.locale(lang);
     this.dateAdapter.setLocale(lang);
   }
@@ -82,12 +84,7 @@ export class LocalizationService {
    * @returns Returns the current language
    */
   get_lang(): string {
-    let lang = this.auth.userPrivateData?.lang;
-
-    if (!lang || lang == '' || lang == 'auto')
-      lang = window.navigator.language.substr(0, 2);
-
-    return lang;
+    return this.auth.userPrivateData?.lang;
   }
 
   /**
