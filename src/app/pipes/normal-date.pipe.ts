@@ -11,6 +11,11 @@ export class NormalDatePipe extends DatePipe implements PipeTransform {
   }
 
   transform(value: any, args?: any): any {
-    return super.transform(value, 'EEEE d MMMM y h:mm a', null, this.lang.lang);
+    return super.transform(
+      value,
+      'EEEE d MMMM y h:mm a',
+      null,
+      this.lang.get_eval_lang(this.lang.lang)
+    );
   }
 }
