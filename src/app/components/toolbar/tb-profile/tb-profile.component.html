@@ -2,8 +2,11 @@
   <fa [fa]="gv.Icons.profile"></fa>
 </button>
 <mat-menu #profileMenu="matMenu">
+  <p mat-menu-item *ngIf="auth.userData.displayName">
+    {{ auth.userData.displayName }}
+  </p>
   <p mat-menu-item>
-    {{ auth.userData.displayName || auth.userData.email }}
+    {{ auth.userData.email }}
   </p>
   <button
     mat-menu-item

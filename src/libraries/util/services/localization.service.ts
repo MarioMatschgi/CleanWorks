@@ -57,7 +57,8 @@ export class LocalizationService {
     if (this.lang == lang) return;
     this.lang = lang;
 
-    this.auth.doc_userPrivate.set({ lang: this.lang }, { merge: true });
+    if (this.auth.userData?.uid)
+      this.auth.doc_userPrivate.set({ lang: this.lang }, { merge: true });
 
     this.data = this.langs[this.lang] || this.langs['en'];
     lang = this.get_eval_lang(this.lang);

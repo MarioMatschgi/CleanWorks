@@ -20,6 +20,7 @@ export class ThemeService {
     this.body = document.getElementsByTagName('body')[0];
     this.themeList = Object.values(ThemeType).slice(1);
     auth.sub_userPrivateData((data) => {
+      if (data == null) return;
       this.updateTheme(data.theme);
     });
     window
@@ -42,7 +43,8 @@ export class ThemeService {
     for (const c of classes) {
       this.body.classList.remove(c);
     }
-    this.auth.doc_userPrivate.set({ theme: this.theme }, { merge: true });
+    if (this.auth.userData?.uid)
+      this.auth.doc_userPrivate.set({ theme: this.theme }, { merge: true });
 
     if (t == ThemeType.auto) {
       t = window.matchMedia('(prefers-color-scheme: dark)').matches

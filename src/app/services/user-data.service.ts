@@ -59,6 +59,8 @@ export class UserDataService {
       }
     }, true);
     this.router.events.subscribe((e) => {
+      if (!this.auth.userData?.uid) return;
+
       if (e instanceof NavigationStart) {
         this.groupId = e.url.split('/')[1];
         if (this.groupId === '') this.groupId = 'me';
