@@ -34,6 +34,9 @@ form.grow {
     width: 100%;
   }
 }
+.mat-form-field {
+  letter-spacing: initial !important;
+}
 
 textarea {
   box-sizing: content-box;

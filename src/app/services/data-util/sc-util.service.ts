@@ -42,6 +42,10 @@ export class ScUtilService implements IDataUtilBaseService<GradeModel> {
       });
   }
 
+  async add(sc: GradeModel): Promise<void> {
+    await this.base.scLoader.addData(sc);
+  }
+
   view(sc: GradeModel): void {
     this.base.dialogService.dialog.open(ScDetailDialogComponent, {
       data: { grade: sc },

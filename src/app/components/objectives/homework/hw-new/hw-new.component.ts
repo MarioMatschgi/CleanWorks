@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HwDataLoadService } from 'src/app/services/data-load/hw-data-load.service';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { HwDetailComponent } from '../hw-detail/hw-detail.component';
 
 @Component({
@@ -15,10 +14,7 @@ export class HwNewComponent implements OnInit {
     return this.hwDetail.form?.valid;
   }
 
-  constructor(
-    public userData: UserDataService,
-    private dataLoader: HwDataLoadService
-  ) {}
+  constructor(public du: DataUtilService) {}
 
   ngOnInit(): void {}
 
@@ -27,7 +23,7 @@ export class HwNewComponent implements OnInit {
 
     if (!this.hwDetail.form.valid) return false;
 
-    await this.dataLoader.addData(this.hwDetail.hw);
+    await this.du.hw.add(this.hwDetail.hw);
 
     return true;
   }

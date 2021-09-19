@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SubjectModel } from 'src/app/models/objectives/subject.model';
-import { SjDataLoadService } from 'src/app/services/data-load/sj-data-load.service';
+import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
@@ -14,10 +14,7 @@ export class SjNewComponent implements OnInit {
 
   data = {} as SubjectModel;
 
-  constructor(
-    private dataLoader: SjDataLoadService,
-    public lang: LocalizationService
-  ) {}
+  constructor(public du: DataUtilService, public lang: LocalizationService) {}
 
   ngOnInit(): void {}
 
@@ -26,7 +23,7 @@ export class SjNewComponent implements OnInit {
 
     if (!this.form.valid) return false;
 
-    await this.dataLoader.addData(this.data);
+    await this.du.sj.add(this.data);
 
     return true;
   }

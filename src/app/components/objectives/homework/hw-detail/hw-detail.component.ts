@@ -1,10 +1,8 @@
 import {
-  ChangeDetectorRef,
+  AfterViewInit,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -23,14 +21,13 @@ import { LocalizationService } from 'src/libraries/util/services/localization.se
   templateUrl: './hw-detail.component.html',
   styleUrls: ['./hw-detail.component.scss'],
 })
-export class HwDetailComponent implements OnInit {
+export class HwDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('form') form: NgForm;
   @Input('homework') hw: HomeworkModel = {} as HomeworkModel;
   @Input() shouldSave: boolean = true;
 
-  @Output() hwChange = new EventEmitter<HomeworkModel>();
-
   private wasSaveAborted = false;
+  private hwOld: HomeworkModel;
 
   constructor(
     public userData: UserDataService,
@@ -38,13 +35,27 @@ export class HwDetailComponent implements OnInit {
     public bps: BreakpointService,
     public du: DataUtilService,
     private loader: LoadService,
-    private cd: ChangeDetectorRef,
     private auth: AuthService
   ) {}
 
   ngOnInit(): void {}
 
+  ngAfterViewInit() {
+    this.hwOld = Object.assign({}, this.hw);
+  }
+
   async save() {
+    if (!this.shouldSave) return false;
+
+    this.form.form.markAllAsTouched();
+
+    if (
+      !this.form.valid ||
+      JSON.stringify(this.hw) == JSON.stringify(this.hwOld)
+    )
+      return false;
+    this.hwOld = Object.assign({}, this.hw);
+
     if (this.loader.finished('save')) {
       await this.saveHomework();
       if (this.wasSaveAborted) {
@@ -67,16 +78,9 @@ export class HwDetailComponent implements OnInit {
 
   private async saveHomework() {
     this.loader.load('save');
-    if (this.shouldSave) {
-      this.du.hw.save(this.hw);
 
-      this.hwChange.emit(this.hw);
-    } else {
-      this.hw.dueDate = this.hw.dueDate?.set({ second: 0, millisecond: 0 });
+    this.du.hw.save(this.hw);
 
-      this.cd.detectChanges();
-      this.hwChange.emit(this.hw);
-    }
     this.loader.unload('save');
   }
 }

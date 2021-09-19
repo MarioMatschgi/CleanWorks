@@ -1,10 +1,9 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -21,7 +20,7 @@ import { LocalizationService } from 'src/libraries/util/services/localization.se
   templateUrl: './sc-detail.component.html',
   styleUrls: ['./sc-detail.component.scss'],
 })
-export class ScDetailComponent implements OnInit {
+export class ScDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('form') form: NgForm;
   @Input('score') sc = {} as GradeModel;
   @Input() shouldSave: boolean = true;
@@ -29,9 +28,8 @@ export class ScDetailComponent implements OnInit {
   types: string[] = [];
   marks = [1, 2, 3, 4, 5, 6];
 
-  @Output() scChange = new EventEmitter<GradeModel>();
-
   private wasSaveAborted = false;
+  private scOld: GradeModel;
 
   constructor(
     public gv: GlobalVariablesService,
@@ -49,7 +47,22 @@ export class ScDetailComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit() {
+    this.scOld = Object.assign({}, this.sc);
+  }
+
   async save() {
+    if (!this.shouldSave) return false;
+
+    this.form.form.markAllAsTouched();
+
+    if (
+      !this.form.valid ||
+      JSON.stringify(this.sc) == JSON.stringify(this.scOld)
+    )
+      return false;
+    this.scOld = Object.assign({}, this.sc);
+
     if (this.loader.finished('save')) {
       await this.saveGroup();
       if (this.wasSaveAborted) {
@@ -63,16 +76,9 @@ export class ScDetailComponent implements OnInit {
 
   private async saveGroup() {
     this.loader.load('save');
-    if (this.shouldSave) {
-      this.du.sc.save(this.sc);
 
-      this.scChange.emit(this.sc);
-    } else {
-      this.sc.date = this.sc.date?.set({ second: 0, millisecond: 0 });
+    this.du.sc.save(this.sc);
 
-      this.cd.detectChanges();
-      this.scChange.emit(this.sc);
-    }
     this.loader.unload('save');
   }
 }

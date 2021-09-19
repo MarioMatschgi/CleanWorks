@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { GroupModel } from '../../models/objectives/group.model';
+import {
+  GroupMemberRole,
+  GroupModel,
+} from '../../models/objectives/group.model';
 import {
   DataUtilBaseService,
   IDataUtilBaseService,
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
+import { AuthService } from 'src/libraries/authentication/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +43,19 @@ export class GrUtilService implements IDataUtilBaseService<GroupModel> {
           );
         }
       });
+  }
+
+  async add(gr: GroupModel): Promise<void> {
+    gr.memberIds = [this.base.auth.userData.uid];
+    gr.members = [
+      {
+        id: this.base.auth.userData.uid,
+        name: this.base.auth.userData.displayName,
+        email: this.base.auth.userData.email,
+        role: GroupMemberRole.admin,
+      },
+    ];
+    await this.base.grLoader.addData(gr);
   }
 
   view(gr: GroupModel): void {

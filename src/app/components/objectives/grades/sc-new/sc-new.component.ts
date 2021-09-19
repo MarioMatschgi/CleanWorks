@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ScDataLoadService } from 'src/app/services/data-load/sc-data-load.service';
-import { UserDataService } from 'src/app/services/user-data.service';
+import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { ScDetailComponent } from '../sc-detail/sc-detail.component';
 
 @Component({
@@ -11,10 +10,7 @@ import { ScDetailComponent } from '../sc-detail/sc-detail.component';
 export class ScNewComponent implements OnInit {
   @ViewChild('scDetail') scDetail: ScDetailComponent;
 
-  constructor(
-    public userData: UserDataService,
-    private dataLoader: ScDataLoadService
-  ) {}
+  constructor(public du: DataUtilService) {}
 
   ngOnInit(): void {}
 
@@ -23,7 +19,7 @@ export class ScNewComponent implements OnInit {
 
     if (!this.scDetail.form.valid) return false;
 
-    await this.dataLoader.addData(this.scDetail.sc);
+    await this.du.sc.add(this.scDetail.sc);
 
     return true;
   }

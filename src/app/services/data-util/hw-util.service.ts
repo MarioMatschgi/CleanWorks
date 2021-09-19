@@ -45,6 +45,10 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
       });
   }
 
+  async add(hw: HomeworkModel): Promise<void> {
+    await this.base.hwLoader.addData(hw);
+  }
+
   view(hw: HomeworkModel): void {
     this.base.dialogService.dialog.open(HwDetailDialogComponent, {
       data: { homework: hw },

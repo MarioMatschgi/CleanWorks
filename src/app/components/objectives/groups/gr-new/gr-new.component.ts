@@ -1,12 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import {
-  GroupMemberModel,
-  GroupMemberRole,
-  GroupModel,
-} from 'src/app/models/objectives/group.model';
-import { GrDataLoadService } from 'src/app/services/data-load/group-data-load.service';
-import { AuthService } from 'src/libraries/authentication/services/auth.service';
+import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { GrDetailComponent } from '../gr-detail/gr-detail.component';
 
 @Component({
@@ -17,10 +10,7 @@ import { GrDetailComponent } from '../gr-detail/gr-detail.component';
 export class GrNewComponent implements OnInit {
   @ViewChild('grDetail') grDetail: GrDetailComponent;
 
-  constructor(
-    private dataLoader: GrDataLoadService,
-    private auth: AuthService
-  ) {}
+  constructor(public du: DataUtilService) {}
 
   ngOnInit(): void {}
 
@@ -29,16 +19,7 @@ export class GrNewComponent implements OnInit {
 
     if (!this.grDetail.form.valid) return false;
 
-    this.grDetail.gr.memberIds = [this.auth.userData.uid];
-    this.grDetail.gr.members = [
-      {
-        id: this.auth.userData.uid,
-        name: this.auth.userData.displayName,
-        email: this.auth.userData.email,
-        role: GroupMemberRole.admin,
-      },
-    ];
-    await this.dataLoader.addData(this.grDetail.gr);
+    await this.du.gr.add(this.grDetail.gr);
 
     return true;
   }

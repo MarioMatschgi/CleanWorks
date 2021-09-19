@@ -1,10 +1,9 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -19,14 +18,13 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
   templateUrl: './gr-detail.component.html',
   styleUrls: ['./gr-detail.component.scss'],
 })
-export class GrDetailComponent implements OnInit {
+export class GrDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('form') form: NgForm;
   @Input('group') gr: GroupModel = {} as GroupModel;
   @Input() shouldSave: boolean = true;
 
-  @Output() grChange = new EventEmitter<GroupModel>();
-
   private wasSaveAborted = false;
+  private grOld: GroupModel;
 
   constructor(
     public gv: GlobalVariablesService,
@@ -38,7 +36,22 @@ export class GrDetailComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngAfterViewInit() {
+    this.grOld = Object.assign({}, this.gr);
+  }
+
   async save() {
+    if (!this.shouldSave) return false;
+
+    this.form.form.markAllAsTouched();
+
+    if (
+      !this.form.valid ||
+      JSON.stringify(this.gr) == JSON.stringify(this.grOld)
+    )
+      return false;
+    this.grOld = Object.assign({}, this.gr);
+
     if (this.loader.finished('save')) {
       await this.saveGroup();
       if (this.wasSaveAborted) {
@@ -52,14 +65,9 @@ export class GrDetailComponent implements OnInit {
 
   private async saveGroup() {
     this.loader.load('save');
-    if (this.shouldSave) {
-      this.du.gr.save(this.gr);
 
-      this.grChange.emit(this.gr);
-    } else {
-      this.cd.detectChanges();
-      this.grChange.emit(this.gr);
-    }
+    this.du.gr.save(this.gr);
+
     this.loader.unload('save');
   }
 }

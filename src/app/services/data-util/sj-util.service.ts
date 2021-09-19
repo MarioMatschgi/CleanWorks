@@ -41,6 +41,10 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
       });
   }
 
+  async add(sj: SubjectModel): Promise<void> {
+    await this.base.sjLoader.addData(sj);
+  }
+
   view(sj: SubjectModel): void {
     throw new Error('Method not implemented.');
   }
