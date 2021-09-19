@@ -195,3 +195,15 @@ snack-bar-container {
 .mat-card {
   box-shadow: var(--box-shadow) !important;
 }
+
+.theme-dark {
+  --col-font-dark: #9f9f9f;
+  .mat-card-avatar {
+    color: var(--col-font-dark) !important;
+  }
+  .mat-menu-panel {
+    * {
+      color: #c3c3c3;
+    }
+  }
+}
