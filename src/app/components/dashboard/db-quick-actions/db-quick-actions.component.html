@@ -1,4 +1,4 @@
-<div class="flexbox equal start">
+<!-- <div class="flexbox equal start">
   <button mat-raised-button background="primary" (click)="newHomework()">
     <fa [fa]="gv.Icons.add">
       <span class="fa-before">{{ lang.data.nav.hw }}</span>
@@ -10,6 +10,24 @@
     </fa>
   </button>
   <button mat-raised-button background="primary">
+    <fa [fa]="gv.Icons.add">
+      <span class="fa-before">{{ lang.data.nav.ap }}</span>
+    </fa>
+  </button>
+</div> -->
+
+<div class="flexbox equal start">
+  <button mat-raised-button color="primary" (click)="newHomework()">
+    <fa [fa]="gv.Icons.add">
+      <span class="fa-before">{{ lang.data.nav.hw }}</span>
+    </fa>
+  </button>
+  <button mat-raised-button color="warn" (click)="newGrade()">
+    <fa [fa]="gv.Icons.add">
+      <span class="fa-before">{{ lang.data.nav.sc }}</span>
+    </fa>
+  </button>
+  <button mat-raised-button color="accent">
     <fa [fa]="gv.Icons.add">
       <span class="fa-before">{{ lang.data.nav.ap }}</span>
     </fa>

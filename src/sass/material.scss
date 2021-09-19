@@ -1,0 +1,64 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$mat-dark-theme-background: (
+  background: #303030,
+);
+$light-primary: mat-palette($mat-deep-purple);
+$light-accent: mat-palette($mat-deep-purple);
+$light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+      background: $mat-light-theme-background,
+    ),
+  )
+);
+
+$dark-primary: mat-palette($mat-deep-purple);
+$dark-accent: mat-palette($mat-purple, 900);
+$dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      background: $mat-dark-theme-background,
+    ),
+  )
+);
+
+@mixin mat-root-theme($theme) {
+  $background: map-get($theme, background);
+
+  app-root {
+    background-color: mat-color($background, background);
+  }
+}
+.light-theme {
+  --col-bg: var(--col-white);
+  @include angular-material-theme($light-theme);
+  @include mat-core-color($light-theme);
+  @include mat-root-theme($light-theme);
+}
+.dark-theme {
+  --col-bg: var(--col-black);
+  --col-font: #e3e3e3;
+
+  @include angular-material-color($dark-theme);
+  @include mat-core-color($dark-theme);
+  @include mat-root-theme($dark-theme);
+
+  .mat-card,
+  .mat-menu-item {
+    // * {
+    color: var(--col-font) !important;
+  }
+  .mat-input-element {
+    caret-color: var(--col-font) !important;
+    .mat-form-field-ripple {
+      background-color: var(--col-font) !important;
+    }
+  }
+}

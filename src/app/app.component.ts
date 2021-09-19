@@ -5,6 +5,7 @@ import { RouterService } from 'src/libraries/util/services/router.service';
 import { BackgroundScrollService } from './services/background-scroll.service';
 import { BreakpointService } from './services/breakpoint.service';
 import { DialogService } from './services/dialog.service';
+import { ThemeService } from './services/theme.service';
 import { UserDataService } from './services/user-data.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class AppComponent {
     public dialog: DialogService,
     public userData: UserDataService,
     public bps: BreakpointService,
+    public theme: ThemeService,
     private bgScroll: BackgroundScrollService
   ) {}
 }
