@@ -21,11 +21,11 @@ select {
   }
 }
 
-.dark-theme {
+.theme-dark {
   --col-bg: #303030;
 }
-.light-theme {
-  --col-bg: $col-white;
+.theme-light {
+  --col-bg: var(--col-white);
 }
 app-root {
   background-color: var(--col-bg);

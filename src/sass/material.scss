@@ -260,10 +260,10 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
   }
 }
 
-.dark-theme {
+.theme-dark {
   @include bg-elements(true);
 }
-.light-theme {
+.theme-light {
   @include bg-elements(false);
 }
 
@@ -274,9 +274,9 @@ SET THEMES
 */
 $theme-dark: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 $theme-light: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
-.dark-theme {
+.theme-dark {
   @include angular-material-theme($theme-dark);
 }
-.light-theme {
+.theme-light {
   @include angular-material-theme($theme-light);
 }

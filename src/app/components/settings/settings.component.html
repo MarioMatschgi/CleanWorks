@@ -33,5 +33,19 @@
     [ctitle]="lang.data.profile.settings.sections.themes.title"
     [csubtitle]="lang.data.profile.settings.sections.themes.subtitle"
   >
+    <mat-form-field>
+      <mat-label>
+        {{ lang.data.profile.settings.sections.lang.fields.lang }}
+      </mat-label>
+      <mat-select
+        [ngModel]="theme.theme"
+        (selectionChange)="theme.updateTheme($event.value)"
+      >
+        <mat-option value="auto">Auto</mat-option>
+        <mat-option *ngFor="let l of theme.themeList" [value]="l">
+          {{ lang.data.general.theme[l] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </card>
 </div>

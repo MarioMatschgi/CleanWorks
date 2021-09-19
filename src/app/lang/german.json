@@ -4,6 +4,10 @@
       "en": "Englisch",
       "de": "Deutsch"
     },
+    "theme": {
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
     "buttons": {
       "cancel": "Abbrechen",
       "ok": "Ok",
