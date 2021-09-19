@@ -5,6 +5,7 @@ import { RouterService } from 'src/libraries/util/services/router.service';
 import { BackgroundScrollService } from './services/background-scroll.service';
 import { BreakpointService } from './services/breakpoint.service';
 import { DialogService } from './services/dialog.service';
+import { MessageType, SnackbarService } from './services/snackbar.service';
 import { ThemeService } from './services/theme.service';
 import { UserDataService } from './services/user-data.service';
 
@@ -22,8 +23,11 @@ export class AppComponent implements AfterViewInit {
     public userData: UserDataService,
     public bps: BreakpointService,
     public theme: ThemeService,
-    private bgScroll: BackgroundScrollService
-  ) {}
+    private bgScroll: BackgroundScrollService,
+    sb: SnackbarService
+  ) {
+    sb.displayTop('AAAA', MessageType.Info, null);
+  }
 
   ngAfterViewInit(): void {
     this.bgScroll.init();

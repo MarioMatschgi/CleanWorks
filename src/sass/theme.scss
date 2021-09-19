@@ -176,15 +176,28 @@ textarea {
   }
 }
 
+.theme-dark {
+  snack-bar-container {
+    background-color: #323232 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    button {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+  }
+}
+.theme-light {
+  snack-bar-container {
+    background-color: #fafafa !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+    button {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+  }
+}
 snack-bar-container {
   margin-top: max(env(safe-area-inset-top), 8px) !important;
 }
 
-.mat-simple-snackbar-action {
-  button {
-    color: rgba(255, 255, 255, 0.7);
-  }
-}
 .mat-button,
 .mat-raised-button,
 .mat-stroked-button {
