@@ -1,1 +1,7 @@
 @import "/src/libraries/util/scss/component.scss";
+
+.flexbox > * {
+  @media screen and (max-width: 30em) {
+    flex-grow: 1;
+  }
+}

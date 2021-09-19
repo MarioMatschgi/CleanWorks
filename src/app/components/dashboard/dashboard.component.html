@@ -7,9 +7,14 @@
     *ngIf="userData.group == null; else groupInfo"
     class="noTopRad"
   >
-    <button mat-raised-button (click)="auth.signOut()">
-      {{ lang.data.lib.auth.buttons.logout.logout }}
-    </button>
+    <div class="flexbox nogrow start">
+      <button mat-raised-button (click)="auth.signOut()">
+        {{ lang.data.lib.auth.buttons.logout.logout }}
+      </button>
+      <a mat-raised-button routerLink="/me/settings">
+        {{ lang.data.profile.settings.buttons.settings }}
+      </a>
+    </div>
   </card>
   <ng-template #groupInfo>
     <card
