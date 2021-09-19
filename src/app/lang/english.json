@@ -4,6 +4,10 @@
       "en": "English",
       "de": "German"
     },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark"
+    },
     "buttons": {
       "cancel": "Cancel",
       "ok": "Ok",

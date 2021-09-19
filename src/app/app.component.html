@@ -1,48 +1,50 @@
-<mat-sidenav-container typ *ngIf="bps.navbarMobile; else notMobile">
-  <mat-sidenav mode="push" #sidenav>
-    <div class="flexbox nospace">
-      <button mat-button (click)="sidenav.close()">
-        <fa [fa]="gv.Icons.close"></fa>
-      </button>
-      <a
-        mat-button
-        [routerLink]="router.getUrl('dashboard')"
-        routerLinkActive="active"
-        (click)="sidenav.close()"
-      >
-        <fa [fa]="gv.Icons.home"></fa>
-      </a>
-    </div>
-    <mat-nav-list>
-      <tb-nav [sidenav]="sidenav"></tb-nav>
-      <mat-divider></mat-divider>
-      <tb-groups [sidenav]="sidenav"></tb-groups>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar background="primary">
-      <button mat-button (click)="sidenav.toggle()">
-        <fa [fa]="gv.Icons.hamburger"></fa>
-      </button>
+<main>
+  <mat-sidenav-container typ *ngIf="bps.navbarMobile; else notMobile">
+    <mat-sidenav mode="push" #sidenav>
+      <div class="flexbox nospace">
+        <button mat-button (click)="sidenav.close()">
+          <fa [fa]="gv.Icons.close"></fa>
+        </button>
+        <a
+          mat-button
+          [routerLink]="router.getUrl('dashboard')"
+          routerLinkActive="active"
+          (click)="sidenav.close()"
+        >
+          <fa [fa]="gv.Icons.home"></fa>
+        </a>
+      </div>
+      <mat-nav-list>
+        <tb-nav [sidenav]="sidenav"></tb-nav>
+        <mat-divider></mat-divider>
+        <tb-groups [sidenav]="sidenav"></tb-groups>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-button (click)="sidenav.toggle()">
+          <fa [fa]="gv.Icons.hamburger"></fa>
+        </button>
+        <div class="flex-spacer"></div>
+        <tb-profile></tb-profile>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+      <div class="bottom-spacer"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <ng-template #notMobile>
+    <mat-toolbar color="primary">
+      <tb-nav></tb-nav>
       <div class="flex-spacer"></div>
-      <tb-profile></tb-profile>
+      <div *ngIf="auth.userData?.uid">
+        <tb-profile></tb-profile>
+      </div>
+      <div class="flex-break"></div>
+      <div class="flex-spacer">
+        <tb-groups></tb-groups>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
-    <div class="bottom-spacer"></div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-<ng-template #notMobile>
-  <mat-toolbar background="primary">
-    <tb-nav></tb-nav>
-    <div class="flex-spacer"></div>
-    <div *ngIf="auth.userData?.uid">
-      <tb-profile></tb-profile>
-    </div>
-    <div class="flex-break"></div>
-    <div class="flex-spacer">
-      <tb-groups></tb-groups>
-    </div>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-</ng-template>
+  </ng-template>
+</main>

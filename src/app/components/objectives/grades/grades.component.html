@@ -5,7 +5,7 @@
     [csubtitle]="lang.data.sc.subtitle"
     class="noTopRad"
   >
-    <button mat-raised-button background="success" (click)="addNew()">
+    <button mat-raised-button color="success" (click)="addNew()">
       {{ lang.data.sc.new.btn }}
     </button>
   </card>
@@ -23,7 +23,7 @@
       </mat-tab>
     </mat-tab-group>
     <ng-template #noDiagrams>
-      <mat-card background="info">
+      <mat-card color="info">
         {{ lang.data.sc.no_content.diagram }}
       </mat-card>
     </ng-template>

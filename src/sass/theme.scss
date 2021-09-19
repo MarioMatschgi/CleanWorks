@@ -1,99 +1,12 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 /* GENERAL */
 :root {
-  --col-background: #{$col-white};
-  --col-font: #{$col-black};
-
-  .light {
-    --col-background: #{$col-white};
-    --col-font: #{$col-black};
-  }
-  .dark {
-    --col-background: #{$col-black};
-    --col-font: #{$col-white};
-  }
   --border-radius: 1em;
   --box-shadow: rgba(0, 0, 0, 0.098) 0px 3px 10px,
     rgba(0, 0, 0, 0.132) 0px 3px 6px;
 }
 
-@mixin disabled {
-  &:disabled {
-    background-color: darken($color: $col-green, $amount: 15%) !important;
-  }
-}
-
 ::selection {
   color: $col-amber;
-}
-
-/* COLORS */
-*[color="primary"],
-.col-primary {
-  color: $col-blue !important;
-}
-*[color="accent"],
-.col-accent {
-  color: $col-amber !important;
-}
-*[color="warn"],
-.col-warn {
-  color: $col-red !important;
-}
-*[color="info"],
-.col-info {
-  color: $col-light-blue !important;
-}
-*[color="success"],
-.col-success {
-  color: $col-green !important;
-}
-/* BACKGROUND */
-*[background="primary"],
-.bg-primary {
-  background-color: $col-blue !important;
-  &,
-  * {
-    color: $col-white !important;
-  }
-  @include disabled();
-}
-*[background="accent"],
-.bg-accent {
-  background-color: $col-amber !important;
-  &,
-  * {
-    color: $col-white !important;
-  }
-  @include disabled();
-}
-*[background="warn"],
-.bg-warn {
-  background-color: $col-red !important;
-  &,
-  * {
-    color: $col-white !important;
-  }
-  @include disabled();
-}
-*[background="info"],
-.bg-info {
-  background-color: $col-light-blue !important;
-  &,
-  * {
-    color: $col-white !important;
-  }
-  @include disabled();
-}
-*[background="success"],
-.bg-success {
-  background-color: $col-green !important;
-  &,
-  * {
-    color: $col-white !important;
-  }
-  @include disabled();
 }
 
 /* */

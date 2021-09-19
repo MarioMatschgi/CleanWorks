@@ -1,3 +1,5 @@
+import { ThemeType } from 'src/app/services/theme.service';
+
 /**
  * Data for Authentication
  */
@@ -44,7 +46,7 @@ export enum Role {
 export const emptyUserPrivateData: UserPrivateData = {
   bookmarks: [''],
   lang: 'auto',
-  theme: 0,
+  theme: ThemeType.auto,
 };
 
 /**
@@ -64,7 +66,7 @@ export interface UserPrivateData {
   /**
    * Theme of the user
    */
-  theme: number;
+  theme: ThemeType;
 }
 
 /**
