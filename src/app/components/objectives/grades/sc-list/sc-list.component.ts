@@ -19,6 +19,7 @@ export class ScListComponent
   defaultSort = 'date';
   defaultSortDir: SortDirection = 'desc';
   mobileWidth = '30em';
+  k_pageSize = 'sc-list';
 
   constructor(
     public du: DataUtilService,

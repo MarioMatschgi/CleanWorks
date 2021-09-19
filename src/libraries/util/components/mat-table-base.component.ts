@@ -42,7 +42,20 @@ export class MatTableBaseComponent<T> {
     this.dataSource.paginator = p;
   }
   pageSizes = [5, 10, 25, 100];
-  startPageSize = 10;
+  private _pageSize = 10;
+  get pageSize(): number {
+    return this._pageSize;
+  }
+  set pageSize(size: number) {
+    this._pageSize = size;
+
+    if (this.k_pageSize)
+      localStorage.setItem(
+        `table-page-size-${this.k_pageSize}`,
+        size.toString()
+      );
+  }
+  k_pageSize: string;
 
   mobileWidth = '600px';
 
@@ -53,6 +66,15 @@ export class MatTableBaseComponent<T> {
       bpo.observe(`(max-width: ${this.mobileWidth})`).subscribe((res) => {
         this.isMobileTable = res.matches;
       });
+      this.loadPageSize();
     });
+  }
+
+  loadPageSize() {
+    if (this.k_pageSize) {
+      this._pageSize =
+        +localStorage.getItem(`table-page-size-${this.k_pageSize}`) ||
+        this._pageSize;
+    }
   }
 }

@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
+  Input,
   OnInit,
 } from '@angular/core';
 import * as moment from 'moment';
@@ -31,6 +32,8 @@ export class HwListComponent
   ];
   defaultSort = 'dueDate';
   mobileWidth = '40em';
+  k_pageSize = 'hw-list';
+  @Input() lid: string;
 
   get allCompleted(): boolean {
     return (
@@ -74,5 +77,8 @@ export class HwListComponent
       this.allCompleted ? 'completed' : 'complete'
     );
     this.displayedColumns.splice(idx, 1);
+    this.k_pageSize += this.lid;
+    this.loadPageSize();
+    this.cd.detectChanges();
   }
 }

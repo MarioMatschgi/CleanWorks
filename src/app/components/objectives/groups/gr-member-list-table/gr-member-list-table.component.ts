@@ -32,6 +32,7 @@ export class GrMemberListTableComponent
 
   displayedColumns = ['name', 'email', 'role'];
   mobileWidth = '47em';
+  k_pageSize = 'gr-list';
 
   constructor(
     private auth: AuthService,
