@@ -9,11 +9,7 @@
           (submit)="du.sj.save(subject)"
         />
       </h2>
-      <button
-        mat-raised-button
-        background="warn"
-        (click)="du.sj.remove(subject)"
-      >
+      <button mat-raised-button color="warn" (click)="du.sj.remove(subject)">
         {{ lang.data.general.buttons.remove }}
       </button>
     </div>

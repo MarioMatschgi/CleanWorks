@@ -21,7 +21,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar background="primary">
+      <mat-toolbar color="primary">
         <button mat-button (click)="sidenav.toggle()">
           <fa [fa]="gv.Icons.hamburger"></fa>
         </button>
@@ -34,7 +34,7 @@
   </mat-sidenav-container>
 
   <ng-template #notMobile>
-    <mat-toolbar background="primary">
+    <mat-toolbar color="primary">
       <tb-nav></tb-nav>
       <div class="flex-spacer"></div>
       <div *ngIf="auth.userData?.uid">

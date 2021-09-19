@@ -21,6 +21,12 @@ select {
   }
 }
 
+.dark-theme {
+  --col-bg: #303030;
+}
+.light-theme {
+  --col-bg: $col-white;
+}
 app-root {
   background-color: var(--col-bg);
   display: block;

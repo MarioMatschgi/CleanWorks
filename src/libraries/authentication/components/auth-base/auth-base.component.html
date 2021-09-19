@@ -177,7 +177,7 @@
             <button
               *ngIf="type == 'verify'"
               mat-raised-button
-              background="warn"
+              color="warn"
               [innerHtml]="local.data.lib.auth.buttons.verify_email.resend"
               (click)="btn_verify()"
             ></button>
@@ -185,7 +185,7 @@
             <button
               *ngIf="type != 'verify'"
               mat-raised-button
-              background="warn"
+              color="warn"
               [innerHtml]="local.data.lib.auth.buttons.reset_password.reset"
               (click)="btn_reset()"
             ></button>

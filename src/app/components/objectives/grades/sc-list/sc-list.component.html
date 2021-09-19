@@ -51,7 +51,7 @@
       <td mat-cell *matCellDef="let sc">
         <button
           mat-raised-button
-          background="warn"
+          color="warn"
           (click)="du.sc.remove(sc); $event.stopPropagation()"
         >
           Remove
@@ -73,7 +73,7 @@
 </div>
 
 <ng-template #noContent>
-  <mat-card background="info">
+  <mat-card color="info">
     {{ lang.data.sc.no_content.sc }}
   </mat-card>
 </ng-template>
