@@ -17,9 +17,9 @@
   <card
     [icon]="gv.Icons.books"
     [ctitle]="lang.data.hw.name"
-    [csubtitle]="lang.data.hw.all.subtitle"
+    [csubtitle]="lang.data.hw.dashboard.all.subtitle"
     *ngIf="userData.data.hwFuture?.length > 0"
   >
-    <hw-list [data]="userData.hwFuture" lid="all"></hw-list>
+    <hw-list [data]="userData.data.hwFuture" lid="all"></hw-list>
   </card>
 </div>

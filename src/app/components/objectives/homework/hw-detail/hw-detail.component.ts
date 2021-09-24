@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -35,13 +36,17 @@ export class HwDetailComponent implements OnInit, AfterViewInit {
     public bps: BreakpointService,
     public du: DataUtilService,
     private loader: LoadService,
-    private auth: AuthService
+    private auth: AuthService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
+    if (!this.hw?.groupId) this.hw.groupId = this.userData.groupId;
+
     this.hwOld = Object.assign({}, this.hw);
+    this.cd.detectChanges();
   }
 
   async save() {

@@ -2,7 +2,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
-import { DatabaseService } from 'src/libraries/util/services/database.service';
 import { GroupMemberRole, GroupModel } from '../models/objectives/group.model';
 import { HomeworkModel } from '../models/objectives/homework.model';
 import { GradeModel } from '../models/objectives/grade.model';
@@ -11,6 +10,7 @@ import { GrDataLoadService } from './data-load/group-data-load.service';
 import { HwDataLoadService } from './data-load/hw-data-load.service';
 import { ScDataLoadService } from './data-load/sc-data-load.service';
 import { SjDataLoadService } from './data-load/sj-data-load.service';
+import { SubjectModel } from '../models/objectives/subject.model';
 
 export class UserDataEvents {
   hw = new EventEmitter<void>();
@@ -43,7 +43,6 @@ export class UserDataService {
     private sjLoader: SjDataLoadService,
     private hwLoader: HwDataLoadService,
     private scLoader: ScDataLoadService,
-    private db: DatabaseService,
     private router: Router,
     private auth: AuthService
   ) {
@@ -106,14 +105,18 @@ export class UserDataService {
   }
 
   private updateGroups(gids: string[]) {
-    // Load subjects
-    this.sjLoader.group = gids.length === 1 ? gids[0] : 'me';
-    this.sjLoader.getAllData().subscribe((sjs) => {
-      this.data.subjects = sjs;
-      this.events.sj.emit();
-    });
-    // Load homework
+    this.data.subjects = {};
+    const group_sj = this.sjLoader.group;
+    const group_hw = this.hwLoader.group;
+    const group_sc = this.scLoader.group;
     for (const g of gids) {
+      // Load subjects
+      this.sjLoader.group = g;
+      this.sjLoader.getAllData().subscribe((sjs) => {
+        this.setSubject(sjs, g);
+        this.events.sj.emit();
+      });
+      // Load homework
       this.hwLoader.group = g;
       this.hwLoader.getAllData().subscribe((hws) => {
         this.setHomework(hws, g);
@@ -126,6 +129,13 @@ export class UserDataService {
       this.grades = data;
       this.events.sc.emit();
     });
+    this.sjLoader.group = group_sj;
+    this.hwLoader.group = group_hw;
+    this.scLoader.group = group_sc;
+  }
+
+  private setSubject(sjs: SubjectModel[], gid: string) {
+    this.data.subjects[gid] = sjs;
   }
 
   private setHomework(hws: HomeworkModel[], gid: string) {

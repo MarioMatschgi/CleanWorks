@@ -61,10 +61,16 @@
       (submit)="save()"
       #subject
     >
-      <mat-option *ngFor="let sub of userData.data.subjects" [value]="sub.id">
+      <mat-option
+        *ngFor="let sub of userData.data.subjects[hw.groupId]"
+        [value]="sub.id"
+      >
         {{ sub.title }}
       </mat-option>
-      <mat-option disabled *ngIf="userData.data.subjects.length === 0">
+      <mat-option
+        disabled
+        *ngIf="userData.data.subjects[hw.groupId]?.length === 0"
+      >
         No subjects found
       </mat-option>
     </mat-select>

@@ -10,7 +10,7 @@ export class UserDataModel {
   hwWeek: HomeworkModel[] = [];
   hwCompleted: HomeworkModel[] = [];
 
-  subjects: SubjectModel[] = [];
+  subjects: { [gid: string]: SubjectModel[] } = {};
 
   groups: GroupModel[];
 }

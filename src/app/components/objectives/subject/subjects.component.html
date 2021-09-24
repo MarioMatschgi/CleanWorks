@@ -9,5 +9,5 @@
       {{ lang.data.sj.new.btn }}
     </button>
   </card>
-  <sj-list [subjects]="userData.data.subjects"></sj-list>
+  <sj-list [subjects]="userData.data.subjects[userData.groupId]"></sj-list>
 </div>

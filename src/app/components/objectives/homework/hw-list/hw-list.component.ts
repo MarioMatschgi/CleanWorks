@@ -55,7 +55,7 @@ export class HwListComponent
     this.dataSource.sortingDataAccessor = (item, prop) => {
       switch (prop) {
         case 'subject':
-          return this.du.sj.getById(item.subjectId)?.title;
+          return this.du.sj.getById(item.subjectId, item.groupId)?.title;
         default:
           return item[prop];
       }

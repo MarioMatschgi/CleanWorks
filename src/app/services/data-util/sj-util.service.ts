@@ -6,6 +6,7 @@ import {
 } from './data-util-base.service';
 import { MessageType } from '../snackbar.service';
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
+import { UserDataService } from '../user-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ import { LocalizationService } from 'src/libraries/util/services/localization.se
 export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
   constructor(
     public lang: LocalizationService,
+    public userData: UserDataService,
     private base: DataUtilBaseService
   ) {}
 
@@ -49,7 +51,10 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
     throw new Error('Method not implemented.');
   }
 
-  getById(id: string): SubjectModel {
-    return this.base.userData.data.subjects.find((e) => e.id === id);
+  getById(id: string, gid: string = null): SubjectModel {
+    if (gid == null) {
+      gid = this.userData.groupId;
+    }
+    return this.base.userData.data.subjects[gid].find((e) => e.id === id);
   }
 }

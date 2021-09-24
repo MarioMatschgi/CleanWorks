@@ -25,7 +25,7 @@ export class GradesComponent implements OnInit {
   }
 
   get subjectsWithGrades() {
-    return this.userData.data.subjects.filter((s) =>
+    return this.userData.data.subjects['me'].filter((s) =>
       this.userData.grades.find((g) => g.subjectId === s.id)
     );
   }
