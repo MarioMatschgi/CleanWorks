@@ -21,6 +21,10 @@ select {
   }
 }
 
+a {
+  color: var(--col-amber);
+}
+
 .theme-dark {
   --col-bg: #303030;
 }

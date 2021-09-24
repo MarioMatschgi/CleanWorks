@@ -23,6 +23,22 @@
     }
   },
 
+  "about": {
+    "title": "About",
+    "subtitle": "Everything to know about CleanWorks",
+    "welcome": {
+      "title": "Welcome",
+      "subtitle": "Welcome to CleanWorks",
+      "text": "Hi there! 👋<br><br>I am glad you want to try CleanWorks<br>I wrote this app for <b>any student</b> who wants to step up their game to the <b>next level</b>.<br>We all know and hate to forget our homework or grades - well fear no more!<br>CleanWorks keeps you on track and never lets you forget your important things. CleanWorks also visualizes your grades over time, so you can see how you improve, or not...<br><br>See the getting-started-guide <a href=\"/me/getting-started\">here</a><br>Read more about CleanWorks <a href=\"/me/about\">here</a>"
+    },
+    "about": {},
+    "getting-started": {},
+    "buttons": {
+      "about": "About",
+      "getting_started": "Help"
+    }
+  },
+
   "nav": {
     "hw": "Homework",
     "sj": "Subjects",

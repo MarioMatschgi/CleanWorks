@@ -5,6 +5,8 @@ import { AuthRegisterComponent } from 'src/libraries/authentication/components/a
 import { AuthResetComponent } from 'src/libraries/authentication/components/auth-reset/auth-reset.component';
 import { AuthVerifyEmailComponent } from 'src/libraries/authentication/components/auth-verify-email/auth-verify-email.component';
 import { AuthLoginGuard } from 'src/libraries/authentication/guards/auth-login.guard';
+import { AboutComponent } from './components/about/about.component';
+import { AuthComponent } from './components/auth/auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppointmentsComponent } from './components/objectives/appointments/appointments.component';
 import { GradesComponent } from './components/objectives/grades/grades.component';
@@ -21,6 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    component: AuthComponent,
     children: [
       { path: 'login', component: AuthLoginComponent },
       { path: 'register', component: AuthRegisterComponent },
@@ -33,6 +36,11 @@ const routes: Routes = [
   {
     path: 'me/settings',
     component: SettingsComponent,
+    canActivate: [AuthLoginGuard],
+  },
+  {
+    path: 'me/about',
+    component: AboutComponent,
   },
   {
     path: ':gid',

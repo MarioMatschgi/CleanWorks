@@ -65,6 +65,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorIntlLocal } from 'src/libraries/util/material-local-overrides/mat-paginator-intl-local';
 import { SettingsComponent } from './components/settings/settings.component';
+import { AboutComponent } from './components/about/about.component';
+import { WelcomeComponent } from './components/about/welcome/welcome.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +109,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     TbGroupsComponent,
     TbProfileComponent,
     SettingsComponent,
+    AboutComponent,
+    WelcomeComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
