@@ -26,6 +26,8 @@ export class AppComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.bgScroll.init();
+    setTimeout(() => {
+      this.bgScroll.init();
+    });
   }
 }

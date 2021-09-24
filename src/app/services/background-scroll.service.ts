@@ -46,6 +46,7 @@ export class BackgroundScrollService {
   }
 
   private setColor(col: string) {
+    console.log(this.top, col);
     this.html.style.backgroundColor = col;
   }
 }
