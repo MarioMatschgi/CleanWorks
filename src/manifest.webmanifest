@@ -2,7 +2,7 @@
   "name": "CleanWorks",
   "short_name": "CleanWorks",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#486596",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
