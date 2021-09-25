@@ -3,11 +3,11 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
-  selector: 'about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  selector: 'getting-started',
+  templateUrl: './getting-started.component.html',
+  styleUrls: ['./getting-started.component.scss'],
 })
-export class AboutComponent implements OnInit {
+export class GettingStartedComponent implements OnInit {
   constructor(
     public gv: GlobalVariablesService,
     public lang: LocalizationService

@@ -29,10 +29,50 @@
     "welcome": {
       "title": "Welcome",
       "subtitle": "Welcome to CleanWorks",
-      "text": "Hi there! 👋<br><br>I am glad you want to try CleanWorks<br>I wrote this app for <b>any student</b> who wants to step up their game to the <b>next level</b>.<br>We all know and hate to forget our homework or grades - well fear no more!<br>CleanWorks keeps you on track and never lets you forget your important things. CleanWorks also visualizes your grades over time, so you can see how you improve, or not...<br><br>See the getting-started-guide <a href=\"/me/getting-started\">here</a><br>Read more about CleanWorks <a href=\"/me/about\">here</a>"
+      "text": "Hi there! 👋<br><br>I am glad you want to try CleanWorks.<br>I wrote this app for <b>any student</b> who wants to step up their game to the <b>next level</b>.<br>We all know and hate to forget our homework or grades - well fear no more!<br>CleanWorks keeps you on track and never lets you forget your important things. CleanWorks also visualizes your grades over time, so you can see how you improve, or not...<br><br>See the getting-started-guide <a href=\"/me/getting-started\">here</a><br>Read more about CleanWorks <a href=\"/me/about\">here</a>"
     },
-    "about": {},
-    "getting-started": {},
+    "about": {
+      "title": "CleanWorks",
+      "subtitle": "About CleanWorks",
+      "content": "CleanWorks is a <a href=\"https://wikipedia.org/wiki/Progressive_web_application\" target=\"_blank\">ProgressiveWebApp (PWA)</a> built with the <a href=\"https://angular.io\" target=\"_blank\">Angular</a> framework.<br>This means that it is accessable from any device with a browser and installable as a standalone app with Chrome or Safari.<br><br>CleanWorks is open source, as most of my projects. Click <a href=\"https://github.com/MarioMatschgi/CleanWorks\" target=\"_blank\">here</a> to view the sourcecode on GitHub.<br><br>© 2021 Programario"
+    },
+    "getting_started": {
+      "title": "Getting started",
+      "subtitle": "Getting started with CleanWorks",
+      "content": "This guide will show you how to get started and bring your working experience to the next level.",
+      "sections": {
+        "basics": {
+          "title": "Basics",
+          "subtitle": "The basic concept of CleanWorks",
+          "content": "CleanWorks consists of a few parts:<br>• Subjects<br>• Homeworks<br>• Grades<br>• Groups<br>• appointments (work-in-progress)"
+        },
+        "subjects": {
+          "title": "Subjects",
+          "subtitle": "All about subjects",
+          "content": "A subject is needed in order for you to know what a homework or grade is for.<br>You need to have at least one subject in order to create a homework or grade - if you don't the subject-dropdown is empty and you can't add a homework or grade without selecting a subject."
+        },
+        "homework": {
+          "title": "Homework",
+          "subtitle": "All about homework",
+          "content": "A homework contains all data for a given homework. The title is the name of the homework, in the description you can add what you need to do for the task and the due-date is self-explanatory. There is also a dropdown for the subject which will be empty if you haven't added any subjects. With the completed slider you can set whether the homework is completed or not (you can also complete a homework by clicking on the complete button in the list).<br>Edit a homework by clicking on the homework you want to edit in the list."
+        },
+        "grades": {
+          "title": "Grades",
+          "subtitle": "All about grades",
+          "content": "A grade contains information about a test or revision or your semester/year grade.<br>The type sets whether the grade is a test, revision, etc. The mark is the mark you got on the test, revision, etc. and the score correspondes to the score you got on the test (this is optional). The date and subject are also self-explanatory."
+        },
+        "groups": {
+          "title": "Groups",
+          "subtitle": "All about groups",
+          "content": "Groups are a bit more complex at first glance.<br>Groups are a collective of you and your friends/classmates. Any group member can add homework to the group and everyone can see it and complete it by themselves. For example someone can add the homework for physics and another one for history, etc.<br>Everything inside the \"Mine\" tab only you can see. Everything inside a group is accessable to all members of that specific group.<br> Only group admins can add and remove members and choose other admins.<br>Grades are not available for groups because they are private and only you should be able to see it."
+        },
+        "appointments": {
+          "title": "Appointments",
+          "subtitle": "All about appointments",
+          "content": "Appointments are so you can add for example the date of your test, event or whatever you want.<br>This feature is not yet implemented though."
+        }
+      }
+    },
     "buttons": {
       "about": "About",
       "getting_started": "Help"
@@ -44,7 +84,8 @@
     "sj": "Subjects",
     "sc": "Grades",
     "ap": "Appointments",
-    "mine": "Mine"
+    "mine": "Mine",
+    "help": "Help"
   },
 
   "dashboard": {

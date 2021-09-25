@@ -6,6 +6,7 @@ import { AuthResetComponent } from 'src/libraries/authentication/components/auth
 import { AuthVerifyEmailComponent } from 'src/libraries/authentication/components/auth-verify-email/auth-verify-email.component';
 import { AuthLoginGuard } from 'src/libraries/authentication/guards/auth-login.guard';
 import { AboutComponent } from './components/about/about.component';
+import { GettingStartedComponent } from './components/about/getting-started/getting-started.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppointmentsComponent } from './components/objectives/appointments/appointments.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'me/about',
     component: AboutComponent,
+  },
+  {
+    path: 'me/getting-started',
+    component: GettingStartedComponent,
   },
   {
     path: ':gid',

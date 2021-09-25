@@ -23,12 +23,69 @@
     }
   },
 
+  "about": {
+    "title": "Über",
+    "subtitle": "Alles über CleanWorks",
+    "welcome": {
+      "title": "Wilkommen",
+      "subtitle": "Wilkommen bei CleanWorks",
+      "text": "Hallo! 👋<br><br>Freut mich, dass du CleanWorks ausprobierst.<br>Ich habe diese App für <b>jeden Schüler</b> entwickelt, der sein Game auf das <b>nächste Level</b> bringen will.<br>Wir alle hassen es, unsere Hausaufgaben oder Noten zu vergessen - das hat nun ein Ende!<br>Bei CleanWorks kannst du deine Hausaufgaben und Noten eintragen, so kannst du sie nicht vergessen. CleanWorks erstellt außerdem Diagramme zu deinen Noten, so siehst du, ob du dich verbesserst, oder nicht...<br><br>Sie dir <a href=\"/me/getting-started\">hier</a> an, wie du mit CleanWorks anfängst.<br>Lese mehr über CleanWorks <a href=\"/me/about\">hier</a>"
+    },
+    "about": {
+      "title": "CleanWorks",
+      "subtitle": "Über CleanWorks",
+      "content": "CleanWorks ist eine <a href=\"https://wikipedia.org/wiki/Progressive_web_application\" target=\"_blank\">ProgressiveWebApp (PWA)</a>, welche mit dem <a href=\"https://angular.io\" target=\"_blank\">Angular</a> Framework gebaut wurde.<br>Das bedeutet, dass sie auf jedem Gerät mit einem browser erreichbar ist. Man kann sie auch als eigenständige App in Chrome oder Safari installieren.<br><br>CleanWorks ist open-source, wie die meisten meiner Projekte. Klicke <a href=\"https://github.com/MarioMatschgi/CleanWorks\" target=\"_blank\">hier</a> um den Sourcecode auf GitHub zu sehen.<br><br>© 2021 Programario"
+    },
+    "getting_started": {
+      "title": "Hilfe",
+      "subtitle": "Hilfe bei CleanWorks",
+      "content": "Diese Anleitung zeigt dir, wie du anfängst und was du alles machen kannst.",
+      "sections": {
+        "basics": {
+          "title": "Basics",
+          "subtitle": "Das Konzept von CleanWorks",
+          "content": "CleanWorks setzt sich auch folgenden Teilen zusammen:<br>• Fächer<br>• Hausaufgaben<br>• Noten<br>• Gruppen<br>• Termine (in Arbeit)"
+        },
+        "subjects": {
+          "title": "Fächer",
+          "subtitle": "Alles über Fächer",
+          "content": "Ein Fach wird benötigt, um zu wissen, für welches Fach eine Hausaufgabe auf ist.<br>Es muss mindestens 1 Fach erstellt sein, um eine Hausaufgabe erstellen zu können - gibt es kein Fach, ist das Dropdown leer und es kann keine Hausaufgabe ohne Fach ausgewählt zu haben erstellt werden."
+        },
+        "homework": {
+          "title": "Hausaufgaben",
+          "subtitle": "Alles über Hausaufgaben",
+          "content": "Eine Hausaufgabe beinhaltet alles Daten für eine Hausaufgabe. Der Titel ist der Name der Aufgabe, in der Beschreibung kannst du die Aufgabenstellung angeben und das Abgabedatum ist selbst erklärend. Es gibt auch ein Dropdown für das Fach, welches leer ist, wenn du noch kein Fach erstellt hast. Mit dem \"Fertiggestellt\" Slider kannst du bestimmen, ob du die Aufgabe bereits erledigt hast (Du kannst eine Aufgabe auch mit dem \"Fertig\" Button in der Liste fertigstellen). <br>Bearbeite die Aufgabe, indem du auf sie in der Liste klickst."
+        },
+        "grades": {
+          "title": "Noten",
+          "subtitle": "Alles über Noten",
+          "content": "Eine Note beinhaltet alles Infos über eine Schularbeit, Test oder Semester-/Jahresnote.<br>Der Typ bestimmt, ob die Note für eine Schularbeit oder einen Test, etc. ist. Die Note ist die Note, welche du bekommen hast und die Punkte ist die Punktezahl (optional). Das Datum und Fach ist ebenfalls selbst erklärend."
+        },
+        "groups": {
+          "title": "Gruppen",
+          "subtitle": "Alles über Gruppen",
+          "content": "Gruppen sind auf den ersten Blick etwas komplizierter.<br>Eine Gruppe ist ein Kollektiv aus dir und deinen Freunden/Mitschülern. Jedes Gruppenmitglied kann eine Hausaufgabe hinzufügen, welche jedes Gruppenmitglied sehen kann und für sich selbst fertigstellen kann. So kann zum Beispiel Jemand für Physik und Jemand eine für Geschichte eine Hausaufgabe erstellen.<br>Alles im \"Meine\" Reiter ist nur für dich selbst sichtbar. Alles in einer Gruppe ist für alle Mitglieder dieser Gruppe sichtbar.<br>Nur Gruppen Admins können Mitglieder hinzufügen/entfernen und andere Admins wählen.<br>Noten sind in Gruppen nicht verfügbar, da diese privat sind und nur du deine Noten sehen können solltest."
+        },
+        "appointments": {
+          "title": "Termine",
+          "subtitle": "Alles über Termine",
+          "content": "So kannst du deine Termine für Schularbeiten oder Events notieren.<br>Dieses Feature ist aber noch nicht fertig."
+        }
+      }
+    },
+    "buttons": {
+      "about": "Über",
+      "getting_started": "Hilfe"
+    }
+  },
+
   "nav": {
     "hw": "Hausaufgaben",
     "sj": "Fächer",
     "sc": "Noten",
     "ap": "Termine",
-    "mine": "Meine"
+    "mine": "Meine",
+    "help": "Hilfe"
   },
 
   "dashboard": {

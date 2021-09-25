@@ -1,21 +1,3 @@
-<!-- <div class="flexbox equal start">
-  <button mat-raised-button background="primary" (click)="newHomework()">
-    <fa [fa]="gv.Icons.add">
-      <span class="fa-before">{{ lang.data.nav.hw }}</span>
-    </fa>
-  </button>
-  <button mat-raised-button background="primary" (click)="newGrade()">
-    <fa [fa]="gv.Icons.add">
-      <span class="fa-before">{{ lang.data.nav.sc }}</span>
-    </fa>
-  </button>
-  <button mat-raised-button background="primary">
-    <fa [fa]="gv.Icons.add">
-      <span class="fa-before">{{ lang.data.nav.ap }}</span>
-    </fa>
-  </button>
-</div> -->
-
 <div class="flexbox equal start">
   <button mat-raised-button color="primary" (click)="newHomework()">
     <fa [fa]="gv.Icons.add">
@@ -32,4 +14,9 @@
       <span class="fa-before">{{ lang.data.nav.ap }}</span>
     </fa>
   </button>
+  <a mat-raised-button color="primary" routerLink="/me/getting-started">
+    <fa [fa]="gv.Icons.help">
+      <span class="fa-before">{{ lang.data.nav.help }}</span>
+    </fa>
+  </a>
 </div>

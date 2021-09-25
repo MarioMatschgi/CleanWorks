@@ -35,4 +35,6 @@ export enum Icons {
   close = 'f00d fas',
   lang = 'f0ac far',
   theme = 'f042 fas',
+  about = 'f135 far',
+  help = 'f059 far',
 }

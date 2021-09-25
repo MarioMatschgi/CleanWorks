@@ -68,6 +68,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { WelcomeComponent } from './components/about/welcome/welcome.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { GettingStartedComponent } from './components/about/getting-started/getting-started.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +113,7 @@ import { AuthComponent } from './components/auth/auth.component';
     AboutComponent,
     WelcomeComponent,
     AuthComponent,
+    GettingStartedComponent,
   ],
   imports: [
     BrowserModule,
