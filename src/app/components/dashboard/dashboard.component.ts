@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {}
 
   editGroup() {
-    this.dialog.dialog.open(GrDetailDialogComponent, {
+    this.dialog.open(GrDetailDialogComponent, {
       data: { group: this.userData.group },
     });
   }

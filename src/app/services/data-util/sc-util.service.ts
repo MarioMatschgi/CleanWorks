@@ -47,7 +47,7 @@ export class ScUtilService implements IDataUtilBaseService<GradeModel> {
   }
 
   view(sc: GradeModel): void {
-    this.base.dialogService.dialog.open(ScDetailDialogComponent, {
+    this.base.dialogService.open(ScDetailDialogComponent, {
       data: { grade: sc },
     });
   }

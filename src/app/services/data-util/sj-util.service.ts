@@ -55,6 +55,6 @@ export class SjUtilService implements IDataUtilBaseService<SubjectModel> {
     if (gid == null) {
       gid = this.userData.groupId;
     }
-    return this.base.userData.data.subjects[gid].find((e) => e.id === id);
+    return this.base.userData.data.subjects[gid]?.find((e) => e.id === id);
   }
 }

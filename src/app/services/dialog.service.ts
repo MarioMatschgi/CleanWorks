@@ -24,28 +24,33 @@ export interface DialogButtonData {
   providedIn: 'root',
 })
 export class DialogService {
-  constructor(public dialog: MatDialog) {}
+  constructor(private _dialog: MatDialog) {}
 
-  openDialog(toOpen: ComponentType<unknown>, data: DialogData) {
-    const cfg = data.config || ({} as MatDialogConfig<any>);
-    cfg.data = data;
-
-    cfg.hasBackdrop = true;
-
-    cfg.data.component = toOpen;
-    return this.dialog.open(DialogStandardComponent, cfg);
+  open(component: ComponentType<unknown>, cfg: MatDialogConfig = {}) {
+    if (cfg.hasBackdrop == null) cfg.hasBackdrop = true;
+    return this._dialog.open(component, cfg);
   }
 
-  openStandardDialog(toOpen: ComponentType<unknown>, data: DialogStandardData) {
-    return this.openDialog(toOpen, data);
-  }
+  // openDialog(toOpen: ComponentType<unknown>, data = {} as DialogData) {
+  //   const cfg = data.config || ({} as MatDialogConfig<any>);
+  //   cfg.data = data;
+
+  //   cfg.hasBackdrop = true;
+
+  //   cfg.data.component = toOpen;
+  //   return this._dialog.open(DialogStandardComponent, cfg);
+  // }
+
+  // openStandardDialog(toOpen: ComponentType<unknown>, data: DialogStandardData) {
+  //   return this.openDialog(toOpen, data);
+  // }
 
   openConfirmationDialog(title: string, description: string, color: string) {
-    return this.dialog.open(ConfirmDialogComponent, {
+    return this._dialog.open(ConfirmDialogComponent, {
       data: { title: title, description: description, color: color },
     });
   }
   openDeleteDialog(items: string[]) {
-    return this.dialog.open(DeleteDialogComponent, { data: { items: items } });
+    return this._dialog.open(DeleteDialogComponent, { data: { items: items } });
   }
 }

@@ -21,6 +21,6 @@ export class SubjectsComponent implements OnInit {
   ngOnInit(): void {}
 
   addNew() {
-    this.dialogService.dialog.open(SjNewDialogComponent);
+    this.dialogService.open(SjNewDialogComponent);
   }
 }

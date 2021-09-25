@@ -50,7 +50,7 @@ export class HwUtilService implements IDataUtilBaseService<HomeworkModel> {
   }
 
   view(hw: HomeworkModel): void {
-    this.base.dialogService.dialog.open(HwDetailDialogComponent, {
+    this.base.dialogService.open(HwDetailDialogComponent, {
       data: { homework: hw },
     });
   }

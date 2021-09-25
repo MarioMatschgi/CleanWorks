@@ -21,6 +21,6 @@ export class HomeworkComponent implements OnInit {
   ngOnInit(): void {}
 
   newHomework() {
-    this.dialogService.dialog.open(HwNewDialogComponent);
+    this.dialogService.open(HwNewDialogComponent);
   }
 }

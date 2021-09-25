@@ -20,10 +20,10 @@ export class DbQuickActionsComponent implements OnInit {
   ngOnInit(): void {}
 
   newHomework() {
-    this.dialogService.dialog.open(HwNewDialogComponent);
+    this.dialogService.open(HwNewDialogComponent);
   }
 
   newGrade() {
-    this.dialogService.dialog.open(ScNewDialogComponent);
+    this.dialogService.open(ScNewDialogComponent);
   }
 }

@@ -25,6 +25,6 @@ export class TbGroupsComponent implements OnInit {
   ngOnInit(): void {}
 
   newGroup() {
-    this.dialog.dialog.open(GrNewDialogComponent);
+    this.dialog.open(GrNewDialogComponent);
   }
 }

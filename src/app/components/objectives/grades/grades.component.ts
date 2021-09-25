@@ -21,7 +21,7 @@ export class GradesComponent implements OnInit {
   ngOnInit(): void {}
 
   addNew() {
-    this.dialogService.dialog.open(ScNewDialogComponent);
+    this.dialogService.open(ScNewDialogComponent);
   }
 
   get subjectsWithGrades() {

@@ -61,7 +61,7 @@ export class GrMemberListTableComponent
   }
 
   addMember() {
-    this.dialog.dialog
+    this.dialog
       .open(GrAddMemberDialogComponent, {
         width: '40em',
         height: '50em',
