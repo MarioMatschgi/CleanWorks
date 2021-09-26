@@ -12,6 +12,7 @@ export enum LoadServices {
   homework = 'homeworks',
   group = 'groups',
   grade = 'grades',
+  appointment = 'appointment',
 }
 
 @Injectable({

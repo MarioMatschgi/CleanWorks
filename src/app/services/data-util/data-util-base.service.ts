@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from 'src/libraries/authentication/services/auth.service';
 import { ObjectiveModel } from '../../models/objectives/objective.model';
+import { ApDataLoadService } from '../data-load/ap-data-load.service';
 import { GrDataLoadService } from '../data-load/group-data-load.service';
 import { HwDataLoadService } from '../data-load/hw-data-load.service';
 import { ScDataLoadService } from '../data-load/sc-data-load.service';
@@ -30,6 +31,7 @@ export class DataUtilBaseService {
     public sjLoader: SjDataLoadService,
     public grLoader: GrDataLoadService,
     public scLoader: ScDataLoadService,
+    public apLoader: ApDataLoadService,
     public snackbar: SnackbarService,
     public dialogService: DialogService,
     public userData: UserDataService,

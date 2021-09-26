@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Moment } from 'moment';
+import { AppointmentModel } from '../models/objectives/appointment.model';
 
 export interface CalenderData {
   prodid: string;
@@ -26,18 +27,20 @@ export interface CalenderAlarmData {
 export class CalenderService {
   constructor() {}
 
-  newEvent(ap: AppointmentModel) {
+  event(ap: AppointmentModel) {
+    console.log(ap);
+
     const evt = this.buildEvent({
-      prodid: 'Calender',
+      prodid: 'Calender_' + ap.id,
       events: [
         {
-          id: 'AA',
-          tStart: moment(),
-          tEnd: moment().add(1, 'd'),
-          desc: 'Test',
+          id: 'Event_' + ap.id,
+          tStart: ap.date,
+          tEnd: ap.date.clone().add(50, 'minutes'),
+          desc: ap.title,
           alarms: [
-            { desc: 'LLLLLL', mins: 1440 },
-            { desc: 'AAA', mins: 10080 },
+            { desc: 'Day before', mins: 1440 },
+            { desc: 'Week before', mins: 10080 },
           ],
         },
       ],

@@ -1,0 +1,67 @@
+<form class="grow" #form="ngForm">
+  <mat-form-field>
+    <mat-label>{{ lang.data.ap.detail.name }}</mat-label>
+    <input
+      matInput
+      name="title"
+      required
+      [(ngModel)]="ap.title"
+      (submit)="save()"
+      #title
+    />
+    <mat-error [hidden]="!title.valid">
+      {{ lang.data.ap.detail.name }} {{ lang.data.general.err.req }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ lang.data.ap.detail.subject }}</mat-label>
+    <mat-select
+      name="subject"
+      [(ngModel)]="ap.subjectId"
+      (submit)="save()"
+      #subject
+    >
+      <mat-option [value]="null">
+        {{ lang.data.general.buttons.none }}
+      </mat-option>
+      <mat-option
+        *ngFor="let sub of userData.data.subjects[ap.groupId]"
+        [value]="sub.id"
+      >
+        {{ sub.title }}
+      </mat-option>
+      <mat-option
+        disabled
+        *ngIf="userData.data.subjects[ap.groupId]?.length === 0"
+      >
+        No subjects found
+      </mat-option>
+    </mat-select>
+    <mat-error [hidden]="!subject.valid">
+      {{ lang.data.ap.detail.subject }} {{ lang.data.general.err.req }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ lang.data.ap.detail.date }}</mat-label>
+    <input
+      matInput
+      [matDatepicker]="datePicker"
+      name="date"
+      required
+      (submit)="save()"
+      [(ngModel)]="ap.date"
+      #date
+    />
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker
+      (closed)="save()"
+      #datePicker
+      [touchUi]="bps.datepickerMobile"
+    ></mat-datepicker>
+    <mat-error [hidden]="!date.valid">
+      {{ lang.data.ap.detail.date }} {{ lang.data.general.err.req }}
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -11,6 +11,9 @@ import { HwDataLoadService } from './data-load/hw-data-load.service';
 import { ScDataLoadService } from './data-load/sc-data-load.service';
 import { SjDataLoadService } from './data-load/sj-data-load.service';
 import { SubjectModel } from '../models/objectives/subject.model';
+import { ApDataLoadService } from './data-load/ap-data-load.service';
+import { AppointmentModel } from '../models/objectives/appointment.model';
+import { ObjectiveModel } from '../models/objectives/objective.model';
 
 export class UserDataEvents {
   hw = new EventEmitter<void>();
@@ -43,6 +46,7 @@ export class UserDataService {
     private sjLoader: SjDataLoadService,
     private hwLoader: HwDataLoadService,
     private scLoader: ScDataLoadService,
+    private apLoader: ApDataLoadService,
     private router: Router,
     private auth: AuthService
   ) {
@@ -106,14 +110,15 @@ export class UserDataService {
 
   private updateGroups(gids: string[]) {
     this.data.subjects = {};
+    this.data.appointments = [];
     const group_sj = this.sjLoader.group;
     const group_hw = this.hwLoader.group;
-    const group_sc = this.scLoader.group;
+    const group_ap = this.apLoader.group;
     for (const g of gids) {
       // Load subjects
       this.sjLoader.group = g;
       this.sjLoader.getAllData().subscribe((sjs) => {
-        this.setSubject(sjs, g);
+        this.setSubjects(sjs, g);
         this.events.sj.emit();
       });
       // Load homework
@@ -122,20 +127,36 @@ export class UserDataService {
         this.setHomework(hws, g);
         this.events.hw.emit();
       });
+      // Load appointments
+      this.apLoader.group = g;
+      this.apLoader.getAllData().subscribe((aps) => {
+        this.setAppointments(aps, g);
+        this.events.hw.emit();
+      });
     }
     // Load grades
-    this.scLoader.group = 'me';
-    this.scLoader.getAllData().subscribe((data) => {
-      this.grades = data;
-      this.events.sc.emit();
-    });
+    if (gids[0] === 'me') {
+      const group_sc = this.scLoader.group;
+      this.scLoader.group = 'me';
+      this.scLoader.getAllData().subscribe((data) => {
+        this.grades = data;
+        this.events.sc.emit();
+      });
+      this.scLoader.group = group_sc;
+    }
+
     this.sjLoader.group = group_sj;
     this.hwLoader.group = group_hw;
-    this.scLoader.group = group_sc;
+    this.apLoader.group = group_ap;
   }
 
-  private setSubject(sjs: SubjectModel[], gid: string) {
+  private setSubjects(sjs: SubjectModel[], gid: string) {
     this.data.subjects[gid] = sjs;
+  }
+
+  private setAppointments(aps: AppointmentModel[], gid: string) {
+    this.data.appointments = this.filterByGroup(gid, this.data.appointments);
+    this.data.appointments = this.data.appointments.concat(aps);
   }
 
   private setHomework(hws: HomeworkModel[], gid: string) {
@@ -170,7 +191,7 @@ export class UserDataService {
     return Object.keys(hw.completed).includes(this.auth.userData.uid);
   }
 
-  private filterByGroup(gid: string, arr: any[]): any[] {
-    return arr.filter((hw) => hw.groupId !== gid);
+  private filterByGroup<T extends ObjectiveModel>(gid: string, arr: T[]): T[] {
+    return arr.filter((e) => e.groupId !== gid);
   }
 }

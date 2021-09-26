@@ -1,3 +1,4 @@
+import { AppointmentModel } from './objectives/appointment.model';
 import { GroupModel } from './objectives/group.model';
 import { HomeworkModel } from './objectives/homework.model';
 import { SubjectModel } from './objectives/subject.model';
@@ -11,6 +12,8 @@ export class UserDataModel {
   hwCompleted: HomeworkModel[] = [];
 
   subjects: { [gid: string]: SubjectModel[] } = {};
+
+  appointments: AppointmentModel[];
 
   groups: GroupModel[];
 }

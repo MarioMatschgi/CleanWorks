@@ -1,12 +1,13 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GradeModel, ScoreType } from 'src/app/models/objectives/grade.model';
+import { AppointmentModel } from 'src/app/models/objectives/appointment.model';
 import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { DataUtilService } from 'src/app/services/data-util/data-util.service';
 import { UserDataService } from 'src/app/services/user-data.service';
@@ -15,20 +16,17 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
 
 @Component({
-  selector: 'sc-detail',
-  templateUrl: './sc-detail.component.html',
-  styleUrls: ['./sc-detail.component.scss'],
+  selector: 'ap-detail',
+  templateUrl: './ap-detail.component.html',
+  styleUrls: ['./ap-detail.component.scss'],
 })
-export class ScDetailComponent implements OnInit, AfterViewInit {
+export class ApDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('form') form: NgForm;
-  @Input('score') sc = {} as GradeModel;
+  @Input('appointment') ap = {} as AppointmentModel;
   @Input() shouldSave: boolean = true;
 
-  types: string[] = [];
-  marks = [1, 2, 3, 4, 5, 6];
-
   private wasSaveAborted = false;
-  private scOld: GradeModel;
+  private apOld: AppointmentModel;
 
   constructor(
     public gv: GlobalVariablesService,
@@ -36,17 +34,17 @@ export class ScDetailComponent implements OnInit, AfterViewInit {
     public userData: UserDataService,
     public bps: BreakpointService,
     private du: DataUtilService,
-    private loader: LoadService
+    private loader: LoadService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    for (const type of Object.keys(ScoreType)) {
-      this.types.push(type);
-    }
+    if (!this.ap?.groupId) this.ap.groupId = this.userData.groupId;
+    this.cd.detectChanges();
   }
 
   ngAfterViewInit() {
-    this.scOld = Object.assign({}, this.sc);
+    this.apOld = Object.assign({}, this.ap);
   }
 
   async save() {
@@ -56,10 +54,10 @@ export class ScDetailComponent implements OnInit, AfterViewInit {
 
     if (
       !this.form.valid ||
-      JSON.stringify(this.sc) == JSON.stringify(this.scOld)
+      JSON.stringify(this.ap) == JSON.stringify(this.apOld)
     )
       return false;
-    this.scOld = Object.assign({}, this.sc);
+    this.apOld = Object.assign({}, this.ap);
 
     if (this.loader.finished('save')) {
       await this.saveGrade();
@@ -75,7 +73,7 @@ export class ScDetailComponent implements OnInit, AfterViewInit {
   private async saveGrade() {
     this.loader.load('save');
 
-    this.du.sc.save(this.sc);
+    this.du.ap.save(this.ap);
 
     this.loader.unload('save');
   }

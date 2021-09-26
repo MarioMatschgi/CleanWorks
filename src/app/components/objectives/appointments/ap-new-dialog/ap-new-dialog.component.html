@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{ lang.data.ap.new.title }}</h1>
+<div mat-dialog-content>
+  <ap-new #apNew></ap-new>
+</div>
+<div mat-dialog-actions class="space-between">
+  <button mat-button mat-dialog-close>
+    {{ lang.data.general.buttons.close }}
+  </button>
+  <button mat-raised-button color="success" (click)="submit()">
+    {{ lang.data.general.buttons.add }}
+  </button>
+</div>

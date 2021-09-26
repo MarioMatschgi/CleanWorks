@@ -69,6 +69,11 @@ import { AboutComponent } from './components/about/about.component';
 import { WelcomeComponent } from './components/about/welcome/welcome.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { GettingStartedComponent } from './components/about/getting-started/getting-started.component';
+import { ApNewComponent } from './components/objectives/appointments/ap-new/ap-new.component';
+import { ApNewDialogComponent } from './components/objectives/appointments/ap-new-dialog/ap-new-dialog.component';
+import { ApDetailComponent } from './components/objectives/appointments/ap-detail/ap-detail.component';
+import { ApDetailDialogComponent } from './components/objectives/appointments/ap-detail-dialog/ap-detail-dialog.component';
+import { ApListComponent } from './components/objectives/appointments/ap-list/ap-list.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +119,11 @@ import { GettingStartedComponent } from './components/about/getting-started/gett
     WelcomeComponent,
     AuthComponent,
     GettingStartedComponent,
+    ApNewComponent,
+    ApNewDialogComponent,
+    ApDetailComponent,
+    ApDetailDialogComponent,
+    ApListComponent,
   ],
   imports: [
     BrowserModule,

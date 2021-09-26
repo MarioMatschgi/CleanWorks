@@ -1,2 +1,22 @@
-<p>appointments works!</p>
-<button mat-raised-button (click)="calender.newEvent()">evt</button>
+<div class="container">
+  <!-- OPTIONS -->
+  <card
+    [icon]="gv.Icons.edit"
+    [ctitle]="lang.data.ap.name"
+    [csubtitle]="lang.data.ap.subtitle"
+    class="noTopRad"
+  >
+    <button mat-raised-button color="success" (click)="newAppointment()">
+      {{ lang.data.ap.new.btn }}
+    </button>
+  </card>
+
+  <card
+    [icon]="gv.Icons.calender"
+    [ctitle]="lang.data.ap.name"
+    [csubtitle]="lang.data.ap.dashboard.all.subtitle"
+    *ngIf="userData.data.appointments?.length > 0"
+  >
+    <ap-list [data]="userData.data.appointments"></ap-list>
+  </card>
+</div>

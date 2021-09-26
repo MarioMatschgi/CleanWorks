@@ -16,7 +16,8 @@
       "remove": "Remove",
       "delete": "Delete",
       "add": "Add",
-      "view": "View"
+      "view": "View",
+      "none": "None"
     },
     "err": {
       "req": "is required!"
@@ -145,9 +146,9 @@
       "btn": "Add new homework"
     },
     "snackbar": {
-      "new": "Successfully added a new homework %hw%",
-      "save": "Successfully saved homework %hw%",
-      "delete": "Successfully deleted homework %hw%"
+      "new": "Successfully added a new homework \"%hw%\"",
+      "save": "Successfully saved homework \"%hw%\"",
+      "delete": "Successfully deleted homework \"%hw%\""
     }
   },
 
@@ -162,9 +163,9 @@
       "btn": "Add new subject"
     },
     "snackbar": {
-      "new": "Successfully added a new subject %sj%",
-      "save": "Successfully saved subject %sj%",
-      "delete": "Successfully deleted subject %sj%"
+      "new": "Successfully added a new subject \"%sj%\"",
+      "save": "Successfully saved subject \"%sj%\"",
+      "delete": "Successfully deleted subject \"%sj%\""
     }
   },
 
@@ -205,14 +206,35 @@
   "gr": {
     "name": "Group",
     "snackbar": {
-      "new": "Successfully added a new group %gr%",
-      "save": "Successfully saved group %gr%",
-      "delete": "Successfully deleted group %gr%"
+      "new": "Successfully added a new group \"%gr%\"",
+      "save": "Successfully saved group \"%gr%\"",
+      "delete": "Successfully deleted group \"%gr%\""
     }
   },
 
   "ap": {
-    "name": "Appointment"
+    "name": "Appointment",
+    "subtitle": "All your appointments in one place",
+    "dashboard": {
+      "all": {
+        "subtitle": "Your appointments"
+      }
+    },
+    "detail": {
+      "name": "Name",
+      "date": "Date",
+      "subject": "Subject",
+      "calender": "Calender"
+    },
+    "new": {
+      "title": "New appointment",
+      "btn": "Add new appointment"
+    },
+    "snackbar": {
+      "new": "Successfully added a new appointment \"%ap%\"",
+      "save": "Successfully saved appointment \"%ap%\"",
+      "delete": "Successfully deleted appointment \"%ap%\""
+    }
   },
 
   "profile": {
