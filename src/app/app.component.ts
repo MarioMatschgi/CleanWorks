@@ -4,6 +4,7 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
 import { RouterService } from 'src/libraries/util/services/router.service';
 import { BackgroundScrollService } from './services/background-scroll.service';
 import { BreakpointService } from './services/breakpoint.service';
+import { CalenderService } from './services/calender.service';
 import { DialogService } from './services/dialog.service';
 import { ThemeService } from './services/theme.service';
 import { UserDataService } from './services/user-data.service';
