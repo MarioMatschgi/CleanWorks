@@ -28,7 +28,10 @@ export class ApNewDialogComponent implements OnInit {
     if (await this.apNew.addNew()) {
       this.dialogRef.close();
       this.snackbar.displayTop(
-        this.lang.data.ap.snackbar.new,
+        this.lang.data.ap.snackbar.new.replace(
+          '%ap%',
+          this.apNew.apDetail.ap.title
+        ),
         MessageType.Info
       );
     }

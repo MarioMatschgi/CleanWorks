@@ -22,4 +22,8 @@ table {
   * {
     user-select: none;
   }
+  input,
+  textarea {
+    user-select: initial !important;
+  }
 }

@@ -39,7 +39,7 @@ app-root {
   height: 100%;
   min-height: 100vh;
 
-  > * > .container {
+  > * > * {
     padding-left: env(safe-area-inset-left) !important;
     padding-right: env(safe-area-inset-right) !important;
   }

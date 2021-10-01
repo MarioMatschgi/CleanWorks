@@ -222,7 +222,8 @@
     },
     "detail": {
       "name": "Name",
-      "date": "Date",
+      "dateStart": "Start date",
+      "dateEnd": "End date",
       "subject": "Subject",
       "calender": "Calender"
     },

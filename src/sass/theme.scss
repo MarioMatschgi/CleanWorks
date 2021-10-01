@@ -87,6 +87,37 @@ textarea {
 //   }
 // }
 
+.mat-datepicker-content-touch {
+  box-shadow: none !important;
+  .mat-calendar-header {
+    padding-top: 0 !important;
+  }
+  .mat-calendar-controls {
+    margin-top: 0 !important;
+  }
+  > :first-child {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  > :last-child {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .mat-calendar-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    .mat-calendar-table-header-divider:after {
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+  .mat-datepicker-content .actions {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
 .mat-button.hover:not(.mat-button-disabled) .mat-button-focus-overlay,
 .mat-stroked-button.hover:not(.mat-button-disabled) .mat-button-focus-overlay {
   opacity: 0.04;

@@ -44,24 +44,54 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ lang.data.ap.detail.date }}</mat-label>
+    <mat-label>{{ lang.data.ap.detail.dateStart }}</mat-label>
     <input
       matInput
-      [matDatepicker]="datePicker"
-      name="date"
+      [ngxMatDatetimePicker]="dateStartPicker"
+      name="dateStart"
       required
       (submit)="save()"
-      [(ngModel)]="ap.date"
-      #date
+      [(ngModel)]="ap.dateStart"
+      #dateStart
     />
-    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-    <mat-datepicker
-      (closed)="save()"
-      #datePicker
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dateStartPicker"
+    ></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker
+      (closed)="ap.dateEnd = ap.dateStart.add(50, 'minutes'); save()"
+      #dateStartPicker
       [touchUi]="bps.datepickerMobile"
-    ></mat-datepicker>
-    <mat-error [hidden]="!date.valid">
-      {{ lang.data.ap.detail.date }} {{ lang.data.general.err.req }}
+      [defaultTime]="[9, 0, 0]"
+    ></ngx-mat-datetime-picker>
+    <mat-error [hidden]="!dateStart.valid">
+      {{ lang.data.ap.detail.dateStart }} {{ lang.data.general.err.req }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ lang.data.ap.detail.dateEnd }}</mat-label>
+    <input
+      matInput
+      [ngxMatDatetimePicker]="dateEndPicker"
+      name="dateEnd"
+      required
+      (submit)="save()"
+      [(ngModel)]="ap.dateEnd"
+      #dateEnd
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dateEndPicker"
+    ></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker
+      (closed)="save()"
+      #dateEndPicker
+      [touchUi]="bps.datepickerMobile"
+      [defaultTime]="[9, 0, 0]"
+    ></ngx-mat-datetime-picker>
+    <mat-error [hidden]="!dateEnd.valid">
+      {{ lang.data.ap.detail.dateEnd }} {{ lang.data.general.err.req }}
     </mat-error>
   </mat-form-field>
 </form>

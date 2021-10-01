@@ -2,6 +2,7 @@ import { Moment } from 'moment';
 import { ObjectiveModel } from './objective.model';
 
 export class AppointmentModel extends ObjectiveModel {
-  date: Moment;
+  dateStart: Moment;
+  dateEnd: Moment;
   subjectId: string;
 }

@@ -4,6 +4,7 @@ import { GlobalVariablesService } from 'src/libraries/util/services/global-varia
 import { HwNewDialogComponent } from '../../objectives/homework/hw-new-dialog/hw-new-dialog.component';
 import { ScNewDialogComponent } from '../../objectives/grades/sc-new-dialog/sc-new-dialog.component';
 import { LocalizationService } from 'src/libraries/util/services/localization.service';
+import { ApNewDialogComponent } from '../../objectives/appointments/ap-new-dialog/ap-new-dialog.component';
 
 @Component({
   selector: 'db-quick-actions',
@@ -25,5 +26,9 @@ export class DbQuickActionsComponent implements OnInit {
 
   newGrade() {
     this.dialogService.open(ScNewDialogComponent);
+  }
+
+  newAppointment() {
+    this.dialogService.open(ApNewDialogComponent);
   }
 }

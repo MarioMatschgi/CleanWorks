@@ -15,6 +15,7 @@ export interface CalenderEventData {
   lat?: number;
   lon?: number;
   alarms: CalenderAlarmData[];
+  cancelled?: boolean;
 }
 export interface CalenderAlarmData {
   desc: string;
@@ -35,8 +36,8 @@ export class CalenderService {
       events: [
         {
           id: 'Event_' + ap.id,
-          tStart: ap.date,
-          tEnd: ap.date.clone().add(50, 'minutes'),
+          tStart: ap.dateStart,
+          tEnd: ap.dateEnd,
           desc: ap.title,
           alarms: [
             { desc: 'Day before', mins: 1440 },
@@ -74,6 +75,11 @@ export class CalenderService {
         cal += this.getTxt('ACTION', 'DISPLAY');
         cal += this.getTxt('DESCRIPTION', al.desc);
         cal += this.getTxt('END', 'VALARM');
+      }
+
+      if (evt.cancelled == true) {
+        cal += this.getTxt('METHOD', 'CANCEL');
+        cal += this.getTxt('STATUS', 'CANCELLED');
       }
 
       cal += this.getTxt('END', 'VEVENT');

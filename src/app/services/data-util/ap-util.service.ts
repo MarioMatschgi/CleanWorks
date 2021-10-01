@@ -53,6 +53,6 @@ export class ApUtilService implements IDataUtilBaseService<AppointmentModel> {
   }
 
   getById(id: string): AppointmentModel {
-    return this.base.userData.grades.find((e) => e.id === id);
+    return this.base.userData.data.appointments.find((e) => e.id === id);
   }
 }
